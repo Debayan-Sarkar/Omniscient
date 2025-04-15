@@ -1,6 +1,7 @@
 import Script from "next/script";
 import "./globals.css";
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata = {
   title: "Create Next App",
@@ -14,6 +15,7 @@ export default function RootLayout({ children }) {
         <Script src="/fluid-clean.js"></Script>
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
