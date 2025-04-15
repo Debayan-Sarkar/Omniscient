@@ -1,6 +1,7 @@
 'use client'
 import FluidEffect from "@/components/Fluid/Fluid";
 import FluidDispatcher from "@/components/Fluid/FluidDispatcher";
+import MouseEffect from "@/components/Fluid/Mouse";
 import Header from "@/components/Header/Header";
 import Hero from "@/components/Hero/Hero";
 import Preloader from "@/components/Loader/loader";
@@ -43,6 +44,7 @@ export default function Home() {
         </main>
       </div>
       <FluidDispatcher />
+      <MouseEffect />
       <FluidEffect />
     </ReactLenis>
   );
