@@ -1,14 +1,33 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+
+.syne {
+  font-family: 'Syne', sans-serif !important;
+  font-style: normal;
+  font-weight: 400;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: 'Dirtyline36Daysoftype2022';
+  src: url('/fonts/Dirtyline 36daysoftype 2022.eot');
+  /* IE9 Compat Modes */
+  src: url('/fonts/Dirtyline 36daysoftype 2022.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('/fonts/Dirtyline 36daysoftype 2022.woff') format('woff'),
+    /* Modern Browsers */
+    url('/fonts/Dirtyline 36daysoftype 2022.woff2') format('woff2'),
+    /* Modern Browsers */
+    url('/fonts/Dirtyline 36daysoftype 2022.ttf') format('truetype');
+  /* Safari, Android, iOS */
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
 }
+
+
+
+
 
 html,
 body {
@@ -17,11 +36,10 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Dirtyline36Daysoftype2022';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #121315;
 }
 
 * {
@@ -35,8 +53,15 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
-}
+} */
