@@ -21,7 +21,7 @@ export default function FluidEffect() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-screen h-screen mix-blend-lighten z-10 pointer-events-none"
+      className="fixed top-0 left-0 w-screen h-screen mix-blend-lighten z-0 pointer-events-none"
       id='tr__fluid__anim'
     />
   );

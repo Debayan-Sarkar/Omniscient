@@ -16,7 +16,7 @@ const Hero = () => {
             <div className="flex justify-center items-center">
                 <MdArrowCircleDown className='text-gray-600 text-3xl font-semibold !mt-4' />
             </div>
-            <div className="flex items-center justify-between w-full text-white !pl-20 !pr-20 absolute !bottom-10">
+            <div className="flex items-center justify-between w-full text-white !pl-20 !pr-20 absolute ">
                 <button className='syne !p-4 w-43 rounded-full cursor-pointer'>
                     Explore Work
                     <span className="btnBack absolute rounded-full left-0 top-0 w-full h-full border"></span>
