@@ -90,7 +90,8 @@ const MouseEffect = () => {
         const relY = e.clientY - rect.top;
         const moveX = (relX - rect.width / 2) * 0.3;
         const moveY = (relY - rect.height / 2) * 0.3;
-
+        button.querySelector(".btnBack").classList.add("!bg-[#C5FCFC]")
+        button.querySelector(".btnBack").classList.add("!blur-[24px]")
         gsap.to(button, {
           x: moveX,
           y: moveY,
@@ -140,10 +141,10 @@ const MouseEffect = () => {
   }, []);
 
   return (
-      <div
-        id="cursor-dot"
-        className="fixed top-0 left-0 w-6 h-6 bg-white rounded-full mix-blend-difference pointer-events-none z-[5000000000000000]"
-      ></div>
+    <div
+      id="cursor-dot"
+      className="fixed top-0 left-0 w-6 h-6 bg-white rounded-full mix-blend-difference pointer-events-none z-[5000000000000000]"
+    ></div>
   );
 };
 

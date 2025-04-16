@@ -3,7 +3,7 @@ import { MdArrowCircleDown } from 'react-icons/md'
 
 const Hero = () => {
     return (
-        <section className="hero flex flex-col items-center justify-center h-[80vh] ">
+        <section className="hero flex flex-col items-center justify-center h-[90vh] ">
             <h1 className='block text-center text-[116px] leading-[5.9rem] text-white '>
                 <span className='block text-center'>roar in the</span>
                 <span className='block text-center'>digital wilderness.</span>
@@ -16,9 +16,15 @@ const Hero = () => {
             <div className="flex justify-center items-center">
                 <MdArrowCircleDown className='text-gray-600 text-3xl font-semibold !mt-4' />
             </div>
-            <div className="flex items-center justify-between w-full text-white !pl-20 !pr-20 absolute bottom-0">
-                <button className='syne !p-4 w-43 border rounded-full cursor-pointer'>Explore Work</button>
-                <button className='syne !p-4 w-43 border rounded-full cursor-pointer'>Get in touch</button>
+            <div className="flex items-center justify-between w-full text-white !pl-20 !pr-20 absolute !bottom-10">
+                <button className='syne !p-4 w-43 rounded-full cursor-pointer'>
+                    Explore Work
+                    <span className="btnBack absolute rounded-full left-0 top-0 w-full h-full border"></span>
+                </button>
+                <button className='syne !p-4 w-43 rounded-full cursor-pointer'>
+                    Get in touch
+                    <span className="btnBack absolute rounded-full left-0 top-0 w-full h-full border"></span>
+                </button>
             </div>
         </section>
     )

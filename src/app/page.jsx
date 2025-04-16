@@ -9,29 +9,12 @@ import ReactLenis from "lenis/react";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-export function bringFluidForwardOnHover(selector = 'button') {
-  const targets = document.querySelectorAll(selector);
 
-  targets.forEach((el) => {
-    el.addEventListener('mouseenter', () => {
-      // Store the original z-index safely
-      el.dataset.prevZIndex = el.style.zIndex;
-
-      // Drop z-index to go under canvas (make sure canvas is z-[10] or more)
-      el.style.zIndex = '0'; // ensure stacking context
-    });
-
-    el.addEventListener('mouseleave', () => {
-      el.style.zIndex = el.dataset.prevZIndex;
-    });
-  });
-}
 
 export default function Home() {
   const preloaderRef = useRef();
   useEffect(() => {
     preloaderRef.current?.startAnimation();
-    // bringFluidForwardOnHover('*');
   }, [])
 
   return (
