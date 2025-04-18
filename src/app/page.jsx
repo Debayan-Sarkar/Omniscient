@@ -45,7 +45,27 @@ export default function Home() {
                 <button className="w-45">explore work</button>
               </div>
               <div className="img w-[50%]">
-                <Image src={'/assets/work.webp'} className="w-full" width={100} height={100} alt="Work Images"/>
+                <Image src={'/assets/work.webp'} className="w-full" width={100} height={100} alt="Work Images" />
+              </div>
+            </div>
+            <div className="flex justify-between items-center">
+              <div className="img w-[50%]">
+                <Image src={'/assets/work2.webp'} className="w-full" width={100} height={100} alt="Work Images" />
+              </div>
+              <div className="text-end w-[50%]">
+                <h1 className="text-7xl">imusic</h1>
+                <h4 className="syne text-xl">Research,UX,UI Design</h4>
+                <button className="w-45">explore work</button>
+              </div>
+            </div>
+            <div className="flex justify-between items-center">
+              <div className="left w-[50%]">
+                <h1 className="text-7xl">technis</h1>
+                <h4 className="syne text-xl"> UX,UI Design, Development</h4>
+                <button className="w-45">explore work</button>
+              </div>
+              <div className="img w-[50%]">
+                <Image src={'/assets/work3.webp'} className="w-full" width={100} height={100} alt="Work Images" />
               </div>
             </div>
           </section>
