@@ -27,7 +27,7 @@ export default function Home() {
           <Hero />
           <Video />
           <section className="work">
-            recent work
+           <span className="text-4xl"> recent work</span>
             <div className="bottom">
               <span> In the creative wilderness, </span>
               <span> clients find our work truly  </span>
