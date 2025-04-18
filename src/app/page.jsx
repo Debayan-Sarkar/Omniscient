@@ -27,11 +27,16 @@ export default function Home() {
           <Hero />
           <Video />
           <section className="work">
-           <span className="text-4xl"> recent work</span>
-            <div className="bottom">
-              <span> In the creative wilderness, </span>
-              <span> clients find our work truly  </span>
-              <span> beloved. </span>
+            <div className="flex flex-col">
+              <span className="text-4xl"> recent work</span>
+              <div className="bottom">
+                <span>In the creative wilderness, </span>
+                <span>clients find our work truly  </span>
+                <span>beloved. </span>
+              </div>
+            </div>
+            <div className="flex justify-between items-center">
+
             </div>
           </section>
           <section className="work">
