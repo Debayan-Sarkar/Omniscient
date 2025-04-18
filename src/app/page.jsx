@@ -26,7 +26,7 @@ export default function Home() {
         <main>
           <Hero />
           <Video />
-          <section className="work text-white">
+          <section className="!mt-65 !pr-24 !pl-24 text-white">
             <div className="flex flex-col">
               <div className="top">
                 <span className="text-[218px] leading-40 block"> recent </span>
@@ -69,8 +69,8 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <section className="work">
-          <div className="flex flex-col">
+          <section className="!pr-24 !pl-24 text-white">
+            <div className="flex flex-col">
               <div className="top">
                 <span className="text-[218px] leading-40 block">who</span>
                 <span className="text-[218px] leading-40 block">we are</span>
@@ -83,17 +83,20 @@ export default function Home() {
                 <span className="block syne text-3xl">endures.</span>
               </div>
             </div>
+            <div className="ml-auto w-full">
+              <span className="syne">We roar with creativity, staying updated with the latest tech to make your brand a formidable force in the digital wilderness and deliver exceptional website and app experiences.</span>
+            </div>
           </section>
-          <section className="work">
+          <section className="!pr-24 !pl-24">
             recent work
           </section>
-          <section className="work">
+          <section className="!pr-24 !pl-24">
             recent work
           </section>
-          <section className="work">
+          <section className="!pr-24 !pl-24">
             recent work
           </section>
-          <section className="work">
+          <section className="!pr-24 !pl-24">
             recent work
           </section>
         </main>
