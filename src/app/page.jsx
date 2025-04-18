@@ -36,7 +36,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex justify-between items-center">
-              <Image src={'/assets/work.webp'} width={100} height={100} />
+              <Image src={'/assets/work.webp'} width={'100%'} height={'100%'} />
             </div>
           </section>
           <section className="work">
