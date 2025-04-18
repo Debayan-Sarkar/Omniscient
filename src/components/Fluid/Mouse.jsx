@@ -101,6 +101,11 @@ const MouseEffect = () => {
       };
 
       const reset = () => {
+        button.querySelector(".btnBack").classList.remove("!w-28")
+        button.querySelector(".btnBack").classList.remove("!h-28")
+        button.querySelector(".btnBack").classList.remove("!bg-[#C5FCFC]")
+        button.querySelector(".btnBack").classList.remove("!text-black")
+        button.querySelector(".btnBack").classList.remove("!blur-[24px]")
         gsap.to(button, {
           x: 0,
           y: 0,
