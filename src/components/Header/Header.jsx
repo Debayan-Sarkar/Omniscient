@@ -15,7 +15,7 @@ const Header = () => {
             <header className='flex w-full'>
                 <nav className="w-full !pt-10 !pl-20 !pr-20">
                     <ul className='flex items-center justify-between'>
-                        <li><Link href={'#'}><Image src={'/assets/logo.png'} width={200} height={200} alt='Logo' /></Link></li>
+                        <li><Link href={'#'}><Image src={'/assets/logo.svg'} width={200} height={200} alt='Logo' /></Link></li>
                         <div className='flex gap-2.5 items-center justify-center !mr-[140px]'>
                             <li className='cursor-pointer bg-[#242527] !p-1.5 rounded-full'><MdLightMode className='text-[18px] text-white' /></li>
                         </div>

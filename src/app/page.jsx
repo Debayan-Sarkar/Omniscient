@@ -26,6 +26,29 @@ export default function Home() {
         <main>
           <Hero />
           <Video />
+          <section className="work">
+            recent work
+            <div className="bottom">
+              <span> In the creative wilderness, </span>
+              <span> clients find our work truly  </span>
+              <span> beloved. </span>
+            </div>
+          </section>
+          <section className="work">
+
+          </section>
+          <section className="work">
+            recent work
+          </section>
+          <section className="work">
+            recent work
+          </section>
+          <section className="work">
+            recent work
+          </section>
+          <section className="work">
+            recent work
+          </section>
         </main>
       </div>
       <FluidDispatcher />
