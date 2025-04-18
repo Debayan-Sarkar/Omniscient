@@ -70,7 +70,19 @@ export default function Home() {
             </div>
           </section>
           <section className="work">
-
+          <div className="flex flex-col">
+              <div className="top">
+                <span className="text-[218px] leading-40 block">who</span>
+                <span className="text-[218px] leading-40 block">we are</span>
+              </div>
+              <div className="bottom">
+                <span className="block syne text-3xl">As an award-winning agency </span>
+                <span className="block syne text-3xl">within the digital jungle, TRIONN</span>
+                <span className="block syne text-3xl"> <sup>®</sup> transcends aesthetics, crafting </span>
+                <span className="block syne text-3xl">your vision into a legacy that </span>
+                <span className="block syne text-3xl">endures.</span>
+              </div>
+            </div>
           </section>
           <section className="work">
             recent work
