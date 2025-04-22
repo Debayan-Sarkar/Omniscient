@@ -85,6 +85,7 @@ export default function Home() {
             </div>
             <div className="ml-auto w-full">
               <span className="syne">We roar with creativity, staying updated with the latest tech to make your brand a formidable force in the digital wilderness and deliver exceptional website and app experiences.</span>
+           <button className="syne">About Us</button>
             </div>
           </section>
           <section className="!pr-24 !pl-24">

@@ -16,14 +16,14 @@ const Hero = () => {
             <div className="flex justify-center items-center">
                 <MdArrowCircleDown className='text-gray-600 text-3xl font-semibold !mt-4' />
             </div>
-            <div className="flex items-center justify-between w-full text-white !pl-20 !pr-20 absolute ">
-                <button className='syne !p-4 w-43 rounded-full cursor-pointer'>
-                    Explore Work
-                    <span className="btnBack absolute rounded-full left-0 top-0 w-full h-full border"></span>
+            <div className="flex items-center justify-between w-full text-white !pl-20 !pr-20 absolute top-[80vh]">
+                <button className='syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer hover:border-2 hover:border-[#4973ff]'>
+                    <span> Explore Work</span>
+                    <div className="liquid"></div>
                 </button>
-                <button className='syne !p-4 w-43 rounded-full cursor-pointer'>
-                    Get in touch
-                    <span className="btnBack absolute rounded-full left-0 top-0 w-full h-full border"></span>
+                <button className='syne heroBtn relative !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer hover:border-2 hover:border-[#4973ff]'>
+                    <span>Get in touch</span>
+                    <div className="liquid"></div>
                 </button>
             </div>
         </section>

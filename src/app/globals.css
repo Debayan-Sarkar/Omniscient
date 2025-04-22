@@ -28,6 +28,60 @@
 
 
 
+.heroBtn:hover .liquid {
+  top: -120px;
+}
+.heroBtn {
+  overflow: hidden;
+  position: relative;
+}
+.heroBtn span{
+  z-index: 1;
+  position: relative;
+}
+
+.liquid {
+  position: absolute;
+  top: -80px;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  background: #4973ff;
+  box-shadow: inset 0 0 50px rgba(107, 44, 255, 0.5);
+  transition: 0.5s;
+  z-index: 0;
+}
+
+.liquid::before,
+.liquid::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  transform: translate(-50%, -75%);
+  background: #fff;
+}
+
+.liquid::before {
+  border-radius: 45%;
+  animation: liquidAnimation 10s linear infinite;
+}
+
+.liquid::after {
+  border-radius: 40%;
+  animation: liquidAnimation 10s linear infinite;
+}
+
+@keyframes liquidAnimation {
+  0% {
+    transform: translate(-50%, -75%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -75%) rotate(360deg);
+  }
+}
 
 html,
 body {
