@@ -19,7 +19,7 @@ export default function Home() {
   }, [])
 
   return (
-    <ReactLenis root>
+    <ReactLenis root options={{ smooth: true, smoothTouch: false, touchMultiplier: 2 }} onScroll={(e) => console.log(e)}>
       <div className="container z-1 relative" id="smooth-wrapper">
         <Preloader ref={preloaderRef} />
         <Header />
