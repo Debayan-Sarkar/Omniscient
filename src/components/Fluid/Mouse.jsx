@@ -15,7 +15,7 @@ const MouseEffect = () => {
       mouse.current.y = e.clientY;
     };
     window.addEventListener("mousemove", handleMouseMove);
-    const tl = gsap.timeline({paused: true});
+    const tl = gsap.timeline({ paused: true });
     const handleHoverStart = () => {
       gsap.to(dot, {
         width: 70,
@@ -37,7 +37,7 @@ const MouseEffect = () => {
         borderRadius: "999px",
       });
     };
-    const hoverables = document.querySelectorAll("svg,a, button, img, span, li,p,h1,h2,h3,h4,h5,h6");
+    const hoverables = document.querySelectorAll("svg,a, button, img, span, li,p,h1,h2,h3,h4,h5,h6,.hoverable");
 
     hoverables.forEach(el => {
       el.addEventListener("mouseenter", handleHoverStart);
