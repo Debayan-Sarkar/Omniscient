@@ -43,7 +43,7 @@ export default function Home() {
 
       gsap.to(line, {
         backgroundPositionX: "0%",
-        ease: "none",
+        ease: "power1.in",
         scrollTrigger: {
           trigger: ".workSec",
           start: "center center",
@@ -55,7 +55,7 @@ export default function Home() {
 
       gsap.from(line, {
         x: random(300, -300, 40),
-        ease: "none",
+        ease: "power1.in",
         scrollTrigger: {
           trigger: ".workSec",
           start: "center center",
