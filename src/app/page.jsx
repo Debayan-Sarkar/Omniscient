@@ -45,7 +45,7 @@ export default function Home() {
         ease: "power1",
         scrollTrigger: {
           trigger: TriggerRef.current,
-          start: "40% bottom",
+          start: "38% bottom",
           end: "95% center",
           scrub: true,
           markers: true
@@ -57,7 +57,7 @@ export default function Home() {
         ease: "power1",
         scrollTrigger: {
           trigger: TriggerRef.current,
-          start: "40% bottom",
+          start: "38% bottom",
           end: "95% center",
           scrub: true,
           markers: true
