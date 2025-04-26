@@ -93,7 +93,6 @@ export default function Home() {
     gsap.from(r, {
       x: "-100%",
       rotate: -45,
-      delay: 0.5,
       ease: 'power1.in',
       scrollTrigger: {
         trigger: r,
@@ -118,7 +117,6 @@ export default function Home() {
     gsap.from(r2, {
       x: "-100%",
       rotate: -45,
-      delay: 2,
       ease: 'power1.in',
       scrollTrigger: {
         trigger: r,
