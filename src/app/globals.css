@@ -31,11 +31,13 @@
 .heroBtn:hover .liquid {
   top: -120px;
 }
+
 .heroBtn {
   overflow: hidden;
   position: relative;
 }
-.heroBtn span{
+
+.heroBtn span {
   z-index: 1;
   position: relative;
 }
@@ -74,23 +76,29 @@
   animation: liquidAnimation 10s linear infinite;
 }
 
+
+
+
 @keyframes liquidAnimation {
   0% {
     transform: translate(-50%, -75%) rotate(0deg);
   }
+
   100% {
     transform: translate(-50%, -75%) rotate(360deg);
   }
 }
 
-.snakeBorder:hover{
+.snakeBorder:hover {
   background: #4973ff;
 }
+
 .snakeBorder {
   background: #4973ff71;
   overflow: hidden;
   border-radius: 100px;
-  position: relative; /* Needed for absolutely positioned children */
+  position: relative;
+  /* Needed for absolutely positioned children */
 }
 
 .snakeBorder::before {
@@ -120,6 +128,7 @@
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(100%);
   }
@@ -140,6 +149,7 @@
   0% {
     transform: translateY(-100%);
   }
+
   100% {
     transform: translateY(100%);
   }
@@ -159,6 +169,7 @@
   0% {
     transform: translateX(100%);
   }
+
   100% {
     transform: translateX(-100%);
   }
@@ -179,6 +190,7 @@
   0% {
     transform: translateY(100%);
   }
+
   100% {
     transform: translateY(-100%);
   }
