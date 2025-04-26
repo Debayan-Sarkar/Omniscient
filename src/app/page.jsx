@@ -12,6 +12,7 @@ import { useEffect, useRef } from "react";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from "split-type";
+import Dribble from "@/components/Dribble/driblleSec";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -343,6 +344,7 @@ export default function Home() {
               </div>
             </div>
           </section>
+          {/* <Dribble /> */}
           <section className="!pr-24 !pl-24">
             recent work
           </section>
