@@ -31,8 +31,6 @@ export default function Home() {
     preloaderRef.current?.startAnimation();
 
     const works = gsap.utils.toArray('.workSec');
-    const acheved = gsap.utils.toArray('.acheved');
-    const SplitTexts = gsap.utils.toArray('.fill-text');
 
     const split = new SplitType(".RecWork h3");
 
@@ -43,25 +41,23 @@ export default function Home() {
 
       gsap.to(line, {
         backgroundPositionX: "0%",
-        ease: "power1.in",
+        ease: "power1",
         scrollTrigger: {
           trigger: ".workSec",
-          start: "center center",
+          start: "top center",
           end: "bottom center",
-          scrub: true,
-          markers: true
+          scrub: true
         }
       });
 
       gsap.from(line, {
         x: random(300, -300, 40),
-        ease: "power1.in",
+        ease: "power1",
         scrollTrigger: {
           trigger: ".workSec",
-          start: "center center",
+          start: "top center",
           end: "bottom center",
-          scrub: true,
-          markers: true
+          scrub: true
         }
       });
     });
@@ -84,7 +80,7 @@ export default function Home() {
           start: 'top center',
           end: `+=${window.innerHeight}`,
           scrub: true,
-          markers: false
+          markers: true
         }
       });
 
@@ -99,7 +95,7 @@ export default function Home() {
           start: 'top center',
           end: `+=${window.innerHeight}`,
           scrub: true,
-          markers: false
+          markers: true
         }
       });
     });
