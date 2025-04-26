@@ -45,7 +45,7 @@ export default function Home() {
         ease: "power1",
         scrollTrigger: {
           trigger: TriggerRef.current,
-          start: "42% bottom",
+          start: "40% bottom",
           end: "95% center",
           scrub: true,
           markers: true
@@ -53,11 +53,11 @@ export default function Home() {
       });
 
       gsap.from(line, {
-        x: random(300, -300, 40),
+        x: random(300, -300, 80),
         ease: "power1",
         scrollTrigger: {
           trigger: TriggerRef.current,
-          start: "42% bottom",
+          start: "40% bottom",
           end: "95% center",
           scrub: true,
           markers: true
