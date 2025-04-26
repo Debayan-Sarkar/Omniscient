@@ -25,6 +25,7 @@ function random(min, max, skew = 1) {
 }
 export default function Home() {
   const preloaderRef = useRef();
+  const TriggerRef = useRef();
 
 
   useEffect(() => {
@@ -43,10 +44,11 @@ export default function Home() {
         backgroundPositionX: "0%",
         ease: "power1",
         scrollTrigger: {
-          trigger: ".workSec",
-          start: "top center",
-          end: "bottom center",
-          scrub: true
+          trigger: TriggerRef.current,
+          start: "42% bottom",
+          end: "95% center",
+          scrub: true,
+          markers: true
         }
       });
 
@@ -54,10 +56,11 @@ export default function Home() {
         x: random(300, -300, 40),
         ease: "power1",
         scrollTrigger: {
-          trigger: ".workSec",
-          start: "top center",
-          end: "bottom center",
-          scrub: true
+          trigger: TriggerRef.current,
+          start: "42% bottom",
+          end: "95% center",
+          scrub: true,
+          markers: true
         }
       });
     });
@@ -80,7 +83,7 @@ export default function Home() {
           start: 'top center',
           end: `+=${window.innerHeight}`,
           scrub: true,
-          markers: true
+          // markers: true
         }
       });
 
@@ -95,7 +98,7 @@ export default function Home() {
           start: 'top center',
           end: `+=${window.innerHeight}`,
           scrub: true,
-          markers: true
+          // markers: true
         }
       });
     });
@@ -176,7 +179,7 @@ export default function Home() {
                 </h3>
               </div>
 
-              <div className="bottom flex w-full justify-between items-center">
+              <div className="bottomW flex w-full justify-between items-center">
                 <div className="">
                   <span className="block syne text-3xl">In the creative wilderness, </span>
                   <span className="block syne text-3xl">clients find our work truly  </span>
@@ -191,7 +194,7 @@ export default function Home() {
                 </button>
               </div>
             </div>
-            <div className="workSec flex justify-between items-center !mt-28 gap-2.5">
+            <div className="workSec flex justify-between items-center !mt-28 gap-2.5" ref={TriggerRef}>
               <div className="info w-[40%]">
                 <h1 className="text-7xl">ovrmelt</h1>
                 <h4 className="syne text-xl">Social Media Revamp</h4>
