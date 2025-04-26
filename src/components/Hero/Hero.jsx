@@ -5,7 +5,7 @@ const Hero = () => {
     return (
         <section className="hero flex flex-col items-center justify-center h-[90vh] ">
             <h1 className='block text-center text-[90px] leading-[5.9rem] text-white '>
-                <span className='block text-center'>transforming your businesses</span>
+                <span className='block text-center'>transforming your business</span>
                 <span className='block text-center'>into brands.</span>
             </h1>
             {/*   */}

@@ -76,8 +76,25 @@
   animation: liquidAnimation 10s linear infinite;
 }
 
+.fill-text {
+  background: linear-gradient(90deg, #e0eeee 50%, #252525 0);
+  background-size: 200% 100%;
+  background-position-x: 100%;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  position: relative;
+}
+.RecWork h3 {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-
+.RecWork h3 span {
+  display: block;
+  position: relative;
+  text-align: start;
+}
 
 @keyframes liquidAnimation {
   0% {

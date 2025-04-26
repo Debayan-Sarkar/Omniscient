@@ -21,15 +21,15 @@ const Video = () => {
             },
             y: 1 * (document.querySelector("#video").offsetTop - window.innerHeight + e),
             scale: 1.2,
-            width: "90%",
-            height: "90%",
+            width: "80%",
+            height: "80%",
             marginBottom: "200px",
             borderRadius: "50px",
             ease: "power1.in",
         });
     }, [])
     return (
-        <div id="video" className="pointer-events-none flex flex-col items-center justify-end  w-full !pl-24 !pr-24  z-0">
+        <div id="video" className="pointer-events-none flex flex-col items-center justify-end  w-full !pl-24 !pr-24 z-0">
             <video width={'100%'} ref={videoRef} height={'100%'} controls={false} autoPlay loop muted playsInline preload="auto" className='video w-[170px] rounded-full origin-top '>
                 <source src="/assets/intro.mp4" type="video/mp4" />
                 Your browser does not support the video tag.

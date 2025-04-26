@@ -16,7 +16,13 @@ import Dribble from "@/components/Dribble/driblleSec";
 
 
 gsap.registerPlugin(ScrollTrigger);
-
+function random(min, max, skew = 1) {
+  let num = Math.random();
+  if (skew !== 1) {
+    num = Math.pow(num, skew);
+  }
+  return Math.floor(min + (max - min) * num);
+}
 export default function Home() {
   const preloaderRef = useRef();
 
@@ -27,26 +33,42 @@ export default function Home() {
     const works = gsap.utils.toArray('.workSec');
     const acheved = gsap.utils.toArray('.acheved');
     const SplitTexts = gsap.utils.toArray('.fill-text');
-    SplitTexts.forEach((text) => {
-      const split = new SplitType(text, { types: 'chars' });
-      console.log(split);
 
+    const split = new SplitType(".RecWork h3");
 
-      gsap.from(split.chars, {
-        opacity: 0.1,
-        y: 20,
+    const lines = document.querySelectorAll('.RecWork span');
+
+    lines.forEach((line, index) => {
+      gsap.set(line, { display: 'block', position: 'relative', textAlign: 'start' });
+
+      gsap.to(line, {
+        backgroundPositionX: "0%",
+        ease: "none",
         scrollTrigger: {
-          trigger: text,
-          start: 'top center',
-          end: `+=${window.innerHeight}`,
+          trigger: ".workSec",
+          start: "center center",
+          end: "bottom center",
           scrub: true,
-          markers: false
-        },
-        duration: 0.5,
-        stagger: { amount: 0.1 },
-      })
-    }
-    );
+          markers: true
+        }
+      });
+
+      gsap.from(line, {
+        x: random(300, -300, 40),
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".workSec",
+          start: "center center",
+          end: "bottom center",
+          scrub: true,
+          markers: true
+        }
+      });
+    });
+
+
+
+
     works.forEach((work, index) => {
       const image = work.querySelector('.img img');
       const info = work.querySelector('.info');
@@ -152,8 +174,10 @@ export default function Home() {
           <section className="!mt-65 !pr-24 !pl-24 text-white">
             <div className="flex flex-col scrfff">
               <div className="RecWork">
-                <span className="fill-text block text-[218px] leading-40">recent</span>
-                <span className="fill-text block text-[218px] leading-40 ml-1.5">work</span>
+                <h3>
+                  <span className="fill-text block text-[218px] !leading-48">recent</span>
+                  <span className="fill-text block text-[218px] !leading-48 ml-1.5">work</span>
+                </h3>
               </div>
 
               <div className="bottom flex w-full justify-between items-center">
@@ -274,8 +298,8 @@ export default function Home() {
                     <sup>+</sup>
                   </div>
                   <div className="flex items-center justify-end text-5xl">
-                  successful <br />
-                  campaigns
+                    successful <br />
+                    campaigns
                   </div>
                 </div>
               </div>
@@ -328,17 +352,17 @@ export default function Home() {
                   <span className="block text-start text-[117px] ">partner</span>
                   <span className="block text-start text-[117px] ">love</span>
                 </h1>
-                  <h4 className="syne text-2xl">
-                    <div>
-                      <div>Take heed, as the </div>
-                    </div>
-                    <div>
-                      <div>lion's roar in our client </div>
-                    </div>
-                    <div>
-                      <div>reviews resounds.</div>
-                    </div>
-                  </h4>
+                <h4 className="syne text-2xl">
+                  <div>
+                    <div>Take heed, as the </div>
+                  </div>
+                  <div>
+                    <div>lion's roar in our client </div>
+                  </div>
+                  <div>
+                    <div>reviews resounds.</div>
+                  </div>
+                </h4>
               </div>
             </div>
           </section>
