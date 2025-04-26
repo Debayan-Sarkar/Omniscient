@@ -185,12 +185,12 @@ export default function Home() {
                 </button>
               </div>
               <div className="img w-[60%]">
-                <Image src={'/assets/work.webp'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
+                <Image src={'/assets/ovrmelt.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
               </div>
             </div>
             <div className="workSec flex justify-between items-center !mt-28 gap-2.5">
               <div className="img w-[60%]">
-                <Image src={'/assets/work2.webp'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
+                <Image src={'/assets/kcc.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
               </div>
               <div className="info text-end w-[40%]">
                 <h1 className="text-7xl">kothari construction
@@ -218,7 +218,7 @@ export default function Home() {
                 </button>
               </div>
               <div className="img w-[60%]">
-                <Image src={'/assets/work3.webp'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
+                <Image src={'/assets/vastram.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
               </div>
             </div>
             <div className="workSec flex justify-between items-center !mt-28 gap-3">
@@ -268,26 +268,29 @@ export default function Home() {
               <div className="acheved bg-[#1f202266] rounded-2xl z-0 !p-14 hover:bg-amber-700 text-white transition-all duration-300 ease-linear cursor-pointer">
                 <div className="acchheWrap">
                   <div className="nums !mb-16 text-8xl">
-                    <span>2</span>
+                    <span>1</span>
+                    <span>0</span>
+                    <span>0</span>
                     <span>0</span>
                     <sup>+</sup>
                   </div>
                   <div className="flex items-center justify-end text-5xl">
-                    creative<br />
-                    designs
+                  successful <br />
+                  campaigns
                   </div>
                 </div>
               </div>
               <div className="acheved1 bg-[#1f202266] rounded-2xl z-0 !p-14 !mt-40 !-mb-40 hover:bg-green-500 text-white transition-all duration-300 ease-linear cursor-pointer">
                 <div className="acchheWrap">
                   <div className="nums !mb-16 text-8xl">
-                    <span>2</span>
+                    <span>1</span>
+                    <span>0</span>
                     <span>0</span>
                     <sup>+</sup>
                   </div>
                   <div className="flex items-center justify-end text-5xl">
-                    creative<br />
-                    designs
+                    satisfied<br />
+                    clients
                   </div>
                 </div>
               </div>
