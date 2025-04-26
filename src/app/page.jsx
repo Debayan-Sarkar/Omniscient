@@ -226,7 +226,7 @@ export default function Home() {
               </div>
               <div className="info w-[40%]">
                 <h1 className="text-7xl">isha jewellers</h1>
-                <h4 className="syne text-xl"></h4>
+                <h4 className="syne text-xl">Crafted a premium festive campaign strategy, enhancing their brand aura and driving seasonal sales</h4>
                 <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
                   <span></span>
                   <span></span>
