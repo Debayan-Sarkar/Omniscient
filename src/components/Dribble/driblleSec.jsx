@@ -11,8 +11,10 @@ function Dribble() {
 
   useEffect(() => {
     const Settings = {
-      trigger: ".triggerCont",
-      start: "top 25%",
+      trigger: ".mainCont",
+      start: "0% center",
+      scrub: true,
+      markers: true,
       toggleActions: "play reverse play reverse",
     };
 
@@ -54,7 +56,7 @@ function Dribble() {
     });
 
     gsap.to(".logo", {
-      scale: 1,
+      scale: 3,
       duration: 0.5,
       ease: "power1.out",
       scrollTrigger: Settings,
