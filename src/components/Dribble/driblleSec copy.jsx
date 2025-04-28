@@ -39,7 +39,7 @@ function Dribble() {
           start: "top center",
           end: "100% center",
           scrub: true,
-          markers: true,
+          markers: false,
           invalidateOnRefresh: true
         }
       }).to(el, {

@@ -25,7 +25,7 @@ function Work() {
                     start: "38% bottom",
                     end: "95% center",
                     scrub: true,
-                    markers: true
+                    markers: false
                 }
             });
 
@@ -37,7 +37,7 @@ function Work() {
                     start: "38% bottom",
                     end: "95% center",
                     scrub: true,
-                    markers: true
+                    markers: false
                 }
             });
         });
@@ -58,7 +58,7 @@ function Work() {
                     start: 'top center',
                     end: "+=105%",
                     scrub: true,
-                    markers: true
+                    markers: false
                 }
             });
 
@@ -72,7 +72,7 @@ function Work() {
                     start: 'top center',
                     end: `+=${window.innerHeight}`,
                     scrub: true,
-                    // markers: true
+                    // markers: false
                 }
             });
         });

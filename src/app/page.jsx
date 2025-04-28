@@ -39,7 +39,7 @@ export default function Home() {
           start: "top center",
           end: "95% center",
           scrub: true,
-          markers: true
+          markers: false
         }
       });
 
@@ -51,7 +51,7 @@ export default function Home() {
           start: "top center",
           end: "95% center",
           scrub: true,
-          markers: true
+          markers: false
         }
       });
     });
@@ -67,7 +67,7 @@ export default function Home() {
           start: "top center",
           end: "100% center",
           scrub: true,
-          markers: true
+          markers: false
         }
       });
 
@@ -79,7 +79,7 @@ export default function Home() {
           start: "top center",
           end: "100% center",
           scrub: true,
-          markers: true
+          markers: false
         }
       });
     });
