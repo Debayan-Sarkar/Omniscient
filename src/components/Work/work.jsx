@@ -152,22 +152,6 @@ function Work() {
                     <Image src={'/assets/vastram.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
                 </div>
             </div>
-            <div className="workSec flex justify-between items-center !mt-28 !gap-3">
-                <div className="img w-[60%]">
-                    <Image src={'/assets/work4.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
-                </div>
-                <div className="info w-[40%]">
-                    <h1 className="text-7xl">isha jewellers</h1>
-                    <h4 className="syne text-xl">Crafted a premium {/*festive campaign strategy, enhancing their brand aura and driving seasonal sales*/}</h4>
-                    <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        Explore Work
-                    </button>
-                </div>
-            </div>
         </section>
     )
 }
