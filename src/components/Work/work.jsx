@@ -154,7 +154,7 @@ function Work() {
             </div>
             <div className="workSec flex justify-between items-center !mt-28 !gap-3">
                 <div className="img w-[60%]">
-                    <Image src={'/assets/work3.webp'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
+                    <Image src={'/assets/work4.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
                 </div>
                 <div className="info w-[40%]">
                     <h1 className="text-7xl">isha jewellers</h1>
