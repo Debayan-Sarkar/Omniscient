@@ -58,7 +58,7 @@ function Dribble() {
     for (let i = 1; i <= 6; i++) {
       rows.push(
         <div className={`imgPosts${i}`} key={i}>
-          <Image src={`/assets/dribbble${i}.webp`} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
+          <Image src={`/assets/dribble${i}.jpeg`} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
         </div>
       )
     }
