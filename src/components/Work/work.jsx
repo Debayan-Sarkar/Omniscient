@@ -1,0 +1,176 @@
+import gsap from 'gsap';
+import React, { useEffect, useRef } from 'react'
+import SplitType from 'split-type';
+import { random } from '../Functions/Functions';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
+
+gsap.registerPlugin(ScrollTrigger);
+
+function Work() {
+    const TriggerRef = useRef();
+    useEffect(() => {
+        const works = gsap.utils.toArray('.workSec');
+        const split = new SplitType(".RecWork h3");
+
+        const lines = document.querySelectorAll('.RecWork span');
+        lines.forEach((line, index) => {
+            gsap.set(line, { display: 'block', position: 'relative', textAlign: 'start' });
+
+            gsap.to(line, {
+                backgroundPositionX: "0%",
+                ease: "power1",
+                scrollTrigger: {
+                    trigger: TriggerRef.current,
+                    start: "38% bottom",
+                    end: "95% center",
+                    scrub: true,
+                    markers: true
+                }
+            });
+
+            gsap.from(line, {
+                x: random(300, -300, 80),
+                ease: "power1",
+                scrollTrigger: {
+                    trigger: TriggerRef.current,
+                    start: "38% bottom",
+                    end: "95% center",
+                    scrub: true,
+                    markers: true
+                }
+            });
+        });
+        works.forEach((work, index) => {
+            const image = work.querySelector('.img img');
+            const info = work.querySelector('.info');
+
+            if (!image || !info) return;
+
+            gsap.from(image, {
+                x: index % 2 === 0 ? 0.5 * image.clientWidth : -0.5 * image.clientWidth,
+                rotate: index % 2 === 0 ? 10 : -10,
+                duration: 2,
+                ease: 'power1.in',
+                autoAlpha: 0,
+                scrollTrigger: {
+                    trigger: work,
+                    start: 'top center',
+                    end: "+=105%",
+                    scrub: true,
+                    markers: true
+                }
+            });
+
+            gsap.set(info, { yPercent: -5 });
+
+            gsap.from(info, {
+                yPercent: 55,
+                ease: 'power1.in',
+                scrollTrigger: {
+                    trigger: info,
+                    start: 'top center',
+                    end: `+=${window.innerHeight}`,
+                    scrub: true,
+                    // markers: true
+                }
+            });
+        });
+    }, []);
+
+    return (
+        <section className="!mt-65 !pr-24 !pl-24 text-white">
+            <div className="flex flex-col scrfff">
+                <div className="RecWork">
+                    <h3>
+                        <span className="fill-text block text-[218px] !leading-48">recent</span>
+                        <span className="fill-text block text-[218px] !leading-48 ml-1.5">work</span>
+                    </h3>
+                </div>
+
+                <div className="bottomW flex w-full justify-between items-center">
+                    <div className="">
+                        <span className="block syne text-3xl">In the creative wilderness, </span>
+                        <span className="block syne text-3xl">clients find our work truly  </span>
+                        <span className="block syne text-3xl">beloved. </span>
+                    </div>
+                    <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Explore Work
+                    </button>
+                </div>
+            </div>
+            <div className="workSec flex justify-between items-center !mt-28 gap-2.5" ref={TriggerRef}>
+                <div className="info w-[40%]">
+                    <h1 className="text-7xl">ovrmelt</h1>
+                    <h4 className="syne text-xl">Social Media Revamp</h4>
+                    <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Explore Work
+                    </button>
+                </div>
+                <div className="img w-[60%]">
+                    <Image src={'/assets/ovrmelt.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
+                </div>
+            </div>
+            <div className="workSec flex justify-between items-center !mt-28 gap-2.5">
+                <div className="img w-[60%]">
+                    <Image src={'/assets/kcc.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
+                </div>
+                <div className="info text-end w-[40%]">
+                    <h1 className="text-7xl">kothari construction
+                        company</h1>
+                    <h4 className="syne text-xl">Lead Generation Success</h4>
+                    <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Explore Work
+                    </button>
+                </div>
+            </div>
+            <div className="workSec flex justify-between items-center !mt-28 gap-2.5">
+                <div className="info w-[40%]">
+                    <h1 className="text-7xl">vastram</h1>
+                    <h4 className="syne text-xl">Complete Branding Overhaul</h4>
+                    <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Explore Work
+                    </button>
+                </div>
+                <div className="img w-[60%]">
+                    <Image src={'/assets/vastram.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
+                </div>
+            </div>
+            <div className="workSec flex justify-between items-center !mt-28 !gap-3">
+                <div className="img w-[60%]">
+                    <Image src={'/assets/work3.webp'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
+                </div>
+                <div className="info w-[40%]">
+                    <h1 className="text-7xl">isha jewellers</h1>
+                    <h4 className="syne text-xl">Crafted a premium {/*festive campaign strategy, enhancing their brand aura and driving seasonal sales*/}</h4>
+                    <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Explore Work
+                    </button>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+export default Work;
+

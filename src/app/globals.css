@@ -95,6 +95,16 @@
   position: relative;
   text-align: start;
 }
+.Weare h3 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Weare h3 span {
+  display: block;
+  position: relative;
+  text-align: start;
+}
 
 @keyframes liquidAnimation {
   0% {

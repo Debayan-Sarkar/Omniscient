@@ -13,30 +13,21 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from "split-type";
 import Dribble from "@/components/Dribble/driblleSec";
+import Work from "@/components/Work/work";
+import { random } from "@/components/Functions/Functions";
 
 
 gsap.registerPlugin(ScrollTrigger);
-function random(min, max, skew = 1) {
-  let num = Math.random();
-  if (skew !== 1) {
-    num = Math.pow(num, skew);
-  }
-  return Math.floor(min + (max - min) * num);
-}
+
 export default function Home() {
   const preloaderRef = useRef();
   const TriggerRef = useRef();
-
-
+  const aTriggerRef = useRef();
   useEffect(() => {
     preloaderRef.current?.startAnimation();
+    const split = new SplitType(".Weare h3");
 
-    const works = gsap.utils.toArray('.workSec');
-
-    const split = new SplitType(".RecWork h3");
-
-    const lines = document.querySelectorAll('.RecWork span');
-
+    const lines = document.querySelectorAll('.Weare span');
     lines.forEach((line, index) => {
       gsap.set(line, { display: 'block', position: 'relative', textAlign: 'start' });
 
@@ -45,7 +36,7 @@ export default function Home() {
         ease: "power1",
         scrollTrigger: {
           trigger: TriggerRef.current,
-          start: "38% bottom",
+          start: "top center",
           end: "95% center",
           scrub: true,
           markers: true
@@ -57,55 +48,41 @@ export default function Home() {
         ease: "power1",
         scrollTrigger: {
           trigger: TriggerRef.current,
-          start: "38% bottom",
+          start: "top center",
           end: "95% center",
           scrub: true,
           markers: true
         }
       });
     });
+    const alines = document.querySelectorAll('.texths h3 span');
+    alines.forEach((line, index) => {
+      gsap.set(line, { display: 'block', position: 'relative', textAlign: 'start' });
 
-
-
-
-    works.forEach((work, index) => {
-      const image = work.querySelector('.img img');
-      const info = work.querySelector('.info');
-
-      if (!image || !info) return;
-
-      gsap.from(image, {
-        x: index % 2 === 0 ? 0.5 * image.clientWidth : -0.5 * image.clientWidth,
-        rotate: index % 2 === 0 ? 10 : -10,
-        ease: 'power1.in',
+      gsap.to(line, {
+        backgroundPositionX: "0%",
+        ease: "power1",
         scrollTrigger: {
-          trigger: work,
-          start: 'top center',
-          end: `+=${window.innerHeight}`,
+          trigger: aTriggerRef.current,
+          start: "top center",
+          end: "100% center",
           scrub: true,
-          // markers: true
+          markers: true
         }
       });
 
-      gsap.set(info, { yPercent: -5 });
-
-      gsap.from(info, {
-        yPercent: 55,
-        duration: 2,
-        ease: 'power2.in',
+      gsap.from(line, {
+        x: random(300, -300, 80),
+        ease: "power1",
         scrollTrigger: {
-          trigger: info,
-          start: 'top center',
-          end: `+=${window.innerHeight}`,
+          trigger: aTriggerRef.current,
+          start: "top center",
+          end: "100% center",
           scrub: true,
-          // markers: true
+          markers: true
         }
       });
     });
-
-
-
-
     let r = document.querySelector(".acheved");
     let r1 = document.querySelector(".acheved1");
     let r2 = document.querySelector(".acheved2");
@@ -118,7 +95,7 @@ export default function Home() {
       scrollTrigger: {
         trigger: r,
         start: 'top center',
-        end: `+=${window.innerHeight}`,
+        end: `95% center`,
         scrub: true,
         markers: false
       }
@@ -130,7 +107,7 @@ export default function Home() {
       scrollTrigger: {
         trigger: r1,
         start: 'top center',
-        end: `+=${window.innerHeight}`,
+        end: `95% center`,
         scrub: true,
         markers: false
       }
@@ -142,7 +119,7 @@ export default function Home() {
       scrollTrigger: {
         trigger: r,
         start: 'top center',
-        end: `+=${window.innerHeight}`,
+        end: `95% center`,
         scrub: true,
         markers: false
       }
@@ -154,7 +131,7 @@ export default function Home() {
       scrollTrigger: {
         trigger: r3,
         start: 'top center',
-        end: `+=${window.innerHeight}`,
+        end: `95% bottom`,
         scrub: true,
         markers: false
       }
@@ -170,103 +147,16 @@ export default function Home() {
         <main>
           <Hero />
           <Video />
-          <section className="!mt-65 !pr-24 !pl-24 text-white">
-            <div className="flex flex-col scrfff">
-              <div className="RecWork">
-                <h3>
-                  <span className="fill-text block text-[218px] !leading-48">recent</span>
-                  <span className="fill-text block text-[218px] !leading-48 ml-1.5">work</span>
-                </h3>
-              </div>
-
-              <div className="bottomW flex w-full justify-between items-center">
-                <div className="">
-                  <span className="block syne text-3xl">In the creative wilderness, </span>
-                  <span className="block syne text-3xl">clients find our work truly  </span>
-                  <span className="block syne text-3xl">beloved. </span>
-                </div>
-                <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  Explore Work
-                </button>
-              </div>
-            </div>
-            <div className="workSec flex justify-between items-center !mt-28 gap-2.5" ref={TriggerRef}>
-              <div className="info w-[40%]">
-                <h1 className="text-7xl">ovrmelt</h1>
-                <h4 className="syne text-xl">Social Media Revamp</h4>
-                <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  Explore Work
-                </button>
-              </div>
-              <div className="img w-[60%]">
-                <Image src={'/assets/ovrmelt.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
-              </div>
-            </div>
-            <div className="workSec flex justify-between items-center !mt-28 gap-2.5">
-              <div className="img w-[60%]">
-                <Image src={'/assets/kcc.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
-              </div>
-              <div className="info text-end w-[40%]">
-                <h1 className="text-7xl">kothari construction
-                  company</h1>
-                <h4 className="syne text-xl">Lead Generation Success</h4>
-                <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  Explore Work
-                </button>
-              </div>
-            </div>
-            <div className="workSec flex justify-between items-center !mt-28 gap-2.5">
-              <div className="info w-[40%]">
-                <h1 className="text-7xl">vastram</h1>
-                <h4 className="syne text-xl">Complete Branding Overhaul</h4>
-                <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  Explore Work
-                </button>
-              </div>
-              <div className="img w-[60%]">
-                <Image src={'/assets/vastram.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
-              </div>
-            </div>
-            <div className="workSec flex justify-between items-center !mt-28 gap-3">
-              <div className="img w-[60%]">
-                <Image src={'/assets/work3.webp'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
-              </div>
-              <div className="info w-[40%]">
-                <h1 className="text-7xl">isha jewellers</h1>
-                <h4 className="syne text-xl">Crafted a premium festive campaign strategy, enhancing their brand aura and driving seasonal sales</h4>
-                <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  Explore Work
-                </button>
-              </div>
-            </div>
-          </section>
+          <Work />
           <section className="!pr-24 !pl-24 text-white !mt-90">
             <div className="flex flex-col">
-              <div className="top">
-                <span className="text-[218px] leading-40 block">who</span>
-                <span className="text-[218px] leading-40 block">we are</span>
+              <div className="top Weare">
+                <h3>
+                  <span className="fill-text text-[218px] leading-50 block">who</span>
+                  <span className="fill-text text-[218px] leading-50 block">we are</span>
+                </h3>
               </div>
-              <div className="bottom">
+              <div className="bottom" ref={TriggerRef}>
                 <span className="block syne text-3xl">Omniscient Ltd is a premier marketing agency </span>
                 <span className="block syne text-3xl">dedicated to transforming your business vision</span>
                 <span className="block syne text-3xl">into a lasting brand legacy through </span>
@@ -275,7 +165,6 @@ export default function Home() {
               </div>
             </div>
             <div className="ml-auto w-full flex flex-col gap-2.5">
-              <span className="syne text-xl !mt-5">At Omniscient.ltd, we specialize in crafting compelling brand identities, delivering innovative marketing strategies, and creating creative designs to elevate your business.</span>
               <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
                 <span></span>
                 <span></span>
@@ -347,11 +236,12 @@ export default function Home() {
           <section className="!pr-24 !pl-24">
             <div className="testimonialCont">
               <div className="texths flex justify-between items-end text-white">
-                <h1 className=" !leading-24">
-                  <span className="block text-start text-[117px] ">partner</span>
-                  <span className="block text-start text-[117px] ">love</span>
-                </h1>
-                <h4 className="syne text-2xl">
+              <h3>
+                  <span className="fill-text text-[218px] leading-50 block">partner</span>
+                  <span className="fill-text text-[218px] leading-50 block" ref={aTriggerRef}>love</span>
+                </h3>
+              
+                <h4 className="syne text-2xl" >
                   <div>
                     <div>Take heed, as the </div>
                   </div>
@@ -365,7 +255,7 @@ export default function Home() {
               </div>
             </div>
           </section>
-          {/* <Dribble /> */}
+          <Dribble />
           <section className="!pr-24 !pl-24">
             recent work
           </section>

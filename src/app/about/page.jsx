@@ -6,7 +6,8 @@ const About = () => {
     useEffect(() => {
         gsap.from(".about", {
             skewX: '-90deg',
-            skewY: "-2deg",
+            autoAlpha: 0,
+            skewY: "22deg",
             duration: 0.8,
         });
     }, [])

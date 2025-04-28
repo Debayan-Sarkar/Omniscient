@@ -10,6 +10,8 @@ const Video = () => {
         let e = .14 * document.querySelector("#video video").clientHeight;
         gsap.set(videoRef.current, {
             y: -1 * (document.querySelector("#video").offsetTop - window.innerHeight + e + 100),
+            marginTop: "10px",
+            marginBottom: "0px",
             borderRadius: "100rem"
         })
         gsap.to(videoRef.current, {
