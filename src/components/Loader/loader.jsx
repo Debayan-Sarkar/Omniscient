@@ -1,11 +1,18 @@
 'use client';
 
-import { useRef, forwardRef, useImperativeHandle } from 'react';
+import { useRef, forwardRef, useImperativeHandle, useEffect } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const Preloader = forwardRef((props, ref) => {
   const preloaderRef = useRef();
-
+  useEffect(() => {
+    window.addEventListener('load', function () {
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 200); // 100ms delay
+    });
+  }, [])
   useImperativeHandle(ref, () => ({
     startAnimation() {
       const tl = gsap.timeline();
@@ -27,7 +34,7 @@ const Preloader = forwardRef((props, ref) => {
             preloaderRef.current.classList.add('!rounded-t-full');
             preloaderRef.current.classList.remove('!rounded-b-full');
           },
-          
+
         }
       ).to(preloaderRef.current, {
         y: '-100%',

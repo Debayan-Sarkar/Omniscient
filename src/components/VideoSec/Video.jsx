@@ -1,43 +1,83 @@
+import React, { useRef } from 'react';
+import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import React, { useEffect } from 'react'
-import { MdArrowCircleDown } from 'react-icons/md'
+import { MdArrowCircleDown } from 'react-icons/md';
+import { ScrollSmoother } from 'gsap/ScrollSmoother';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, useGSAP, ScrollSmoother);
+
 const Video = () => {
-    const videoRef = React.useRef(null);
-    useEffect(() => {
-        let e = .14 * document.querySelector("#video video").clientHeight;
-        gsap.set(videoRef.current, {
-            y: -1 * (document.querySelector("#video").offsetTop - window.innerHeight + e + 100),
-            marginTop: "10px",
-            marginBottom: "0px",
-            borderRadius: "100rem"
-        })
-        gsap.to(videoRef.current, {
+    const videoRef = useRef(null);
+    const wrapperRef = useRef(null);
+
+    useGSAP(() => {
+        const video = videoRef.current;
+        const wrapper = wrapperRef.current;
+
+        if (!video || !wrapper) return;
+
+        const e = 0.14 * video.clientHeight;
+        const yStart = -2 * wrapper.offsetTop - window.innerHeight + e + 20;
+        const yEnd = 3 * wrapper.offsetTop - window.innerHeight + e + 20;
+        setTimeout(() => {
+            ScrollTrigger.refresh(false);
+            ScrollSmoother.refresh(false);
+        }, 500);
+        // Initial set
+        gsap.set(video, {
+            borderRadius: "100px",
+        });
+
+        // Scroll animation
+        gsap.to(video, {
             scrollTrigger: {
-                trigger: videoRef.current,
-                start: "top center",
+                trigger: video,
+                start: "center center",
                 end: "bottom top",
                 scrub: true,
+                markers: true,
+                invalidateOnRefresh: true,
             },
-            y: 1 * (document.querySelector("#video").offsetTop - window.innerHeight + e),
-            scale: 1.2,
-            width: "70%",
-            height: "70%",
-            marginBottom: "200px",
-            borderRadius: "50px",
+            y: yEnd,
+            scale: 1.1,
+            width: "60%",
+            height: "100%",
+            marginBottom: "67rem",
+            borderRadius: "100px",
             ease: "power1.in",
         });
-    }, [])
+
+        ScrollTrigger.refresh();
+
+        return () => {
+            ScrollTrigger.killAll(false);
+        };
+    }, []);
+
     return (
-        <div id="video" className="pointer-events-none flex flex-col items-center justify-end  w-full !pl-24 !pr-24 z-0">
-            <video width={'100%'} ref={videoRef} height={'100%'} controls={false} autoPlay loop muted playsInline preload="auto" className='video w-[170px] rounded-full origin-top '>
+        <div
+            ref={wrapperRef}
+            id="video"
+            className="pointer-events-none flex flex-col items-center justify-end w-full px-24 z-0 rounded-full"
+        >
+            <video
+                ref={videoRef}
+                className="video relative w-[170px] rounded-full origin-top"
+                width="100%"
+                height="100%"
+                controls={false}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+            >
                 <source src="/assets/intro.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
         </div>
-    )
-}
+    );
+};
 
-export default Video
+export default Video;

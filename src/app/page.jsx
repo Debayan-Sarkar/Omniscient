@@ -5,28 +5,49 @@ import MouseEffect from "@/components/Fluid/Mouse";
 import Header from "@/components/Header/Header";
 import Hero from "@/components/Hero/Hero";
 import Preloader from "@/components/Loader/loader";
-import Video from "@/components/VideoSec/Video";
-import ReactLenis from "lenis/react";
-import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from "split-type";
 import Dribble from "@/components/Dribble/driblleSec";
 import Work from "@/components/Work/work";
 import { random } from "@/components/Functions/Functions";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { useGSAP } from "@gsap/react";
 
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
 
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const preloaderRef = useRef();
+  const contnt = useRef();
+  const wrapper = useRef();
   const TriggerRef = useRef();
   const aTriggerRef = useRef();
-  useEffect(() => {
+  useGSAP(() => {
+    const ctx = gsap.context(() => {
+      ScrollTrigger.clearScrollMemory();
+      ScrollSmoother.create({
+        wrapper: wrapper.current,
+        content: contnt.current,
+        smooth: 2.2,
+        effects: true,
+        smoothTouch: 0.1
+      });
+    }, wrapper);
+
+    setTimeout(() => {
+      ScrollTrigger.refresh(false);
+      ScrollSmoother.refresh(false);
+    }, 500);
+    return () => ctx.revert(); 
+  }, []);
+
+
+  useGSAP(() => {
+    window.scrollTo(0, 0);
     preloaderRef.current?.startAnimation();
     const split = new SplitType(".Weare h3");
-
     const lines = document.querySelectorAll('.Weare span');
     lines.forEach((line, index) => {
       gsap.set(line, { display: 'block', position: 'relative', textAlign: 'start' });
@@ -39,6 +60,7 @@ export default function Home() {
           start: "top center",
           end: "95% center",
           scrub: true,
+          invalidateOnRefresh: true,
           markers: false
         }
       });
@@ -51,6 +73,7 @@ export default function Home() {
           start: "top center",
           end: "95% center",
           scrub: true,
+          invalidateOnRefresh: true,
           markers: false
         }
       });
@@ -67,6 +90,7 @@ export default function Home() {
           start: "top center",
           end: "100% center",
           scrub: true,
+          invalidateOnRefresh: true,
           markers: false
         }
       });
@@ -79,74 +103,43 @@ export default function Home() {
           start: "top center",
           end: "100% center",
           scrub: true,
+          invalidateOnRefresh: true,
           markers: false
         }
       });
     });
-    let r = document.querySelector(".acheved");
-    let r1 = document.querySelector(".acheved1");
-    let r2 = document.querySelector(".acheved2");
-    let r3 = document.querySelector(".acheved3");
+    ['acheved', 'acheved1', 'acheved2', 'acheved3'].forEach((cls, index) => {
+      const el = document.querySelector(`.${cls}`);
+      if (!el) return;
 
-    gsap.from(r, {
-      x: "-100%",
-      rotate: -45,
-      ease: 'power1.in',
-      scrollTrigger: {
-        trigger: r,
-        start: 'top center',
-        end: `95% center`,
-        scrub: true,
-        markers: false
-      }
+      gsap.from(el, {
+        x: index % 2 === 0 ? '-100%' : '100%',
+        rotate: index % 2 === 0 ? -45 : 45,
+        ease: 'power1.in',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top center',
+          end: '95% center',
+          scrub: true,
+        },
+      });
     });
-    gsap.from(r1, {
-      x: "100%",
-      rotate: 45,
-      ease: 'power1.in',
-      scrollTrigger: {
-        trigger: r1,
-        start: 'top center',
-        end: `95% center`,
-        scrub: true,
-        markers: false
-      }
-    });
-    gsap.from(r2, {
-      x: "-100%",
-      rotate: -45,
-      ease: 'power1.in',
-      scrollTrigger: {
-        trigger: r,
-        start: 'top center',
-        end: `95% center`,
-        scrub: true,
-        markers: false
-      }
-    });
-    gsap.from(r3, {
-      x: "100%",
-      rotate: 45,
-      ease: 'power1.in',
-      scrollTrigger: {
-        trigger: r3,
-        start: 'top center',
-        end: `95% bottom`,
-        scrub: true,
-        markers: false
-      }
-    });
+    ScrollTrigger.refresh();
+
+    return () => {
+      ScrollTrigger.killAll(false);
+    };
 
   }, []);
 
   return (
-    <ReactLenis root options={{ smooth: true, smoothTouch: false, touchMultiplier: 2 }} onScroll={(e) => console.log(e)}>
-      <div className="container z-1 relative" id="smooth-wrapper">
+    <>
+      <div className="container z-1 relative" id="smooth-wrapper" ref={wrapper}>
         <Preloader ref={preloaderRef} />
         <Header />
-        <main>
+        <main ref={contnt}>
           <Hero />
-          <Video />
+        
           <Work />
           <section className="!pr-24 !pl-24 text-white !mt-90">
             <div className="flex flex-col">
@@ -236,12 +229,12 @@ export default function Home() {
           <section className="!pr-24 !pl-24">
             <div className="testimonialCont">
               <div className="texths flex justify-between items-end text-white">
-              <h3>
+                <h3>
                   <span className="fill-text text-[218px] leading-50 block">partner</span>
                   <span className="fill-text text-[218px] leading-50 block" ref={aTriggerRef}>love</span>
                 </h3>
-              
-                <h4 className="syne text-2xl" >
+
+                <h4 className=" syne text-2xl" >
                   <div>
                     <div>Take heed, as the </div>
                   </div>
@@ -267,6 +260,6 @@ export default function Home() {
       <FluidDispatcher />
       <MouseEffect />
       <FluidEffect />
-    </ReactLenis>
+    </>
   );
 }

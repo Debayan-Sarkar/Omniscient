@@ -5,24 +5,27 @@ import Image from 'next/image';
 import React, { useEffect } from 'react'
 
 gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.clearScrollMemory();
 
 function Dribble() {
 
 
   useEffect(() => {
     const Settings = {
-      trigger: ".mainCont",
-      start: "0% center",
+      trigger: ".main",
+      start: "top top",
+      end: "50% center",
+      invalidateOnRefresh: true,
       scrub: true,
       markers: true,
       toggleActions: "play reverse play reverse",
     };
 
-    const leftXValues = [-800, -900, -400];
-    const rightXValues = [800, 900, 400];
-    const leftRotateValues = [-30, -20, -35];
-    const rightRotateValues = [30, 20, 35];
-    const yValues = [100, -150, -400];
+    const leftXValues = [-600, -400, -300];
+    const rightXValues = [600, 400, 300];
+    const leftRotateValues = [-45, -20, -35];
+    const rightRotateValues = [45, 20, 35];
+    const yValues = [150, -200, -400];
 
     gsap.utils.toArray(".row").forEach((r, i) => {
       const cardLeft = r.querySelector(".card-left");
@@ -34,6 +37,7 @@ function Dribble() {
         scrollTrigger: {
           trigger: ".main",
           start: "top center",
+          invalidateOnRefresh: true,
           end: "150% bottom",
           scrub: true,
           onUpdate: (self) => {
@@ -79,8 +83,9 @@ function Dribble() {
       scrollTrigger: Settings,
     });
 
+    ScrollTrigger.refresh();
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.killAll(false);
     };
   }, []);
   const generaTeRows = () => {
@@ -88,14 +93,14 @@ function Dribble() {
     for (let i = 1; i <= 3; i++) {
       rows.push(
         <div className="row relative !mt-4 !mb-4 w-[100vw] !ml-0 !mr-0 !gap-8 flex justify-center pointer-events-none" key={i}>
-          <div className="card-left w-[40%] relative h-[360px] rounded-md overflow-hidden will-change-transform">
-            <div className="img">
-              <Image src={`/assets/dribble${2 * i - 1}.jpeg`} className="!w-full !h-full rounded-2xl" width={100} height={100} alt="Work Images" />
+          <div className="card-left w-[38%]  relative  rounded-md overflow-hidden will-change-transform">
+            <div className="img ">
+              <Image src={`/assets/dribbble${2 * i - 1}.webp`} className="!w-full !h-full rounded-4xl" width={100} height={100} alt="Work Images" />
             </div>
           </div>
-          <div className="card-right w-[40%] h-[360px] relative rounded-md overflow-hidden will-change-transform">
-            <div className="img">
-              <Image src={`/assets/dribble${2 * i}.jpeg`} className="!w-full !h-full rounded-2xl" width={100} height={100} alt="Work Images" />
+          <div className="card-right w-[38%]   relative rounded-md overflow-hidden will-change-transform">
+            <div className="img ">
+              <Image src={`/assets/dribbble${2 * i}.webp`} className="!w-full !h-full rounded-4xl" width={100} height={100} alt="Work Images" />
             </div>
           </div>
         </div>
@@ -107,10 +112,10 @@ function Dribble() {
 
 
   return (
-    <section className="main !pr-24 !pl-24 !pb-48 !mt-50 flex-col !w-[100vw] h-[150vh] relative flex justify-center items-center text-white">
-      <div className="mainCont absolute flex items-center top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex-col">
+    <section className="main !pr-24 !pl-24 !pb-48 !mt-100 flex-col !w-[100vw] h-[150vh] relative flex justify-center items-center text-white">
+      <div className="mainCont absolute flex items-center top-[40%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex-col">
         <div className="logo">
-          <Image src={'/assets/dribble.webp'} className="dribbleImg" width={100} height={100} alt="Dribble" />
+          <Image src={'/assets/dribble.webp'} className="dribbleImg " width={100} height={100} alt="Dribble" />
         </div>
         <div className="copy syne !mt-8 !mb-8 !ml-0 !mr-0 flex flex-col items-center justify-center">
           <div className="line">
