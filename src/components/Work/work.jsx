@@ -30,31 +30,34 @@ function Work() {
                     x: 0,
                     backgroundPositionX: "0%",
                     scrollTrigger: {
-                        trigger: TriggerRef.current,
-                        start: "65% bottom",
-                        end: "100% center",
+                        trigger: ".triggerRec",
+                        start: "top center",
+                        end: "30% center",
                         scrub: 3,
-                        markers: false,
+                        markers: true,
                         invalidateOnRefresh: true
                     }
                 }
             );
         });
-        gsap.fromTo(".FloatUp",
-            {
-                y: 1000
-            }, {
-            y: 10,
-            duration: 10,
-            ease: "slow(0.5,0.7,true)",
-            scrollTrigger: {
-                trigger: TriggerRef.current,
-                start: "65% bottom",
-                end: "100% center",
-                scrub: true,
-                markers: true,
-                invalidateOnRefresh: true
-            }
+        const floatUps = gsap.utils.toArray(".FloatUp");
+        floatUps.forEach((floats) => {
+            gsap.fromTo(floats,
+                {
+                    y: 1000
+                }, {
+                y: 10,
+                duration: 10,
+                ease: "slow(0.5,0.7,true)",
+                scrollTrigger: {
+                    trigger: ".triggerRec",
+                    start: "top center",
+                    end: "30% center",
+                    scrub: true,
+                    markers: false,
+                    invalidateOnRefresh: true
+                }
+            });
         })
 
         works.forEach((work, index) => {
@@ -101,9 +104,9 @@ function Work() {
     }, []);
 
     return (
-        <section className="!mt-80 !pr-24 !pl-24 text-white">
+        <section className="!mt-[30rem] !pr-24 !pl-24 text-white triggerRec">
             <div className="flex flex-col scrfff">
-                <div className="RecWork">
+                <div className="RecWork !mt-[25rem]">
                     <h3>
                         <span className="fill-text block  text-[218px] !leading-48 !h-40">recent</span>
                         <span className="fill-text block text-[218px] !leading-48 !ml-1.5">work</span>
@@ -116,7 +119,7 @@ function Work() {
                         <span className="block syne text-3xl">clients find our work truly  </span>
                         <span className="block syne text-3xl">beloved. </span>
                     </div>
-                    <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
+                    <button className="snakeBorder FloatUp syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
                         <span></span>
                         <span></span>
                         <span></span>
