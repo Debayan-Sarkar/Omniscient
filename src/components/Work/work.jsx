@@ -34,7 +34,7 @@ function Work() {
                         start: "top center",
                         end: "30% center",
                         scrub: 3,
-                        markers: true,
+                        markers: false,
                         invalidateOnRefresh: true
                     }
                 }
@@ -52,7 +52,7 @@ function Work() {
                 scrollTrigger: {
                     trigger: ".triggerRec",
                     start: "top center",
-                    end: "30% center",
+                    end: "20% center",
                     scrub: true,
                     markers: false,
                     invalidateOnRefresh: true
@@ -75,9 +75,9 @@ function Work() {
                 scrollTrigger: {
                     trigger: work,
                     start: 'top center',
-                    end: "+=105%",
+                    end: `+=${image.clientHeight / 20}%`,
                     invalidateOnRefresh: true,
-                    scrub: true,
+                    scrub: 2,
                     markers: true
                 }
             });
@@ -106,29 +106,30 @@ function Work() {
     return (
         <section className="!mt-[30rem] !pr-24 !pl-24 text-white triggerRec">
             <div className="flex flex-col scrfff">
-                <div className="RecWork !mt-[25rem]">
+                <div className="RecWork !mt-[25rem] flex">
                     <h3>
                         <span className="fill-text block  text-[218px] !leading-48 !h-40">recent</span>
                         <span className="fill-text block text-[218px] !leading-48 !ml-1.5">work</span>
                     </h3>
+                    <div className="bottomW flex FloatUp flex-col justify-between items-start w-1/4 h-72">
+                        <div className="">
+                            <span className="block syne text-3xl">In the creative wilderness, </span>
+                            <span className="block syne text-3xl">clients find our work truly  </span>
+                            <span className="block syne text-3xl">beloved. </span>
+                        </div>
+                        <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            Explore Work
+                        </button>
+                    </div>
                 </div>
 
-                <div className="bottomW flex w-full justify-between items-center">
-                    <div className="FloatUp">
-                        <span className="block syne text-3xl">In the creative wilderness, </span>
-                        <span className="block syne text-3xl">clients find our work truly  </span>
-                        <span className="block syne text-3xl">beloved. </span>
-                    </div>
-                    <button className="snakeBorder FloatUp syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        Explore Work
-                    </button>
-                </div>
+
             </div>
-            <div className="workSec flex justify-between items-center !mt-28 gap-2.5" ref={TriggerRef}>
+            <div className="workSec flex justify-between items-center !mt-[10rem] gap-2.5" ref={TriggerRef}>
                 <div className="info w-[40%]">
                     <h1 className="text-7xl">ovrmelt</h1>
                     <h4 className="syne text-xl">Social Media Revamp</h4>
