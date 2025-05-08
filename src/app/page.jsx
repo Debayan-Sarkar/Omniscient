@@ -5,7 +5,7 @@ import MouseEffect from "@/components/Fluid/Mouse";
 import Header from "@/components/Header/Header";
 import Hero from "@/components/Hero/Hero";
 import Preloader from "@/components/Loader/loader";
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from "split-type";
@@ -40,13 +40,12 @@ export default function Home() {
       ScrollTrigger.refresh(false);
       ScrollSmoother.refresh(false);
     }, 500);
-    return () => ctx.revert(); 
+    return () => ctx.revert();
   }, []);
 
 
   useGSAP(() => {
     window.scrollTo(0, 0);
-    preloaderRef.current?.startAnimation();
     const split = new SplitType(".Weare h3");
     const lines = document.querySelectorAll('.Weare span');
     lines.forEach((line, index) => {
@@ -134,12 +133,12 @@ export default function Home() {
 
   return (
     <>
-      <div className="container z-1 relative" id="smooth-wrapper" ref={wrapper}>
-        <Preloader ref={preloaderRef} />
+      <div className="container z-1 relative !overflow-hidden" id="smooth-wrapper" ref={wrapper}>
+
         <Header />
         <main ref={contnt}>
           <Hero />
-        
+
           <Work />
           <section className="!pr-24 !pl-24 text-white !mt-90">
             <div className="flex flex-col">

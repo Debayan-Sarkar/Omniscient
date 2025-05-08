@@ -11,12 +11,18 @@ gsap.registerPlugin(ScrollTrigger, useGSAP, ScrollSmoother);
 ScrollTrigger.clearScrollMemory();
 function Work() {
     const TriggerRef = useRef();
-    useGSAP(() => {
-        const works = gsap.utils.toArray('.workSec');
-        const split = new SplitType(".RecWork h3");
+    useEffect(() => {
+        const handleResize = () => ScrollTrigger.refresh();
+        window.addEventListener('resize', handleResize);
         setTimeout(() => {
             ScrollTrigger.refresh(false);
         }, 500);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+    useGSAP(() => {
+        const works = gsap.utils.toArray('.workSec');
+        const split = new SplitType(".RecWork h3");
+
         const lines = document.querySelectorAll('.RecWork h3 span');
         const xOffsets = [100, -20];
         lines.forEach((line, index) => {
@@ -44,7 +50,7 @@ function Work() {
         floatUps.forEach((floats) => {
             gsap.fromTo(floats,
                 {
-                    y: 1000
+                    y: () => window.innerHeight * 0.5
                 }, {
                 y: 10,
                 duration: 10,
@@ -53,7 +59,7 @@ function Work() {
                     trigger: ".triggerRec",
                     start: "top center",
                     end: "20% center",
-                    scrub: true,
+                    scrub: 3,
                     markers: false,
                     invalidateOnRefresh: true
                 }
@@ -65,17 +71,17 @@ function Work() {
             const info = work.querySelector('.info');
 
             if (!image || !info) return;
+            console.log(`+=${window.innerHeight / 50}`);
 
             gsap.from(image, {
-                x: index % 2 === 0 ? 0.5 * image.clientWidth : -0.5 * image.clientWidth,
+                x: () => index % 2 === 0 ? 0.5 * image.clientWidth : -0.5 * image.clientWidth,
                 rotate: index % 2 === 0 ? 10 : -10,
-                duration: 2,
                 ease: 'power1.in',
                 autoAlpha: 0,
                 scrollTrigger: {
                     trigger: work,
                     start: 'top center',
-                    end: `+=${image.clientHeight / 20}%`,
+                    end: () => `+=${window.innerHeight / 50}`,
                     invalidateOnRefresh: true,
                     scrub: 2,
                     markers: true
@@ -90,7 +96,7 @@ function Work() {
                 scrollTrigger: {
                     trigger: info,
                     start: 'top center',
-                    end: `+=${window.innerHeight}`,
+                    end: () => `+=${image.clientHeight / 20}`,
                     scrub: true,
                     invalidateOnRefresh: true,
                     // markers: false

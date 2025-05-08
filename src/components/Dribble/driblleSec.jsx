@@ -17,7 +17,7 @@ function Dribble() {
       end: "50% center",
       invalidateOnRefresh: true,
       scrub: true,
-      markers: false,
+      markers: true,
       toggleActions: "play reverse play reverse",
     };
 

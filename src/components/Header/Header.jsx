@@ -18,7 +18,7 @@ const Header = () => {
     }, [])
     return (
         <>
-            <header className='flex w-full relative z-50'>
+            <header className='flex w-full relative z-50 '>
                 <nav className="w-full !pt-10 !pl-20 !pr-20 max-">
                     <ul className='flex items-center justify-between'>
                         <li><Link href={'#'}><Image src={'/assets/logo1.svg'} width={200} height={200} alt='Logo' /></Link></li>
@@ -31,7 +31,7 @@ const Header = () => {
                     </ul>
                 </nav>
             </header>
-            <Preloader ref={preloaderRef} />
+            {/* <Preloader ref={preloaderRef} /> */}
         </>
     )
 }
