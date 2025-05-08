@@ -40,4 +40,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-"omniscient.zip" 
+omniscient.zip
+git-filter-repo.py
