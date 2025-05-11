@@ -17,42 +17,53 @@ const Video = () => {
 
         if (!video || !wrapper) return;
 
-        const e = 0.14 * video.clientHeight;
-        const yStart = -2 * wrapper.offsetTop - window.innerHeight + e + 20;
-        const yEnd = 3 * wrapper.offsetTop - window.innerHeight + e + 20;
+        let breakPoint = 800;
+        let mm = gsap.matchMedia();
         setTimeout(() => {
             ScrollTrigger.refresh(false);
             ScrollSmoother.refresh(false);
         }, 500);
-        // Initial set
-        gsap.set(video, {
-            borderRadius: "100px",
+        mm.add({
+            isDesktop: `(min-width: ${breakPoint}px)`, // <- when ANY of these are true, the function below gets invoked
+            isMobile: `(max-width: ${breakPoint - 1}px)`
+        }, (context) => {
+            let { isDesktop, isMobile } = context.conditions;
+
+            const e = 0.14 * video.clientHeight;
+            const yStart = -2 * wrapper.offsetTop - window.innerHeight + e + 20;
+            const yEnd = isMobile ? 2 * wrapper.offsetTop - window.innerHeight + e + 50 : 3 * wrapper.offsetTop - window.innerHeight + e + 20;
+
+            // Initial set
+            gsap.set(video, {
+                width: isMobile ? "40%" : "60%",
+                borderRadius: "100px",
+            });
+
+            // Scroll animation
+            gsap.to(video, {
+                scrollTrigger: {
+                    trigger: video,
+                    start: "0% center",
+                    end: "bottom center",
+                    scrub: true,
+                    markers: true,
+                    invalidateOnRefresh: true,
+                },
+                y: yEnd,
+                scale: isMobile ? 1 : 1.1,
+                width: isMobile ? "100%" : "60%",
+                height: "100%",
+                marginBottom: "25rem",
+                borderRadius: isMobile ? "20px" : "100px",
+                ease: "power1.in",
+            });
+
+            ScrollTrigger.refresh();
+
+            return () => {
+                ScrollTrigger.killAll(false);
+            };
         });
-
-        // Scroll animation
-        gsap.to(video, {
-            scrollTrigger: {
-                trigger: video,
-                start: "center center",
-                end: "bottom top",
-                scrub: true,
-                markers: false,
-                invalidateOnRefresh: true,
-            },
-            y: yEnd,
-            scale: 1.1,
-            width: "60%",
-            height: "100%",
-            marginBottom: "25rem",
-            borderRadius: "100px",
-            ease: "power1.in",
-        });
-
-        ScrollTrigger.refresh();
-
-        return () => {
-            ScrollTrigger.killAll(false);
-        };
     }, []);
 
     return (

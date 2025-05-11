@@ -32,7 +32,7 @@ export default function Home() {
         content: contnt.current,
         smooth: 2.2,
         effects: true,
-        smoothTouch: 0.1
+        smoothTouch: 1.5
       });
     }, wrapper);
 
