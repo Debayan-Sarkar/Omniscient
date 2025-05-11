@@ -35,7 +35,7 @@ const Hero = () => {
                     </div>
                     <span className='rotate-[270deg] max-md:text-[26px] text-[#fff] text-[43px] relative leading-1 left-[-23px] bottom-[5px] tracking-[4.5px]'>into</span>
                 </div>
-                <span className='text-[#ffc846] relative text-[92px] left-[-85px] max-md:text-[61px] tracking-[3px] max-md:left-[-33px] bottom-[20px] h-[100px] max-md:bottom-[-5px]'>brands</span>
+                <span className='text-[#ffc846] relative text-[92px] left-[-85px] max-md:text-[61px] tracking-[3px] max-md:left-[-33px] bottom-[20px] h-[100px] max-md:bottom-[14px]'>brands</span>
             </h1>
 
             <p className="syne block text-[#dad3cf]  text-[15px]  max-md:text-[12px] max-md:relative max-md:bottom-5">
