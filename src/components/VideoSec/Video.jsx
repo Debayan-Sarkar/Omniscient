@@ -17,7 +17,7 @@ const Video = () => {
 
         if (!video || !wrapper) return;
 
-        let breakPoint = 800;
+        let breakPoint = 769;
         let mm = gsap.matchMedia();
         setTimeout(() => {
             ScrollTrigger.refresh(false);
@@ -35,7 +35,7 @@ const Video = () => {
 
             // Initial set
             gsap.set(video, {
-                width: isMobile ? "40%" : "60%",
+                width: isMobile ? "40%" : "",
                 borderRadius: "100px",
             });
 
@@ -45,7 +45,7 @@ const Video = () => {
                     trigger: video,
                     start: "0% center",
                     end: "bottom center",
-                    scrub: true,
+                    scrub: 0.8,
                     markers: true,
                     invalidateOnRefresh: true,
                 },
@@ -53,6 +53,8 @@ const Video = () => {
                 scale: isMobile ? 1 : 1.1,
                 width: isMobile ? "100%" : "60%",
                 height: "100%",
+                paddingLeft: isMobile ? "5px" : "0px",
+                paddingRight: isMobile ? "5px" : "0px",
                 marginBottom: "25rem",
                 borderRadius: isMobile ? "20px" : "100px",
                 ease: "power1.in",
@@ -70,7 +72,7 @@ const Video = () => {
         <div
             ref={wrapperRef}
             id="video"
-            className="pointer-events-none flex flex-col items-center justify-end w-full px-24 z-0 rounded-full"
+            className="pointer-events-none flex flex-col items-center justify-end w-full z-0 rounded-full"
         >
             <video
                 ref={videoRef}

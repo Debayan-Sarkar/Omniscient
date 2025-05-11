@@ -12,8 +12,6 @@ ScrollTrigger.clearScrollMemory();
 function Work() {
     const TriggerRef = useRef();
     useEffect(() => {
-        const handleResize = () => ScrollTrigger.refresh();
-        window.addEventListener('resize', handleResize);
         setTimeout(() => {
             ScrollTrigger.refresh(false);
         }, 500);
@@ -25,92 +23,101 @@ function Work() {
 
         const lines = document.querySelectorAll('.RecWork h3 span');
         const xOffsets = [100, -20];
-        lines.forEach((line, index) => {
-            gsap.set(line, { display: 'block', position: 'relative', textAlign: 'start' });
-            gsap.fromTo(
-                line,
-                {
-                    x: xOffsets[index]
-                },
-                {
-                    x: 0,
-                    backgroundPositionX: "0%",
+        let breakPoint = 769;
+        let mm = gsap.matchMedia();
+        mm.add({
+            isDesktop: `(min-width: ${breakPoint}px)`, // <- when ANY of these are true, the function below gets invoked
+            isMobile: `(max-width: ${breakPoint - 1}px)`
+        }, (context) => {
+            let { isDesktop, isMobile } = context.conditions;
+
+            lines.forEach((line, index) => {
+                gsap.set(line, { display: 'block', position: 'relative', textAlign: 'start' });
+                gsap.fromTo(
+                    line,
+                    {
+                        x: xOffsets[index]
+                    },
+                    {
+                        x: 0,
+                        backgroundPositionX: "0%",
+                        scrollTrigger: {
+                            trigger: ".triggerRec",
+                            start: "top center",
+                            end: "30% center",
+                            scrub: 3,
+                            markers: false,
+                            invalidateOnRefresh: true
+                        }
+                    }
+                );
+            });
+            const floatUps = gsap.utils.toArray(".FloatUp");
+            floatUps.forEach((floats) => {
+                gsap.fromTo(floats,
+                    {
+                        y: () => window.innerHeight * 0.5
+                    }, {
+                    y: 10,
+                    duration: 10,
+                    ease: "slow(0.5,0.7,true)",
                     scrollTrigger: {
                         trigger: ".triggerRec",
                         start: "top center",
-                        end: "30% center",
+                        end: "20% center",
                         scrub: 3,
                         markers: false,
                         invalidateOnRefresh: true
                     }
-                }
-            );
-        });
-        const floatUps = gsap.utils.toArray(".FloatUp");
-        floatUps.forEach((floats) => {
-            gsap.fromTo(floats,
-                {
-                    y: () => window.innerHeight * 0.5
-                }, {
-                y: 10,
-                duration: 10,
-                ease: "slow(0.5,0.7,true)",
-                scrollTrigger: {
-                    trigger: ".triggerRec",
-                    start: "top center",
-                    end: "20% center",
-                    scrub: 3,
-                    markers: false,
-                    invalidateOnRefresh: true
-                }
+                });
+            })
+
+            works.forEach((work, index) => {
+                const image = work.querySelector('.img img');
+                const info = work.querySelector('.info');
+
+                if (!image || !info) return;
+                console.log(`+=${window.innerHeight / 50}`);
+
+                gsap.from(image, {
+                    x: () => index % 2 === 0 ? 0.5 * image.clientWidth : -0.5 * image.clientWidth,
+                    rotate: index % 2 === 0 ? 10 : -10,
+                    ease: 'power1.in',
+                    autoAlpha: 0,
+                    scrollTrigger: {
+                        trigger: work,
+                        start: 'top center',
+                        end: () => `+=${window.innerHeight / 50}`,
+                        invalidateOnRefresh: true,
+                        scrub: 2,
+                        markers: false,
+                    }
+                });
+
+                gsap.set(info, { yPercent: -1 });
+
+                gsap.from(info, {
+                    yPercent: 55,
+                    ease: 'power1.in',
+                    scrollTrigger: {
+                        trigger: info,
+                        start: 'top center',
+                        end: () => `+=${image.clientHeight / 20}`,
+                        scrub: true,
+                        invalidateOnRefresh: true,
+                        // markers: false
+                    }
+                });
             });
-        })
-
-        works.forEach((work, index) => {
-            const image = work.querySelector('.img img');
-            const info = work.querySelector('.info');
-
-            if (!image || !info) return;
-            console.log(`+=${window.innerHeight / 50}`);
-
-            gsap.from(image, {
-                x: () => index % 2 === 0 ? 0.5 * image.clientWidth : -0.5 * image.clientWidth,
-                rotate: index % 2 === 0 ? 10 : -10,
-                ease: 'power1.in',
-                autoAlpha: 0,
-                scrollTrigger: {
-                    trigger: work,
-                    start: 'top center',
-                    end: () => `+=${window.innerHeight / 50}`,
-                    invalidateOnRefresh: true,
-                    scrub: 2,
-                    markers: false,
-                }
-            });
-
-            gsap.set(info, { yPercent: -1 });
-
-            gsap.from(info, {
-                yPercent: 55,
-                ease: 'power1.in',
-                scrollTrigger: {
-                    trigger: info,
-                    start: 'top center',
-                    end: () => `+=${image.clientHeight / 20}`,
-                    scrub: true,
-                    invalidateOnRefresh: true,
-                    // markers: false
-                }
-            });
-        });
-        ScrollTrigger.refresh(false);
-        return () => {
-            ScrollTrigger.killAll(false);
-        };
-    }, []);
+            ScrollTrigger.refresh(false);
+            return () => {
+                ScrollTrigger.killAll(false);
+            };
+        }, []);
+    });
 
     return (
-        <section className="!mt-[30rem] !pr-24 !pl-24 text-white triggerRec">
+        <section className="!mt-[30rem] !pr-24 !pl-24 max-md:!pl-[5px] max-md:!pr-[5px] text-white triggerRec">
             <div className="flex flex-col scrfff">
                 <div className="RecWork !mt-[25rem] flex">
                     <h3>
@@ -135,8 +142,8 @@ function Work() {
 
 
             </div>
-            <div className="workSec flex justify-between items-center !mt-[10rem] gap-2.5" ref={TriggerRef}>
-                <div className="info w-[40%]">
+            <div className="workSec flex justify-between items-center !mt-[10rem] gap-2.5 max-md:flex-col-reverse" ref={TriggerRef}>
+                <div className="info w-[40%] max-md:w-[100%]">
                     <h1 className="text-7xl">ovrmelt</h1>
                     <h4 className="syne text-xl">Social Media Revamp</h4>
                     <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
@@ -147,15 +154,15 @@ function Work() {
                         Explore Work
                     </button>
                 </div>
-                <div className="img w-[60%]">
+                <div className="img w-[60%] max-md:w-full">
                     <Image src={'/assets/ovrmelt.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
                 </div>
             </div>
-            <div className="workSec flex justify-between items-center !mt-28 gap-2.5">
-                <div className="img w-[60%]">
+            <div className="workSec flex justify-between items-center !mt-28 gap-2.5 max-md:flex-col">
+                <div className="img w-[60%] max-md:w-full">
                     <Image src={'/assets/kcc.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
                 </div>
-                <div className="info text-end w-[40%]">
+                <div className="info max-md:w-[100%] text-end w-[40%]">
                     <h1 className="text-7xl">kothari construction
                         company</h1>
                     <h4 className="syne text-xl">Lead Generation Success</h4>
@@ -168,8 +175,8 @@ function Work() {
                     </button>
                 </div>
             </div>
-            <div className="workSec flex justify-between items-center !mt-28 gap-2.5">
-                <div className="info w-[40%]">
+            <div className="workSec flex justify-between items-center !mt-28 gap-2.5 max-md:flex-col-reverse">
+                <div className="info w-[40%] max-md:w-[100%]">
                     <h1 className="text-7xl">vastram</h1>
                     <h4 className="syne text-xl">Complete Branding Overhaul</h4>
                     <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
@@ -180,15 +187,15 @@ function Work() {
                         Explore Work
                     </button>
                 </div>
-                <div className="img w-[60%]">
+                <div className="img w-[60%] max-md:w-full">
                     <Image src={'/assets/vastram.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
                 </div>
             </div>
-            <div className="workSec flex justify-between items-center !mt-28 !gap-3">
-                <div className="img w-[60%]">
+            <div className="workSec flex justify-between items-center !mt-28 !gap-3 max-md:flex-col">
+                <div className="img w-[60%] max-md:w-full">
                     <Image src={'/assets/work4.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
                 </div>
-                <div className="info w-[40%]">
+                <div className="info w-[40%] max-md:w-[100%]">
                     <h1 className="text-7xl">isha jewellers</h1>
                     <h4 className="syne text-xl">Crafted a premium {/*festive campaign strategy, enhancing their brand aura and driving seasonal sales*/}</h4>
                     <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">

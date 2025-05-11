@@ -25,6 +25,8 @@ export default function Home() {
   const TriggerRef = useRef();
   const aTriggerRef = useRef();
   useGSAP(() => {
+    const handleResize = () => gsap.matchMediaRefresh();
+    window.addEventListener('resize', handleResize);
     const ctx = gsap.context(() => {
       ScrollTrigger.clearScrollMemory();
       ScrollSmoother.create({
