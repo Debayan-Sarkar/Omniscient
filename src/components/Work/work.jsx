@@ -84,7 +84,7 @@ function Work() {
                     end: () => `+=${window.innerHeight / 50}`,
                     invalidateOnRefresh: true,
                     scrub: 2,
-                    markers: true
+                    markers: false,
                 }
             });
 
