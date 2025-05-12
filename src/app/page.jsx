@@ -36,9 +36,9 @@ export default function Home() {
       ScrollSmoother.create({
         wrapper: wrapper.current,
         content: contnt.current,
-        smooth: 0.5,
+        smooth: 2.2,
         effects: true,
-        smoothTouch: 1.5
+        smoothTouch: 0.5
       });
     }, wrapper);
 
