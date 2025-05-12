@@ -143,12 +143,12 @@ export default function Home() {
           <Hero />
 
           <Work />
-          <section className="!pr-24 !pl-24 text-white !mt-90">
+          <section className="!pr-24 !pl-24 max-md:!pr-0 max-md:!pl-0 text-white !mt-90 max-md:!mt-40">
             <div className="flex flex-col">
               <div className="top Weare">
                 <h3>
-                  <span className="fill-text text-[218px] max-md:text-[] leading-50 block">who</span>
-                  <span className="fill-text text-[218px] max-md:text-[] leading-50 block">we are</span>
+                  <span className="fill-text text-[218px] max-md:!text-[51px] max-md:!h-10 max-md:!leading-[50px] leading-50 block">who</span>
+                  <span className="fill-text text-[218px] max-md:!text-[51px] max-md:!h-10 max-md:!leading-[50px] leading-50 block">we are</span>
                 </h3>
               </div>
               <div className="bottom" ref={TriggerRef}>
@@ -169,7 +169,7 @@ export default function Home() {
               </button>
             </div>
           </section>
-          <section className="!pr-24 !pl-24 !pb-48 !mt-50 overflow-hidden">
+          <section className="!pr-24 !pl-24  max-md:!pr-0 max-md:!pl-0 !pb-48 !mt-50 overflow-hidden">
             <div className="achvedCont grid grid-cols-2 !gap-6">
               <div className="acheved bg-[#1f202266] rounded-2xl z-0 !p-14 hover:bg-amber-700 text-white transition-all duration-300 ease-linear cursor-pointer">
                 <div className="acchheWrap">
@@ -232,8 +232,8 @@ export default function Home() {
             <div className="testimonialCont">
               <div className="texths flex justify-between items-end text-white">
                 <h3>
-                  <span className="fill-text text-[218px] leading-50 block">partner</span>
-                  <span className="fill-text text-[218px] leading-50 block" ref={aTriggerRef}>love</span>
+                  <span className="fill-text text-[218px] max-md:!text-[51px] max-md:!h-10 max-md:!leading-[50px] leading-50 block">partner</span>
+                  <span className="fill-text text-[218px] max-md:!text-[51px] max-md:!h-10 max-md:!leading-[50px] leading-50 block" ref={aTriggerRef}>love</span>
                 </h3>
 
                 <h4 className=" syne text-2xl" >

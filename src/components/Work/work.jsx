@@ -154,7 +154,7 @@ function Work() {
 
             </div>
             <div className="workSec flex justify-between items-center max-md:!mt-[-5rem] !mt-[10rem] gap-2.5 max-md:flex-col-reverse" ref={TriggerRef}>
-                <div className="info w-[40%] max-md:w-[100%]">
+                <div className="info max-md:w-full w-[40%] max-md:!p-2.5 max-md:flex max-md:items-start max-md:flex-col max-md:gap-[5px]">
                     <h1 className="text-7xl max-md:text-[33px]">ovrmelt</h1>
                     <h4 className="syne text-xl">Social Media Revamp</h4>
                     <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
@@ -173,7 +173,7 @@ function Work() {
                 <div className="img w-[60%] max-md:w-full">
                     <Image src={'/assets/kcc.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
                 </div>
-                <div className="info max-md:w-[100%] text-end w-[40%]">
+                <div className="info max-md:w-full text-end w-[40%] max-md:!p-2.5 max-md:flex max-md:items-end max-md:flex-col max-md:gap-[5px]">
                     <h1 className="text-7xl max-md:text-[33px]">kothari construction
                         company</h1>
                     <h4 className="syne text-xl">Lead Generation Success</h4>
@@ -187,7 +187,7 @@ function Work() {
                 </div>
             </div>
             <div className="workSec flex justify-between items-center max-md:!mt-[25px] !mt-28 gap-2.5 max-md:flex-col-reverse">
-                <div className="info w-[40%] max-md:w-[100%]">
+                <div className="info max-md:w-full w-[40%] max-md:!p-2.5 max-md:flex max-md:items-start max-md:flex-col max-md:gap-[5px]">
                     <h1 className="text-7xl max-md:text-[33px]">vastram</h1>
                     <h4 className="syne text-xl">Complete Branding Overhaul</h4>
                     <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
@@ -206,7 +206,7 @@ function Work() {
                 <div className="img w-[60%] max-md:w-full">
                     <Image src={'/assets/work4.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
                 </div>
-                <div className="info w-[40%] max-md:w-[100%]">
+                <div className="info max-md:w-full w-[40%] text-end max-md:!p-2.5 max-md:flex max-md:items-end max-md:flex-col max-md:gap-[5px]">
                     <h1 className="text-7xl max-md:text-[33px]">isha jewellers</h1>
                     <h4 className="syne text-xl">Crafted a Premium Brand</h4>
                     <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
