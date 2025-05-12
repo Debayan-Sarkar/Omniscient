@@ -83,7 +83,11 @@ function Work() {
                     const info = work.querySelector('.info');
 
                     if (!image || !info) return;
-                    console.log(`index${index}: +=${image.clientHeight / 800}`);
+
+                    const isLast = index === works.length - 1;
+
+                    const startPosition = isLast ? 'top 80%' : 'top center';
+                    const endPosition = isLast ? '+=200' : '+=20';
 
                     gsap.from(image, {
                         x: () => index % 2 === 0 ? 0.5 * image.clientWidth : -0.5 * image.clientWidth,
@@ -92,8 +96,8 @@ function Work() {
                         autoAlpha: 0,
                         scrollTrigger: {
                             trigger: work,
-                            start: 'top center',
-                            end: () => `+=20`,
+                            start: startPosition,
+                            end: endPosition,
                             invalidateOnRefresh: true,
                             scrub: 2,
                             markers: true,
@@ -107,14 +111,15 @@ function Work() {
                         ease: 'power1.in',
                         scrollTrigger: {
                             trigger: image,
-                            start: 'top center',
-                            end: () => `+=${image.clientHeight / 20}`,
+                            start: startPosition,
+                            end: isLast ? '+=100' : '+=50',
                             scrub: true,
                             invalidateOnRefresh: true,
                             // markers: true
                         }
                     });
                 });
+
 
                 return () => {
                     ScrollTrigger.killAll(false);
