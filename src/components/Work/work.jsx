@@ -124,12 +124,12 @@ function Work() {
     });
 
     return (
-        <section className="!mt-[30rem] !pr-24 !pl-24 max-md:!pl-[5px] max-md:!pr-[5px] text-white triggerRec">
+        <section className="!mt-[30rem] max-md:!mt-[0.5rem] !pr-24 !pl-24 max-md:!pl-[5px] max-md:!pr-[5px] text-white triggerRec">
             <div className="flex flex-col scrfff">
                 <div className="RecWork !mt-[25rem] flex">
                     <h3>
-                        <span className="fill-text block  text-[218px] !leading-48 !h-40">recent</span>
-                        <span className="fill-text block text-[218px] !leading-48 !ml-1.5">work</span>
+                        <span className="fill-text block text-[218px] max-md:!text-[51px] !leading-48 !h-40">recent</span>
+                        <span className="fill-text block text-[218px] max-md:!text-[51px] !leading-48 !ml-1.5">work</span>
                     </h3>
                     <div className="bottomW flex FloatUp flex-col justify-between items-start w-1/4 h-72">
                         <div className="">

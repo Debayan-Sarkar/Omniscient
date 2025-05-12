@@ -55,7 +55,7 @@ const Video = () => {
                 height: "100%",
                 paddingLeft: isMobile ? "5px" : "0px",
                 paddingRight: isMobile ? "5px" : "0px",
-                marginBottom: "25rem",
+                marginBottom: isMobile ? "" : "25rem",
                 borderRadius: isMobile ? "20px" : "100px",
                 ease: "power1.in",
             });
