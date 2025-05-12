@@ -38,7 +38,7 @@ export default function Home() {
         content: contnt.current,
         smooth: 2.2,
         effects: true,
-        smoothTouch: 0.5
+        smoothTouch: 1
       });
     }, wrapper);
 
@@ -147,8 +147,8 @@ export default function Home() {
             <div className="flex flex-col">
               <div className="top Weare">
                 <h3>
-                  <span className="fill-text text-[218px] leading-50 block">who</span>
-                  <span className="fill-text text-[218px] leading-50 block">we are</span>
+                  <span className="fill-text text-[218px] max-md:text-[] leading-50 block">who</span>
+                  <span className="fill-text text-[218px] max-md:text-[] leading-50 block">we are</span>
                 </h3>
               </div>
               <div className="bottom" ref={TriggerRef}>
