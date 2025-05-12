@@ -131,16 +131,15 @@ function Work() {
     return (
         <section className="!mt-[30rem] max-md:!mt-[0.5rem] !pr-24 !pl-24 max-md:!pl-[5px] max-md:!pr-[5px] text-white triggerRec">
             <div className="flex flex-col scrfff">
-                <div className="RecWork !mt-[25rem] flex">
+                <div className="RecWork !mt-[25rem] flex max-md:flex-col  max-md:!mt-[14rem]">
                     <h3>
-                        <span className="fill-text block text-[218px] max-md:!text-[51px] !leading-48 !h-40">recent</span>
-                        <span className="fill-text block text-[218px] max-md:!text-[51px] !leading-48 !ml-1.5">work</span>
+                        <span className="fill-text block text-[218px] max-md:!text-[51px] max-md:!h-10 max-md:!leading-[50px] !leading-48 !h-40">recent</span>
+                        <span className="fill-text block text-[218px] max-md:!text-[51px] !leading-48 max-md:!leading-[50px] !ml-1.5">work</span>
                     </h3>
-                    <div className="bottomW flex FloatUp flex-col justify-between items-start w-1/4 h-72">
+                    <div className="bottomW flex FloatUp flex-col justify-between items-start w-1/4 h-72 max-md:flex-row max-md:w-full">
                         <div className="">
-                            <span className="block syne text-3xl">In the creative wilderness, </span>
-                            <span className="block syne text-3xl">clients find our work truly  </span>
-                            <span className="block syne text-3xl">beloved. </span>
+                            <span className="block syne text-3xl max-md:text-[21px]">Our work isn’t just seen it’s</span>
+                            <span className="block syne text-3xl"> Remembered and Admired. </span>
                         </div>
                         <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
                             <span></span>
@@ -154,9 +153,9 @@ function Work() {
 
 
             </div>
-            <div className="workSec flex justify-between items-center !mt-[10rem] gap-2.5 max-md:flex-col-reverse" ref={TriggerRef}>
+            <div className="workSec flex justify-between items-center max-md:!mt-[-5rem] !mt-[10rem] gap-2.5 max-md:flex-col-reverse" ref={TriggerRef}>
                 <div className="info w-[40%] max-md:w-[100%]">
-                    <h1 className="text-7xl">ovrmelt</h1>
+                    <h1 className="text-7xl max-md:text-[33px]">ovrmelt</h1>
                     <h4 className="syne text-xl">Social Media Revamp</h4>
                     <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
                         <span></span>
@@ -170,12 +169,12 @@ function Work() {
                     <Image src={'/assets/ovrmelt.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
                 </div>
             </div>
-            <div className="workSec flex justify-between items-center !mt-28 gap-2.5 max-md:flex-col">
+            <div className="workSec flex justify-between items-center max-md:!mt-[25px] !mt-28 gap-2.5 max-md:flex-col">
                 <div className="img w-[60%] max-md:w-full">
                     <Image src={'/assets/kcc.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
                 </div>
                 <div className="info max-md:w-[100%] text-end w-[40%]">
-                    <h1 className="text-7xl">kothari construction
+                    <h1 className="text-7xl max-md:text-[33px]">kothari construction
                         company</h1>
                     <h4 className="syne text-xl">Lead Generation Success</h4>
                     <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
@@ -187,9 +186,9 @@ function Work() {
                     </button>
                 </div>
             </div>
-            <div className="workSec flex justify-between items-center !mt-28 gap-2.5 max-md:flex-col-reverse">
+            <div className="workSec flex justify-between items-center max-md:!mt-[25px] !mt-28 gap-2.5 max-md:flex-col-reverse">
                 <div className="info w-[40%] max-md:w-[100%]">
-                    <h1 className="text-7xl">vastram</h1>
+                    <h1 className="text-7xl max-md:text-[33px]">vastram</h1>
                     <h4 className="syne text-xl">Complete Branding Overhaul</h4>
                     <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
                         <span></span>
@@ -203,13 +202,13 @@ function Work() {
                     <Image src={'/assets/vastram.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
                 </div>
             </div>
-            <div className="workSec flex justify-between items-center !mt-28 !gap-3 max-md:flex-col">
+            <div className="workSec flex justify-between items-center max-md:!mt-[25px] !mt-28 !gap-3 max-md:flex-col">
                 <div className="img w-[60%] max-md:w-full">
                     <Image src={'/assets/work4.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
                 </div>
                 <div className="info w-[40%] max-md:w-[100%]">
-                    <h1 className="text-7xl">isha jewellers</h1>
-                    <h4 className="syne text-xl">Crafted a premium {/*festive campaign strategy, enhancing their brand aura and driving seasonal sales*/}</h4>
+                    <h1 className="text-7xl max-md:text-[33px]">isha jewellers</h1>
+                    <h4 className="syne text-xl">Crafted a Premium Brand</h4>
                     <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
                         <span></span>
                         <span></span>
