@@ -24,25 +24,26 @@ export default function Home() {
   const wrapper = useRef();
   const TriggerRef = useRef();
   const aTriggerRef = useRef();
+  setTimeout(() => {
+    ScrollTrigger.refresh(false);
+    ScrollSmoother.refresh(false);
+  }, 500);
   useGSAP(() => {
-    const handleResize = () => gsap.matchMediaRefresh();
+    const handleResize = () => ScrollTrigger.refresh(false);
     window.addEventListener('resize', handleResize);
     const ctx = gsap.context(() => {
       ScrollTrigger.clearScrollMemory();
       ScrollSmoother.create({
         wrapper: wrapper.current,
         content: contnt.current,
-        smooth: 2.2,
+        smooth: 0.5,
         effects: true,
         smoothTouch: 1.5
       });
     }, wrapper);
 
-    setTimeout(() => {
-      ScrollTrigger.refresh(false);
-      ScrollSmoother.refresh(false);
-    }, 500);
-    return () => ctx.revert();
+
+    return () => { ctx.revert(); window.removeEventListener('resize', handleResize); }
   }, []);
 
 

@@ -15,105 +15,112 @@ function Work() {
         setTimeout(() => {
             ScrollTrigger.refresh(false);
         }, 500);
-        return () => window.removeEventListener('resize', handleResize);
     }, []);
     useGSAP(() => {
-        const works = gsap.utils.toArray('.workSec');
-        const split = new SplitType(".RecWork h3");
+        requestAnimationFrame(() => {
+            const works = gsap.utils.toArray('.workSec');
+            const headings = document.querySelectorAll(".RecWork h3");
 
-        const lines = document.querySelectorAll('.RecWork h3 span');
-        const xOffsets = [100, -20];
-        let breakPoint = 769;
-        let mm = gsap.matchMedia();
-        mm.add({
-            isDesktop: `(min-width: ${breakPoint}px)`, // <- when ANY of these are true, the function below gets invoked
-            isMobile: `(max-width: ${breakPoint - 1}px)`
-        }, (context) => {
-            let { isDesktop, isMobile } = context.conditions;
+            if (!headings.length || !works.length) return; // Safety check
 
-            lines.forEach((line, index) => {
-                gsap.set(line, { display: 'block', position: 'relative', textAlign: 'start' });
-                gsap.fromTo(
-                    line,
-                    {
-                        x: xOffsets[index]
-                    },
-                    {
-                        x: 0,
-                        backgroundPositionX: "0%",
+            const split = new SplitType(".RecWork h3");
+
+            const lines = document.querySelectorAll('.RecWork h3 span');
+            const xOffsets = [100, -20];
+            let breakPoint = 769;
+
+            let mm = gsap.matchMedia();
+            mm.add({
+                isDesktop: `(min-width: ${breakPoint}px)`,
+                isMobile: `(max-width: ${breakPoint - 1}px)`
+            }, (context) => {
+                let { isDesktop, isMobile } = context.conditions;
+
+                lines.forEach((line, index) => {
+                    gsap.set(line, { display: 'block', position: 'relative', textAlign: 'start' });
+                    gsap.fromTo(
+                        line,
+                        {
+                            x: xOffsets[index % xOffsets.length] || 0
+                        },
+                        {
+                            x: 0,
+                            backgroundPositionX: "0%",
+                            scrollTrigger: {
+                                trigger: ".triggerRec",
+                                start: "top center",
+                                end: "30% center",
+                                scrub: 3,
+                                markers: false,
+                                invalidateOnRefresh: true
+                            }
+                        }
+                    );
+                });
+
+                const floatUps = gsap.utils.toArray(".FloatUp");
+                floatUps.forEach((floats) => {
+                    gsap.fromTo(floats,
+                        {
+                            y: () => window.innerHeight * 0.5
+                        }, {
+                        y: 10,
+                        duration: 10,
+                        ease: "slow(0.5,0.7,true)",
                         scrollTrigger: {
                             trigger: ".triggerRec",
                             start: "top center",
-                            end: "30% center",
+                            end: "20% center",
                             scrub: 3,
                             markers: false,
                             invalidateOnRefresh: true
                         }
-                    }
-                );
+                    });
+                });
+
+                works.forEach((work, index) => {
+                    const image = work.querySelector('.img img');
+                    const info = work.querySelector('.info');
+
+                    if (!image || !info) return;
+                    console.log(`index${index}: +=${image.clientHeight / 800}`);
+
+                    gsap.from(image, {
+                        x: () => index % 2 === 0 ? 0.5 * image.clientWidth : -0.5 * image.clientWidth,
+                        rotate: index % 2 === 0 ? 10 : -10,
+                        ease: 'power1.in',
+                        autoAlpha: 0,
+                        scrollTrigger: {
+                            trigger: work,
+                            start: 'top center',
+                            end: () => `+=20`,
+                            invalidateOnRefresh: true,
+                            scrub: 2,
+                            markers: true,
+                        }
+                    });
+
+                    gsap.set(info, { yPercent: -1 });
+
+                    gsap.from(info, {
+                        yPercent: 55,
+                        ease: 'power1.in',
+                        scrollTrigger: {
+                            trigger: image,
+                            start: 'top center',
+                            end: () => `+=${image.clientHeight / 20}`,
+                            scrub: true,
+                            invalidateOnRefresh: true,
+                            // markers: true
+                        }
+                    });
+                });
+
+                return () => {
+                    ScrollTrigger.killAll(false);
+                };
             });
-            const floatUps = gsap.utils.toArray(".FloatUp");
-            floatUps.forEach((floats) => {
-                gsap.fromTo(floats,
-                    {
-                        y: () => window.innerHeight * 0.5
-                    }, {
-                    y: 10,
-                    duration: 10,
-                    ease: "slow(0.5,0.7,true)",
-                    scrollTrigger: {
-                        trigger: ".triggerRec",
-                        start: "top center",
-                        end: "20% center",
-                        scrub: 3,
-                        markers: false,
-                        invalidateOnRefresh: true
-                    }
-                });
-            })
-
-            works.forEach((work, index) => {
-                const image = work.querySelector('.img img');
-                const info = work.querySelector('.info');
-
-                if (!image || !info) return;
-                console.log(`+=${window.innerHeight / 50}`);
-
-                gsap.from(image, {
-                    x: () => index % 2 === 0 ? 0.5 * image.clientWidth : -0.5 * image.clientWidth,
-                    rotate: index % 2 === 0 ? 10 : -10,
-                    ease: 'power1.in',
-                    autoAlpha: 0,
-                    scrollTrigger: {
-                        trigger: work,
-                        start: 'top center',
-                        end: () => `+=${window.innerHeight / 50}`,
-                        invalidateOnRefresh: true,
-                        scrub: 2,
-                        markers: false,
-                    }
-                });
-
-                gsap.set(info, { yPercent: -1 });
-
-                gsap.from(info, {
-                    yPercent: 55,
-                    ease: 'power1.in',
-                    scrollTrigger: {
-                        trigger: info,
-                        start: 'top center',
-                        end: () => `+=${image.clientHeight / 20}`,
-                        scrub: true,
-                        invalidateOnRefresh: true,
-                        // markers: false
-                    }
-                });
-            });
-            ScrollTrigger.refresh(false);
-            return () => {
-                ScrollTrigger.killAll(false);
-            };
-        }, []);
+        });
     });
 
     return (

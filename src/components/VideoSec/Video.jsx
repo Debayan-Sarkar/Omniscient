@@ -46,7 +46,7 @@ const Video = () => {
                     start: "0% center",
                     end: "bottom center",
                     scrub: 0.8,
-                    markers: true,
+                    markers: false,
                     invalidateOnRefresh: true,
                 },
                 y: yEnd,

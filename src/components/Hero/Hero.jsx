@@ -26,7 +26,7 @@ const Hero = () => {
     }, [])
 
     return (
-        <section className="hero flex flex-col items-center justify-center h-[100vh] gap-5">
+        <section className="hero flex flex-col items-center justify-center h-[90vh] gap-5">
             <h1 className='flex anton uppercase text-[80px] about w-full items-center justify-center relative left-[46px] max-md:flex-col'>
                 <div className='flex gap-10'>
                     <div className="flex flex-col items-start justify-start leading-[1]">
