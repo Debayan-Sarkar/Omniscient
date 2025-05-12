@@ -131,7 +131,7 @@ function Work() {
     return (
         <section className="!mt-[30rem] max-md:!mt-[0.5rem] !pr-24 !pl-24 max-md:!pl-[5px] max-md:!pr-[5px] text-white triggerRec">
             <div className="flex flex-col scrfff">
-                <div className="RecWork !mt-[25rem] flex max-md:flex-col  max-md:!mt-[18rem]">
+                <div className="RecWork !mt-[25rem] flex max-md:flex-col ">
                     <h3>
                         <span className="fill-text block text-[218px] max-md:!text-[51px] max-md:!h-10 max-md:!leading-[50px] !leading-48 !h-40">recent</span>
                         <span className="fill-text block text-[218px] max-md:!text-[51px] !leading-48 max-md:!leading-[50px] !ml-1.5">work</span>
