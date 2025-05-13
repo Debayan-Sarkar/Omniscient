@@ -62,7 +62,7 @@ export default function Home() {
         ease: "power1",
         scrollTrigger: {
           trigger: TriggerRef.current,
-          start: "0% center",
+          start: "top center",
           end: "95% center",
           scrub: true,
           invalidateOnRefresh: true,
