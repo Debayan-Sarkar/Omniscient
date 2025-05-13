@@ -62,7 +62,7 @@ export default function Home() {
         ease: "power1",
         scrollTrigger: {
           trigger: TriggerRef.current,
-          start: "top center",
+          start: "0% center",
           end: "95% center",
           scrub: true,
           invalidateOnRefresh: true,
@@ -145,8 +145,8 @@ export default function Home() {
         <main ref={contnt} className="!will-change-transform">
           <Hero />
 
-          <Work />
-          <section className="!pr-24 !pl-24 max-md:!pr-1.5 max-md:!pl-1.5 text-white !mt-90 max-md:!mt-40" ref={TriggerRef}>
+          <Work TriggRef={TriggerRef}/>
+          <section className="!pr-24 !pl-24 max-md:!pr-1.5 max-md:!pl-1.5 text-white !mt-90 max-md:!mt-18">
             <div className="flex flex-col">
               <div className="top Weare">
                 <h3>

@@ -9,7 +9,7 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP, ScrollSmoother);
 ScrollTrigger.clearScrollMemory();
-function Work() {
+function Work({ TriggRef }) {
     const TriggerRef = useRef();
     useEffect(() => {
         setTimeout(() => {
@@ -209,7 +209,7 @@ function Work() {
                 <div className="info max-md:w-full w-[40%] text-end max-md:!p-2.5 max-md:flex max-md:items-end max-md:flex-col max-md:gap-[5px]">
                     <h1 className="text-7xl max-md:text-[33px]">isha jewellers</h1>
                     <h4 className="syne text-xl">Crafted a Premium Brand</h4>
-                    <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
+                    <button ref={TriggRef} className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
                         <span></span>
                         <span></span>
                         <span></span>
