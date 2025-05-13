@@ -41,7 +41,7 @@ export default function Home() {
         smooth: 2.2,
         normalizeScroll: true,
         effects: true,
-        smoothTouch: isIOS ? 2 : 1;
+        smoothTouch: isIOS ? 2 : 1,
       });
     }, wrapper);
 
