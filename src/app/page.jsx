@@ -158,7 +158,7 @@ export default function Home() {
                 <span className="block syne text-3xl max-md:text-[18px]">through strategic marketing</span>
                 <span className="block syne text-3xl max-md:text-[18px]">and Creative Excellence.</span>
               </div>
-              <p className="syne text-[13px] !mt-2 text-gray-200 w-[315px] max-md:!w-full">At Omniscent.Ltd, we roar with innovation—harnessing the latest technology to transform your brand into a dominant force in the digital wild. From standout websites to seamless app experiences, we craft solutions that leave a lasting impact</p>
+              <p className="syne text-[13px] !mt-2 text-gray-200 w-[315px] max-md:!w-full">At Omniscent.Ltd, with innovation—harnessing the latest technology to transform your brand into a dominant force in the digital world. From standout portfolios to seamless marketings, we craft solutions that leave a lasting impact</p>
             </div>
             <div className="ml-auto w-full flex flex-col gap-2.5 !mt-2">
               <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
