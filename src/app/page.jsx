@@ -37,6 +37,7 @@ export default function Home() {
         wrapper: wrapper.current,
         content: contnt.current,
         smooth: 2.2,
+        normalizeScroll:true,
         effects: true,
         smoothTouch: 2
       });
@@ -136,10 +137,10 @@ export default function Home() {
 
   return (
     <>
-      <div className="container z-1 relative !overflow-hidden" id="smooth-wrapper" ref={wrapper}>
+      <div className="container z-1 relative !overflow-hidden !will-change-transform" id="smooth-wrapper" ref={wrapper}>
 
         <Header />
-        <main ref={contnt}>
+        <main ref={contnt} className="!will-change-transform">
           <Hero />
 
           <Work />
