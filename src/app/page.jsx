@@ -21,6 +21,8 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
 export default function Home() {
   const preloaderRef = useRef();
   const contnt = useRef();
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const isAndroid = /Android/.test(navigator.userAgent);
   const wrapper = useRef();
   const TriggerRef = useRef();
   const aTriggerRef = useRef();
@@ -37,9 +39,9 @@ export default function Home() {
         wrapper: wrapper.current,
         content: contnt.current,
         smooth: 2.2,
-        normalizeScroll:true,
+        normalizeScroll: true,
         effects: true,
-        smoothTouch: 2
+        smoothTouch: isIOS ? 2 : 1;
       });
     }, wrapper);
 
