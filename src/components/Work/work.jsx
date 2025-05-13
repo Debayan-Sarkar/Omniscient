@@ -100,7 +100,7 @@ function Work() {
                             end: endPosition,
                             invalidateOnRefresh: true,
                             scrub: 2,
-                            markers: true,
+                            // markers: true,
                         }
                     });
 
