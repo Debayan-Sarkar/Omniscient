@@ -38,7 +38,7 @@ export default function Home() {
         content: contnt.current,
         smooth: 2.2,
         effects: true,
-        smoothTouch: 0.8
+        smoothTouch: 2
       });
     }, wrapper);
 
