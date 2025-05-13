@@ -63,7 +63,7 @@ export default function Home() {
           end: "95% center",
           scrub: true,
           invalidateOnRefresh: true,
-          markers: false
+          markers: true
         }
       });
 
@@ -143,7 +143,7 @@ export default function Home() {
           <Hero />
 
           <Work />
-          <section className="!pr-24 !pl-24 max-md:!pr-1.5 max-md:!pl-1.5 text-white !mt-90 max-md:!mt-40">
+          <section className="!pr-24 !pl-24 max-md:!pr-1.5 max-md:!pl-1.5 text-white !mt-90 max-md:!mt-40" ref={TriggerRef}>
             <div className="flex flex-col">
               <div className="top Weare">
                 <h3>
@@ -151,14 +151,14 @@ export default function Home() {
                   <span className="fill-text text-[218px] max-md:!text-[51px] max-md:!h-10 max-md:!leading-[50px] leading-50 block">we are</span>
                 </h3>
               </div>
-              <div className="bottom !mt-[10px]" ref={TriggerRef}>
+              <div className="bottom !mt-[10px] w-[560px] max-md:!w-full" >
                 <span className="block syne text-3xl max-md:text-[18px]">Omniscient Ltd is a premier</span>
                 <span className="block syne text-3xl max-md:text-[18px]"> marketing agency dedicated to transforming your business</span>
                 <span className="block syne text-3xl max-md:text-[18px]">into a lasting brand legacy</span>
                 <span className="block syne text-3xl max-md:text-[18px]">through strategic marketing</span>
                 <span className="block syne text-3xl max-md:text-[18px]">and Creative Excellence.</span>
               </div>
-              <p className="syne text-[13px] !mt-2 text-gray-200">At Omniscent.Ltd, we roar with innovation—harnessing the latest technology to transform your brand into a dominant force in the digital wild. From standout websites to seamless app experiences, we craft solutions that leave a lasting impact</p>
+              <p className="syne text-[13px] !mt-2 text-gray-200 w-[315px] max-md:!w-full">At Omniscent.Ltd, we roar with innovation—harnessing the latest technology to transform your brand into a dominant force in the digital wild. From standout websites to seamless app experiences, we craft solutions that leave a lasting impact</p>
             </div>
             <div className="ml-auto w-full flex flex-col gap-2.5 !mt-2">
               <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
