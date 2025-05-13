@@ -54,34 +54,27 @@ export default function Home() {
     window.scrollTo(0, 0);
     const split = new SplitType(".Weare h3");
     const lines = document.querySelectorAll('.Weare span');
+    const xOffsets = [100, -20];
     lines.forEach((line, index) => {
       gsap.set(line, { display: 'block', position: 'relative', textAlign: 'start' });
-
-      gsap.to(line, {
-        backgroundPositionX: "0%",
-        ease: "power1",
-        scrollTrigger: {
-          trigger: TriggerRef.current,
-          start: "0% center",
-          end: "95% center",
-          scrub: true,
-          invalidateOnRefresh: true,
-          markers: true
+      gsap.fromTo(
+        line,
+        {
+          x: xOffsets[index % xOffsets.length] || 0
+        },
+        {
+          x: 0,
+          backgroundPositionX: "0%",
+          scrollTrigger: {
+            trigger: ".weARETrigg",
+            start: "top center",
+            end: "30% center",
+            scrub: 3,
+            markers: false,
+            invalidateOnRefresh: true
+          }
         }
-      });
-
-      gsap.from(line, {
-        x: random(300, -300, 80),
-        ease: "power1",
-        scrollTrigger: {
-          trigger: TriggerRef.current,
-          start: "0% center",
-          end: "95% center",
-          scrub: true,
-          invalidateOnRefresh: true,
-          markers: false
-        }
-      });
+      );
     });
     const alines = document.querySelectorAll('.texths h3 span');
     alines.forEach((line, index) => {
@@ -145,8 +138,8 @@ export default function Home() {
         <main ref={contnt} className="!will-change-transform">
           <Hero />
 
-          <Work TriggRef={TriggerRef}/>
-          <section className="!pr-24 !pl-24 max-md:!pr-1.5 max-md:!pl-1.5 text-white !mt-90 max-md:!mt-18">
+          <Work TriggRef={TriggerRef} />
+          <section className="!pr-24 !pl-24 max-md:!pr-1.5 max-md:!pl-1.5 text-white !mt-90 max-md:!mt-18  weARETrigg">
             <div className="flex flex-col">
               <div className="top Weare">
                 <h3>
