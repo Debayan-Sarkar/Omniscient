@@ -45,7 +45,7 @@ function Blob({ startPos, direction, speed, color }) {
   const textRef = useRef();
 
   useFrame(({ clock }) => {
-    const t = (clock.getElapsedTime() * speed) % 25.0;
+    const t = (clock.getElapsedTime() * speed) % 50.0;
     const pos = new THREE.Vector3().copy(startPos).addScaledVector(direction, t);
 
     if (pos.z > -2) {
