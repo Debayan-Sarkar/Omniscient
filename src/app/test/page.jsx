@@ -39,41 +39,36 @@ void main() {
 }
 `;
 
-function Blob({ startPos, direction, speed, color }) {
+function Blob({ startPos, direction, speed, color, spawnTime }) {
   const materialRef = useRef();
   const meshRef = useRef();
   const textRef = useRef();
 
-useFrame(({ clock }) => {
-  const elapsed = clock.getElapsedTime();
-  const distance = elapsed * speed;
+  const localSpawnTime = useRef(spawnTime);
 
-  const pos = new THREE.Vector3().copy(startPos).addScaledVector(direction, distance);
+  useFrame(({ clock }) => {
+    const elapsed = clock.getElapsedTime();
+    const t = (elapsed - localSpawnTime.current) * speed;
 
-  // Reset only when it has moved far out of view (e.g., z > cameraZ + some buffer)
-  if (pos.z > 2) {  // Assuming camera is at z=10, blobs go from -20 to 2
-    // Restart from original startZ but with new start time
-    startPos.z = -20 - Math.random() * 10;
-    pos.copy(startPos);
-  }
+    const pos = new THREE.Vector3().copy(startPos).addScaledVector(direction, t);
 
-  if (meshRef.current) {
-    meshRef.current.position.copy(pos);
-  }
+    if (pos.z > 2) {
+      // Reset
+      startPos.z = -20 - Math.random() * 10;
+      startPos.x = (Math.random() - 0.5) * 8;
+      startPos.y = (Math.random() - 0.5) * 6;
+      localSpawnTime.current = elapsed; // reset spawn time
+      pos.copy(startPos);
+    }
 
-  if (textRef.current) {
-    textRef.current.position.copy(pos);
-  }
-
-  if (materialRef.current) {
-    materialRef.current.uniforms.uTime.value = elapsed;
-  }
-});
-
+    if (meshRef.current) meshRef.current.position.copy(pos);
+    if (textRef.current) textRef.current.position.copy(pos);
+    if (materialRef.current) materialRef.current.uniforms.uTime.value = elapsed;
+  });
 
   return (
     <>
-      <mesh ref={meshRef} position={startPos} transparent opacity={1}>
+      <mesh ref={meshRef} transparent>
         <sphereGeometry args={[0.3, 32, 32]} />
         <shaderMaterial
           ref={materialRef}
@@ -88,45 +83,37 @@ useFrame(({ clock }) => {
           blending={THREE.AdditiveBlending}
         />
       </mesh>
-
-      <Text
-        ref={textRef}
-        fontSize={0.2}
-        color="black"
-        anchorX="center"
-        anchorY="middle"
-      >
-        Hi
+      <Text ref={textRef} fontSize={0.2} color="#000" anchorX="center" anchorY="middle">
+        Blob
       </Text>
     </>
   );
 }
 
+
 export default function Home() {
   // Prepare multiple blobs with different random start positions and directions
-  const blobs = useMemo(() => {
-    const arr = [];
-    const count = 15;
-    for (let i = 0; i < count; i++) {
-      const startPos = new THREE.Vector3(
-        (Math.random() - 0.5) * 8,
-        (Math.random() - 0.5) * 6,
-        -20 - Math.random() * 10 // start farther away
-      );
+const blobs = useMemo(() => {
+  const arr = [];
+  const count = 15;
+  const now = performance.now() / 1000; // initial time in seconds
+  for (let i = 0; i < count; i++) {
+    const startPos = new THREE.Vector3(
+      (Math.random() - 0.5) * 8,
+      (Math.random() - 0.5) * 6,
+      -20 - Math.random() * 10
+    );
 
-      const direction = new THREE.Vector3(0, 0, 1); // toward camera positive Z
+    const direction = new THREE.Vector3(0, 0, 1);
+    const speed = 0.5 + Math.random();
+    const hue = (i / count) * 360;
+    const color = new THREE.Color(`hsl(${hue}, 100%, 60%)`);
 
-      const speed = 0.5 + Math.random();
+    arr.push({ startPos, direction, speed, color, spawnTime: now });
+  }
+  return arr;
+}, []);
 
-      const hue = (i / count) * 360;
-      const color = new THREE.Color(`hsl(${hue}, 100%, 60%)`);
-
-      arr.push({ startPos, direction, speed, color });
-    }
-
-
-    return arr;
-  }, []);
 
   return (
     <div style={{ width: '100vw', height: '100vh', backgroundColor: '#fff' }}>
