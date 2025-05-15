@@ -33,7 +33,7 @@ void main() {
   // Optional subtle pulse for jelly feel
   float pulse = 0.95 + 0.05 * sin(uTime * 3.0);
 
-  vec3 color = uColor * intensity;
+  vec3 color = uColor * intensity * pulse;
 
   gl_FragColor = vec4(color, intensity);
 }
