@@ -39,7 +39,7 @@ void main() {
 }
 `;
 
-function Blob({ startPos, direction, speed, color }, index) {
+function Blob({ startPos, direction, speed, color }) {
   const materialRef = useRef();
   const meshRef = useRef();
   const textRef = useRef();
