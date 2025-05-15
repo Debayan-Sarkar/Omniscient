@@ -26,16 +26,13 @@ export default function Home() {
   const wrapper = useRef();
   const TriggerRef = useRef();
   const aTriggerRef = useRef();
-  setTimeout(() => {
-    ScrollTrigger.refresh(false);
-    ScrollSmoother.refresh(false);
-  }, 500);
+
   useGSAP(() => {
     const handleResize = () => ScrollTrigger.refresh(false);
     window.addEventListener('resize', handleResize);
     const ctx = gsap.context(() => {
       ScrollTrigger.clearScrollMemory();
-      ScrollSmoother.create({
+      let smoother = ScrollSmoother.create({
         wrapper: wrapper.current,
         content: contnt.current,
         smooth: 2.2,
@@ -43,6 +40,10 @@ export default function Home() {
         effects: true,
         smoothTouch: isIOS ? 2 : 1,
       });
+      setTimeout(() => {
+        ScrollTrigger.refresh(false);
+        smoother.refresh(false);
+      }, 500);
     }, wrapper);
 
 
@@ -106,19 +107,36 @@ export default function Home() {
         }
       });
     });
-    ['acheved', 'acheved1', 'acheved2', 'acheved3'].forEach((cls, index) => {
-      const el = document.querySelector(`.${cls}`);
-      if (!el) return;
-
+    const floatUps = gsap.utils.toArray(".FloatUp");
+    floatUps.forEach((floats) => {
+      gsap.fromTo(floats,
+        {
+          y: () => window.innerHeight * 0.5
+        }, {
+        y: 10,
+        duration: 10,
+        ease: "slow(0.5,0.7,true)",
+        scrollTrigger: {
+          trigger: ".weARETrigg",
+          start: "top center",
+          end: "20% center",
+          scrub: 3,
+          markers: false,
+          invalidateOnRefresh: true
+        }
+      });
+    });
+    gsap.utils.toArray('.acheved').forEach((el, index) => {
       gsap.from(el, {
         x: index % 2 === 0 ? '-100%' : '100%',
         rotate: index % 2 === 0 ? -45 : 45,
         ease: 'power1.in',
         scrollTrigger: {
-          trigger: el,
+          trigger: ".achvedCont",
           start: 'top center',
           end: '95% center',
           scrub: true,
+          markers: false,
         },
       });
     });
@@ -147,14 +165,14 @@ export default function Home() {
                   <span className="fill-text text-[218px] max-md:!text-[51px] max-md:!h-10 max-md:!leading-[50px] leading-50 block">we are</span>
                 </h3>
               </div>
-              <div className="bottom !mt-[10px] w-[560px] max-md:!w-full" >
+              <div className="bottom !mt-[10px] w-[560px] max-md:!w-full FloatUp">
                 <span className="block syne text-3xl max-md:text-[18px]">Omniscient Ltd is a premier</span>
                 <span className="block syne text-3xl max-md:text-[18px]"> marketing agency dedicated to transforming your business</span>
                 <span className="block syne text-3xl max-md:text-[18px]">into a lasting brand legacy</span>
                 <span className="block syne text-3xl max-md:text-[18px]">through strategic marketing</span>
                 <span className="block syne text-3xl max-md:text-[18px]">and Creative Excellence.</span>
               </div>
-              <p className="syne text-[13px] !mt-2 text-gray-200 w-[315px] max-md:!w-full">At Omniscent.Ltd, with innovation—harnessing the latest technology to transform your brand into a dominant force in the digital world. From standout portfolios to seamless marketings, we craft solutions that leave a lasting impact</p>
+              <p className="syne text-[13px] !mt-2 text-gray-200 w-[315px] max-md:!w-full FloatUp">At Omniscent.Ltd, with innovation—harnessing the latest technology to transform your brand into a dominant force in the digital world. From standout portfolios to seamless marketings, we craft solutions that leave a lasting impact</p>
             </div>
             <div className="ml-auto w-full flex flex-col gap-2.5 !mt-2">
               <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
@@ -166,58 +184,58 @@ export default function Home() {
               </button>
             </div>
           </section>
-          <section className="!pr-24 !pl-24  max-md:!pr-0 max-md:!pl-0 !pb-48 !mt-50 overflow-hidden">
-            <div className="achvedCont grid grid-cols-2 !gap-6">
-              <div className="acheved bg-[#1f202266] rounded-2xl z-0 !p-14 hover:bg-amber-700 text-white transition-all duration-300 ease-linear cursor-pointer">
+          <section className="!pr-24 !pl-24  max-md:!pr-1.5 max-md:!pl-1.5 !pb-48 !mt-50">
+            <div className="achvedCont grid grid-cols-2 max-md:grid-cols-1 !gap-6">
+              <div className="acheved max-md:!pl-[31px] max-md:!pr-[31px] max-md:!pt-[6px] max-md:!pb-[6px] bg-[#1f202266] rounded-2xl z-0 !p-14 max-md:bg-amber-700  hover:bg-amber-700 text-white transition-all duration-300 ease-linear cursor-pointer">
                 <div className="acchheWrap">
-                  <div className="nums !mb-16 text-8xl">
+                  <div className="nums !mb-16 text-8xl max-md:text-[20px]">
                     <span>1</span>
                     <span>0</span>
                     <span>0</span>
                     <span>0</span>
                     <sup>+</sup>
                   </div>
-                  <div className="flex items-center justify-end text-5xl">
+                  <div className="flex items-center justify-end text-5xl max-md:text-[20px]">
                     successful <br />
                     campaigns
                   </div>
                 </div>
               </div>
-              <div className="acheved1 bg-[#1f202266] rounded-2xl z-0 !p-14 !mt-40 !-mb-40 hover:bg-green-500 text-white transition-all duration-300 ease-linear cursor-pointer">
+              <div className="acheved max-md:!pl-[31px] max-md:!pr-[31px] max-md:!pt-[6px] max-md:!pb-[6px] bg-[#1f202266] rounded-2xl z-0 !p-14 max-md:!mt-0 max-md:!mb-0 !mt-40 !-mb-40 max-md:bg-green-500  hover:bg-green-500 text-white transition-all duration-300 ease-linear cursor-pointer">
                 <div className="acchheWrap">
-                  <div className="nums !mb-16 text-8xl">
+                  <div className="nums !mb-16 text-8xl max-md:text-[20px]">
                     <span>1</span>
                     <span>0</span>
                     <span>0</span>
                     <sup>+</sup>
                   </div>
-                  <div className="flex items-center justify-end text-5xl">
+                  <div className="flex items-center justify-end text-5xl max-md:text-[20px]">
                     satisfied<br />
                     clients
                   </div>
                 </div>
               </div>
-              <div className="acheved2 bg-[#1f202266] rounded-2xl z-0 !p-14 hover:bg-yellow-200 text-white hover:text-black transition-all duration-300 ease-linear cursor-pointer">
+              <div className="acheved max-md:!pl-[31px] max-md:!pr-[31px] max-md:!pt-[6px] max-md:!pb-[6px] bg-[#1f202266] rounded-2xl z-0 !p-14 max-md:bg-yellow-200 max-md:text-black hover:bg-yellow-200 text-white hover:text-black transition-all duration-300 ease-linear cursor-pointer">
                 <div className="acchheWrap">
-                  <div className="nums !mb-16 text-8xl">
+                  <div className="nums !mb-16 text-8xl max-md:text-[20px]">
                     <span>2</span>
                     <span>0</span>
                     <sup>+</sup>
                   </div>
-                  <div className="flex items-center justify-end text-5xl">
+                  <div className="flex items-center justify-end text-5xl max-md:text-[20px]">
                     creative<br />
                     designs
                   </div>
                 </div>
               </div>
-              <div className="acheved3 bg-[#1f202266] rounded-2xl z-0 !p-14 !mt-40 !-mb-40 hover:bg-yellow-500 hover:text-black text-white transition-all duration-300 ease-linear cursor-pointer">
+              <div className="acheved max-md:!pl-[31px] max-md:!pr-[31px] max-md:!pt-[6px] max-md:!pb-[6px] bg-[#1f202266] rounded-2xl z-0 !p-14 !mt-40 !-mb-40 max-md:!mt-0 max-md:!mb-0 max-md:bg-yellow-500 max-md:text-black  hover:bg-yellow-500 hover:text-black text-white transition-all duration-300 ease-linear cursor-pointer">
                 <div className="acchheWrap">
-                  <div className="nums !mb-16 text-8xl">
+                  <div className="nums !mb-16 text-8xl max-md:text-[20px]">
                     <span>2</span>
                     <span>0</span>
                     <sup>+</sup>
                   </div>
-                  <div className="flex items-center justify-end text-5xl">
+                  <div className="flex items-center justify-end text-5xl max-md:text-[20px]">
                     creative<br />
                     designs
                   </div>

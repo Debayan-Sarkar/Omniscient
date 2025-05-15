@@ -100,7 +100,7 @@ function Work({ TriggRef }) {
                             end: endPosition,
                             invalidateOnRefresh: true,
                             scrub: 2,
-                            // markers: true,
+                            // markers: false,,
                         }
                     });
 
@@ -115,7 +115,7 @@ function Work({ TriggRef }) {
                             end: isLast ? '+=100' : '+=50',
                             scrub: true,
                             invalidateOnRefresh: true,
-                            // markers: true
+                            // markers: false,
                         }
                     });
                 });
