@@ -44,26 +44,32 @@ function Blob({ startPos, direction, speed, color }) {
   const meshRef = useRef();
   const textRef = useRef();
 
-  useFrame(({ clock }) => {
-    const t = (clock.getElapsedTime() * speed) % 50.0;
-    const pos = new THREE.Vector3().copy(startPos).addScaledVector(direction, t);
+useFrame(({ clock }) => {
+  const elapsed = clock.getElapsedTime();
+  const distance = elapsed * speed;
 
-    if (pos.z > -2) {
-      pos.z = startPos.z;
-    }
+  const pos = new THREE.Vector3().copy(startPos).addScaledVector(direction, distance);
 
-    if (meshRef.current) {
-      meshRef.current.position.copy(pos);
-    }
+  // Reset only when it has moved far out of view (e.g., z > cameraZ + some buffer)
+  if (pos.z > 2) {  // Assuming camera is at z=10, blobs go from -20 to 2
+    // Restart from original startZ but with new start time
+    startPos.z = -20 - Math.random() * 10;
+    pos.copy(startPos);
+  }
 
-    if (textRef.current) {
-      textRef.current.position.copy(pos);
-    }
+  if (meshRef.current) {
+    meshRef.current.position.copy(pos);
+  }
 
-    if (materialRef.current) {
-      materialRef.current.uniforms.uTime.value = clock.getElapsedTime();
-    }
-  });
+  if (textRef.current) {
+    textRef.current.position.copy(pos);
+  }
+
+  if (materialRef.current) {
+    materialRef.current.uniforms.uTime.value = elapsed;
+  }
+});
+
 
   return (
     <>
