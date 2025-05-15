@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+import { Text } from '@react-three/drei';
 
 const Canvas = dynamic(() => import('@react-three/fiber').then(mod => mod.Canvas), { ssr: false });
 
@@ -38,19 +39,16 @@ void main() {
 }
 `;
 
-function Blob({ startPos, direction, speed, color }) {
+function Blob({ startPos, direction, speed, color }, index) {
   const materialRef = useRef();
-
-  // Position ref for the mesh
   const meshRef = useRef();
+  const textRef = useRef();
 
   useFrame(({ clock }) => {
-    const t = (clock.getElapsedTime() * speed) % 25.0; // increase duration so blobs don't appear abruptly near camera
-
+    const t = (clock.getElapsedTime() * speed) % 25.0;
     const pos = new THREE.Vector3().copy(startPos).addScaledVector(direction, t);
 
-    // Optional reset logic to loop blobs smoothly:
-    if (pos.z > -2) { // when blob passes near camera, reset it far back
+    if (pos.z > -2) {
       pos.z = startPos.z;
     }
 
@@ -58,31 +56,43 @@ function Blob({ startPos, direction, speed, color }) {
       meshRef.current.position.copy(pos);
     }
 
+    if (textRef.current) {
+      textRef.current.position.copy(pos);
+    }
+
     if (materialRef.current) {
       materialRef.current.uniforms.uTime.value = clock.getElapsedTime();
     }
   });
 
-
   return (
-    <mesh ref={meshRef} position={startPos}  transparent={true}
-  opacity={1}
-  blending={THREE.AlwaysDepth} // use normal blending
-  color={color}>
-      <sphereGeometry args={[0.3, 32, 32]} />
-      <shaderMaterial
-        ref={materialRef}
-        vertexShader={vertexShader}
-        fragmentShader={fragmentShader}
-        uniforms={{
-          uTime: { value: 0 },
-          uColor: { value: new THREE.Color(color) },
-        }}
-        transparent
-        depthWrite={false} // nice for glowing blobs
-        blending={THREE.AdditiveBlending}
-      />
-    </mesh>
+    <>
+      <mesh ref={meshRef} position={startPos} transparent opacity={1}>
+        <sphereGeometry args={[0.3, 32, 32]} />
+        <shaderMaterial
+          ref={materialRef}
+          vertexShader={vertexShader}
+          fragmentShader={fragmentShader}
+          uniforms={{
+            uTime: { value: 0 },
+            uColor: { value: new THREE.Color(color) },
+          }}
+          transparent
+          depthWrite={false}
+          blending={THREE.AdditiveBlending}
+        />
+      </mesh>
+
+      <Text
+        ref={textRef}
+        fontSize={0.2}
+        color="black"
+        anchorX="center"
+        anchorY="middle"
+      >
+        Hi
+      </Text>
+    </>
   );
 }
 
@@ -117,7 +127,7 @@ export default function Home() {
       <Canvas camera={{ position: [0, 0, 10], fov: 10, near: 10, far: 30 }}>
         <ambientLight />
         {blobs.map((props, i) => (
-          <Blob key={i} {...props} />
+          <Blob key={i} {...props} index={i} />
         ))}
       </Canvas>
     </div>
