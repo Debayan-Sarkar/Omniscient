@@ -14,6 +14,7 @@ import Work from "@/components/Work/work";
 import { random } from "@/components/Functions/Functions";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { useGSAP } from "@gsap/react";
+import TextSlider from "@/components/TextSlide/Slider";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
 
@@ -126,20 +127,48 @@ export default function Home() {
         }
       });
     });
+    gsap.utils.toArray('.count').forEach((el) => {
+      const target = +el.dataset.target;
+
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 80%',
+        once: false,
+        scrub: 3,
+        onEnter: () => {
+          gsap.fromTo(el,
+            { innerText: 0 },
+            {
+              innerText: target,
+              duration: 2,
+              ease: 'power1.out',
+              snap: { innerText: 1 },
+              onUpdate: function () {
+                el.innerText = Math.floor(el.innerText).toLocaleString();
+              }
+            }
+          );
+        }
+      });
+    });
     gsap.utils.toArray('.acheved').forEach((el, index) => {
       gsap.from(el, {
         x: index % 2 === 0 ? '-100%' : '100%',
         rotate: index % 2 === 0 ? -45 : 45,
-        ease: 'power1.in',
+        opacity: 0,
+        duration: 1.2,
+        ease: 'power2.out',
         scrollTrigger: {
-          trigger: ".achvedCont",
-          start: 'top center',
-          end: '95% center',
-          scrub: true,
-          markers: false,
+          trigger: el,
+          start: 'top 80%',
+          end: 'top 50%',
+          toggleActions: 'play none none reverse',
+          scrub: 4,
+          markers: false, // turn on for debugging if needed
         },
       });
     });
+
     ScrollTrigger.refresh();
 
     return () => {
@@ -188,14 +217,10 @@ export default function Home() {
             <div className="achvedCont grid grid-cols-2 max-md:grid-cols-1 !gap-6">
               <div className="acheved max-md:!pl-[31px] max-md:!pr-[31px] max-md:!pt-[6px] max-md:!pb-[6px] bg-[#1f202266] rounded-2xl z-0 !p-14 max-md:bg-amber-700  hover:bg-amber-700 text-white transition-all duration-300 ease-linear cursor-pointer">
                 <div className="acchheWrap">
-                  <div className="nums !mb-16 text-8xl max-md:text-[20px]">
-                    <span>1</span>
-                    <span>0</span>
-                    <span>0</span>
-                    <span>0</span>
-                    <sup>+</sup>
+                  <div className="nums !mb-16 text-8xl max-md:text-[70px] max-sm:text-[50px]">
+                    <span className="count" data-target="1000">0</span><sup>+</sup>
                   </div>
-                  <div className="flex items-center justify-end text-5xl max-md:text-[20px]">
+                  <div className="flex items-center justify-end text-5xl max-md:text-[35px] max-sm:text-[30px]">
                     successful <br />
                     campaigns
                   </div>
@@ -203,13 +228,10 @@ export default function Home() {
               </div>
               <div className="acheved max-md:!pl-[31px] max-md:!pr-[31px] max-md:!pt-[6px] max-md:!pb-[6px] bg-[#1f202266] rounded-2xl z-0 !p-14 max-md:!mt-0 max-md:!mb-0 !mt-40 !-mb-40 max-md:bg-green-500  hover:bg-green-500 text-white transition-all duration-300 ease-linear cursor-pointer">
                 <div className="acchheWrap">
-                  <div className="nums !mb-16 text-8xl max-md:text-[20px]">
-                    <span>1</span>
-                    <span>0</span>
-                    <span>0</span>
-                    <sup>+</sup>
+                  <div className="nums !mb-16 text-8xl max-md:text-[70px] max-sm:text-[50px]">
+                    <span className="count" data-target="100">0</span><sup>+</sup>
                   </div>
-                  <div className="flex items-center justify-end text-5xl max-md:text-[20px]">
+                  <div className="flex items-center justify-end text-5xl max-md:text-[35px] max-sm:text-[30px]">
                     satisfied<br />
                     clients
                   </div>
@@ -217,12 +239,10 @@ export default function Home() {
               </div>
               <div className="acheved max-md:!pl-[31px] max-md:!pr-[31px] max-md:!pt-[6px] max-md:!pb-[6px] bg-[#1f202266] rounded-2xl z-0 !p-14 max-md:bg-yellow-200 max-md:text-black hover:bg-yellow-200 text-white hover:text-black transition-all duration-300 ease-linear cursor-pointer">
                 <div className="acchheWrap">
-                  <div className="nums !mb-16 text-8xl max-md:text-[20px]">
-                    <span>2</span>
-                    <span>0</span>
-                    <sup>+</sup>
+                  <div className="nums !mb-16 text-8xl max-md:text-[70px] max-sm:text-[50px]">
+                    <span className="count" data-target="20">0</span><sup>+</sup>
                   </div>
-                  <div className="flex items-center justify-end text-5xl max-md:text-[20px]">
+                  <div className="flex items-center justify-end text-5xl max-md:text-[35px] max-sm:text-[30px]">
                     creative<br />
                     designs
                   </div>
@@ -230,12 +250,10 @@ export default function Home() {
               </div>
               <div className="acheved max-md:!pl-[31px] max-md:!pr-[31px] max-md:!pt-[6px] max-md:!pb-[6px] bg-[#1f202266] rounded-2xl z-0 !p-14 !mt-40 !-mb-40 max-md:!mt-0 max-md:!mb-0 max-md:bg-yellow-500 max-md:text-black  hover:bg-yellow-500 hover:text-black text-white transition-all duration-300 ease-linear cursor-pointer">
                 <div className="acchheWrap">
-                  <div className="nums !mb-16 text-8xl max-md:text-[20px]">
-                    <span>2</span>
-                    <span>0</span>
-                    <sup>+</sup>
+                  <div className="nums !mb-16 text-8xl max-md:text-[70px] max-sm:text-[50px]">
+                    <span className="count" data-target="10">0</span><sup>+</sup>
                   </div>
-                  <div className="flex items-center justify-end text-5xl max-md:text-[20px]">
+                  <div className="flex items-center justify-end text-5xl max-md:text-[35px] max-sm:text-[30px]">
                     creative<br />
                     designs
                   </div>
@@ -265,9 +283,10 @@ export default function Home() {
               </div>
             </div>
           </section>
+          <TextSlider/>
           <Dribble />
-          <section className="!pr-24 !pl-24">
-            recent work
+          <section className="!pr-24 !pl-24 max-md:!pl-0 max-md:!pr-0 flex items-center justify-center min-h-screen bg-gray-900">
+            
           </section>
           <section className="!pr-24 !pl-24">
             recent work
