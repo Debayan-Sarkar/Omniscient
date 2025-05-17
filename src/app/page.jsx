@@ -15,6 +15,7 @@ import { random } from "@/components/Functions/Functions";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { useGSAP } from "@gsap/react";
 import TextSlider from "@/components/TextSlide/Slider";
+import Socials from "@/components/SocialSec/Socials";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
 
@@ -285,8 +286,8 @@ export default function Home() {
           </section>
           <TextSlider/>
           <Dribble />
-          <section className="!pr-24 !pl-24 max-md:!pl-0 max-md:!pr-0 flex items-center justify-center min-h-screen bg-gray-900">
-            
+          <section className="!pr-24 !pl-24 max-md:!pl-0 max-md:!pr-0 flex items-center justify-center min-h-screen ">
+            <Socials/>
           </section>
           <section className="!pr-24 !pl-24">
             recent work

@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 @import "tailwindcss";
 
-.anton{
+.anton {
   font-family: "Anton", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -32,7 +32,8 @@
 }
 
 
-html,body{
+html,
+body {
   overflow-x: hidden;
 }
 
@@ -281,6 +282,7 @@ body {
   background-color: #121315;
 }
 
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -304,3 +306,18 @@ a {
     color-scheme: dark;
   }
 } */
+
+
+
+.peer:checked~.rrtrtrttrtrt {
+  clip-path: circle(150.7% at 50% 50%);
+  opacity: 0;
+}
+
+.rrtrtrttrtrt {
+  clip-path: circle(0% at 50% 50%);
+  transition: 1.5s ease-out;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}

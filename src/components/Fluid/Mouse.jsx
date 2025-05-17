@@ -126,6 +126,7 @@ const MouseEffect = () => {
 
 
     svgs.forEach((svg) => {
+      if (svg.classList.contains("notHover")) return;
       const followsvgs = new Map();
       const resetsvgs = new Map();
 
@@ -170,13 +171,13 @@ const MouseEffect = () => {
         button.removeEventListener("mouseleave", resets.get(button));
       });
     };
-    
+
   }, []);
 
   return (
     <div
       id="cursor-dot"
-      className="fixed top-0 left-0 w-6 h-6 blur-[10px] bg-white rounded-full mix-blend-difference pointer-events-none z-[5000000000000000]"
+      className="max-md:!hidden block fixed top-0 left-0 w-6 h-6 blur-[10px] bg-white rounded-full mix-blend-difference pointer-events-none z-[5000000000000000]"
     ></div>
   );
 };
