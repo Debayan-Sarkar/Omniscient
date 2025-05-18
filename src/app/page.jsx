@@ -57,7 +57,7 @@ export default function Home() {
     window.scrollTo(0, 0);
     const split = new SplitType(".Weare h3");
     const lines = document.querySelectorAll('.Weare span');
-    const xOffsets = [100, -20];
+    const xOffsets = [300, -200];
     lines.forEach((line, index) => {
       gsap.set(line, { display: 'block', position: 'relative', textAlign: 'start' });
       gsap.fromTo(
