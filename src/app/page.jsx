@@ -69,11 +69,11 @@ export default function Home() {
           x: 0,
           backgroundPositionX: "0%",
           scrollTrigger: {
-            trigger: ".weARETrigg",
+            trigger: ".Weare",
             start: "top center",
-            end: "30% center",
+            end: "end center",
             scrub: 3,
-            markers: false,
+            markers: true,
             invalidateOnRefresh: true
           }
         }
@@ -90,9 +90,9 @@ export default function Home() {
           trigger: aTriggerRef.current,
           start: "top center",
           end: "100% center",
-          scrub: true,
+          scrub: 3,
           invalidateOnRefresh: true,
-          markers: false
+          markers: true
         }
       });
 
@@ -187,8 +187,8 @@ export default function Home() {
           <Hero />
 
           <Work TriggRef={TriggerRef} />
-          <section className="!pr-24 !pl-24 max-md:!pr-1.5 max-md:!pl-1.5 text-white !mt-90 max-md:!mt-18  weARETrigg">
-            <div className="flex flex-col">
+          <section className="!pr-24 !pl-24 max-md:!pr-1.5 max-md:!pl-1.5 text-white !mt-90 max-md:!mt-18 weARETrigg">
+            <div className="flex flex-col ">
               <div className="top Weare">
                 <h3>
                   <span className="fill-text text-[218px] max-md:!text-[51px] max-md:!h-10 max-md:!leading-[50px] leading-50 block">who</span>
@@ -262,15 +262,15 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <section className="!pr-24 !pl-24">
+          <section className="!pr-24 !pl-24 max-md:!pr-1.5 max-md:!pl-1.5">
             <div className="testimonialCont">
-              <div className="texths flex justify-between items-end text-white">
+              <div className="texths flex justify-between items-end text-white max-md:items-start flex-col">
                 <h3>
                   <span className="fill-text text-[218px] max-md:!text-[51px] max-md:!h-10 max-md:!leading-[50px] leading-50 block">partner</span>
                   <span className="fill-text text-[218px] max-md:!text-[51px] max-md:!h-10 max-md:!leading-[50px] leading-50 block" ref={aTriggerRef}>love</span>
                 </h3>
 
-                <h4 className=" syne text-2xl" >
+                <h4 className="syne text-2xl">
                   <div>
                     <div>Take heed, as the </div>
                   </div>
@@ -284,10 +284,10 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <TextSlider/>
+          <TextSlider />
           <Dribble />
           <section className="!pr-24 !pl-24 max-md:!pl-0 max-md:!pr-0 flex items-center justify-center min-h-screen ">
-            <Socials/>
+            <Socials />
           </section>
           <section className="!pr-24 !pl-24">
             recent work

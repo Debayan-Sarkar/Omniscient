@@ -153,7 +153,7 @@ function Work({ TriggRef }) {
 
 
             </div>
-            <div className="workSec flex justify-between items-center max-md:!mt-[-5rem] !mt-[10rem] gap-2.5 max-md:flex-col-reverse" ref={TriggerRef}>
+            <div className="workSec flex justify-between items-center max-md:!mt-[-5rem] !mt-[10rem] gap-2.5 max-md:flex-col-reverse">
                 <div className="info max-md:w-full w-[40%] max-md:!p-2.5 max-md:flex max-md:items-start max-md:flex-col max-md:gap-[5px]">
                     <h1 className="text-7xl max-md:text-[33px]">ovrmelt</h1>
                     <h4 className="syne text-xl">Social Media Revamp</h4>
@@ -202,7 +202,7 @@ function Work({ TriggRef }) {
                     <Image src={'/assets/vastram.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
                 </div>
             </div>
-            <div className="workSec flex justify-between items-center max-md:!mt-[25px] !mt-28 !gap-3 max-md:flex-col">
+            <div ref={TriggerRef} className="workSec flex justify-between items-center max-md:!mt-[25px] !mt-28 !gap-3 max-md:flex-col">
                 <div className="img w-[60%] max-md:w-full">
                     <Image src={'/assets/work4.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
                 </div>

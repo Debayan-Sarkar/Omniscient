@@ -30,7 +30,7 @@ function Dribble() {
         end: () => isMobile ? "25% center" : "50% center",
         invalidateOnRefresh: true,
         scrub: true,
-        markers: true,
+        markers: false,
         toggleActions: "play reverse play reverse",
       };
       gsap.utils.toArray(".row").forEach((r, i) => {

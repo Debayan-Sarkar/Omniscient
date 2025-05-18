@@ -52,9 +52,9 @@ const Header = () => {
             <div className='flex gap-2.5'>
               <li className='flex items-center justify-between max-md:!hidden gap-1.5 text-gray-200 font-semibold max-sm:text-[12px] cursor-pointer hoverable' onClick={() => preloaderRef.current?.startAnimation()}> <Link href={'#'}><MdMenu className='text-3xl text-white' /></Link>menu</li>
               <StyledWrapper className='!select-none hidden max-md:!block'>
-                <button className="btn max-md:!w-[110px]">
-                  <span className="icon max-md:!justify-end">
-                    <svg viewBox="0 0 175 80" width={40} height={40}>
+                <button className="btn max-md:!w-[110px] notHover">
+                  <span className="icon  max-md:!justify-end">
+                    <svg className='notHover' viewBox="0 0 175 80" width={40} height={40}>
                       <rect width={80} height={15} fill="#f0f0f0" rx={10} />
                       <rect y={30} width={80} height={15} fill="#f0f0f0" rx={10} />
                       <rect y={60} width={80} height={15} fill="#f0f0f0" rx={10} />
@@ -104,7 +104,8 @@ const StyledWrapper = styled.div`
   }
 
   .btn:hover .icon {
-    width: 175px;
+    width: 110px;
+    justify-content:center !important;
   }
 
   .btn:hover .text {
@@ -118,5 +119,6 @@ const StyledWrapper = styled.div`
 
   .btn:active .icon {
     transform: scale(0.85);
+    justify-content:center !important;
   }`;
 export default Header

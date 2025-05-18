@@ -66,6 +66,7 @@ const MouseEffect = () => {
     const resets = new Map();
 
     buttons.forEach((button) => {
+      if (button.classList.contains("notHover")) return;
       const handleHoverStart = () => {
         gsap.to(dot, {
           width: 70,

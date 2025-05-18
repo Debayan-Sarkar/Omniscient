@@ -11,8 +11,20 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+          as="style"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com"
+          crossOrigin="anonymous" />
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" />
+
+      </head>
       <body>
-        <Script src="/fluid-clean.js"></Script>
+        <Script src="/fluid-clean.js" strategy="lazyOnload"></Script>
         {children}
         <Analytics />
         <SpeedInsights />
