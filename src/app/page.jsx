@@ -63,16 +63,24 @@ export default function Home() {
       gsap.fromTo(
         line,
         {
-          x: xOffsets[index % xOffsets.length] || 0
+          x: xOffsets[index % xOffsets.length] || 0,
+          scrollTrigger: {
+            trigger: line,
+            start: "-100% 75%",
+            end: "95% center",
+            scrub: 1,
+            markers: true,
+            invalidateOnRefresh: true
+          }
         },
         {
           x: 0,
           backgroundPositionX: "0%",
           scrollTrigger: {
-            trigger: ".Weare",
-            start: "top center",
-            end: "end center",
-            scrub: 3,
+            trigger: line,
+            start: "-100% 75%",
+            end: "95% center",
+            scrub: 1,
             markers: true,
             invalidateOnRefresh: true
           }
