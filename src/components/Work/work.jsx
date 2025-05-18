@@ -26,7 +26,7 @@ function Work({ TriggRef }) {
             const split = new SplitType(".RecWork h3");
 
             const lines = document.querySelectorAll('.RecWork h3 span');
-            const xOffsets = [100, -20];
+            const xOffsets = [300, -200];
             let breakPoint = 769;
 
             let mm = gsap.matchMedia();
@@ -41,15 +41,23 @@ function Work({ TriggRef }) {
                     gsap.fromTo(
                         line,
                         {
-                            x: xOffsets[index % xOffsets.length] || 0
+                            x: xOffsets[index % xOffsets.length] || 0,
+                            scrollTrigger: {
+                                trigger: line,
+                                start: "-100% 75%",
+                                end: "95% center",
+                                scrub: 3,
+                                markers: true,
+                                invalidateOnRefresh: true
+                            }
                         },
                         {
                             x: 0,
                             backgroundPositionX: "0%",
                             scrollTrigger: {
-                                trigger: ".triggerRec",
-                                start: "top center",
-                                end: "30% center",
+                                trigger: line,
+                                start: "-100% 75%",
+                                end: "95% center",
                                 scrub: 3,
                                 markers: false,
                                 invalidateOnRefresh: true
