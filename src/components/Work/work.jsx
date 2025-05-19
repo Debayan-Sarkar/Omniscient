@@ -47,7 +47,7 @@ function Work({ TriggRef }) {
                                 start: "-100% 75%",
                                 end: "95% center",
                                 scrub: 3,
-                                markers: true,
+                                markers: false,
                                 invalidateOnRefresh: true
                             }
                         },

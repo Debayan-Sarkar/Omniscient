@@ -123,8 +123,8 @@ function Dribble() {
 
 
   return (
-    <section className="main !pr-24 !pl-24 !pb-48 max-md:!h-[120vh] max-md:!pb-0 !mt-100 flex-col !w-[100vw] h-[150vh] relative flex justify-center items-center text-white">
-      <div className="mainCont absolute flex items-center top-[40%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex-col">
+    <section className="main !pr-24 !pl-24 !pb-48 max-md:!h-[120vh] max-md:!pb-0 max-md:!mt-0 !mt-100 flex-col !w-[100vw] h-[150vh] relative flex justify-center items-center text-white">
+      <div className="mainCont absolute flex items-center max-md:!top-[55%] top-[40%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex-col">
         <div className="logo">
           <Image src={'/assets/behance.png'} className="dribbleImg " width={100} height={100} alt="Dribble" />
         </div>

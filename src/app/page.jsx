@@ -3,6 +3,7 @@ import FluidEffect from "@/components/Fluid/Fluid";
 import FluidDispatcher from "@/components/Fluid/FluidDispatcher";
 import MouseEffect from "@/components/Fluid/Mouse";
 import Header from "@/components/Header/Header";
+import { Swiper, SwiperSlide } from 'swiper/react';
 import Hero from "@/components/Hero/Hero";
 import Preloader from "@/components/Loader/loader";
 import { useRef } from "react";
@@ -16,6 +17,7 @@ import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { useGSAP } from "@gsap/react";
 import TextSlider from "@/components/TextSlide/Slider";
 import Socials from "@/components/SocialSec/Socials";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
 
@@ -57,7 +59,7 @@ export default function Home() {
     window.scrollTo(0, 0);
     const split = new SplitType(".Weare h3");
     const lines = document.querySelectorAll('.Weare span');
-    const xOffsets = [300, -200];
+    const xOffsets = [500, -200];
     lines.forEach((line, index) => {
       gsap.set(line, { display: 'block', position: 'relative', textAlign: 'start' });
       gsap.fromTo(
@@ -66,9 +68,9 @@ export default function Home() {
           x: xOffsets[index % xOffsets.length] || 0,
           scrollTrigger: {
             trigger: line,
-            start: "-100% 75%",
+            start: isIOS ? "-110% center" : "-100% 75%",
             end: "95% center",
-            scrub: 1,
+            scrub: 3,
             markers: true,
             invalidateOnRefresh: true
           }
@@ -78,10 +80,10 @@ export default function Home() {
           backgroundPositionX: "0%",
           scrollTrigger: {
             trigger: line,
-            start: "-100% 75%",
+            start: isIOS ? "-110% center" : "-100% 75%",
             end: "95% center",
-            scrub: 1,
-            markers: true,
+            scrub: 3,
+            markers: false,
             invalidateOnRefresh: true
           }
         }
@@ -95,12 +97,12 @@ export default function Home() {
         backgroundPositionX: "0%",
         ease: "power1",
         scrollTrigger: {
-          trigger: aTriggerRef.current,
-          start: "top center",
-          end: "100% center",
+          trigger: line,
+          start: isIOS ? "-120% center" : "-100% 75%",
+          end: "95% center",
           scrub: 3,
           invalidateOnRefresh: true,
-          markers: true
+          markers: false
         }
       });
 
@@ -108,9 +110,9 @@ export default function Home() {
         x: random(300, -300, 80),
         ease: "power1",
         scrollTrigger: {
-          trigger: aTriggerRef.current,
-          start: "top center",
-          end: "100% center",
+          trigger: line,
+          start: isIOS ? "-120% center" : "-100% 75%",
+          end: "95% center",
           scrub: true,
           invalidateOnRefresh: true,
           markers: false
@@ -165,14 +167,14 @@ export default function Home() {
         x: index % 2 === 0 ? '-100%' : '100%',
         rotate: index % 2 === 0 ? -45 : 45,
         opacity: 0,
-        duration: 1.2,
+        duration: 1,
         ease: 'power2.out',
         scrollTrigger: {
           trigger: el,
           start: 'top 80%',
           end: 'top 50%',
           toggleActions: 'play none none reverse',
-          scrub: 4,
+          scrub: 3,
           markers: false, // turn on for debugging if needed
         },
       });
@@ -290,6 +292,77 @@ export default function Home() {
                   </div>
                 </h4>
               </div>
+              <Swiper
+                spaceBetween={10}
+                className="flex !mt-8"
+                slidesPerView={1}
+                loop={true}
+              >
+                <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
+                  <div className="up text-white syne">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque dolor fuga eaque, cupiditate veritatis, facere, numquam officia rerum nisi eius asperiores! Mollitia quas suscipit id dolor non tempora iste.</div>
+                  <div className="down text-white flex flex-col items-center justify-center syne !mt-10">
+                   <Image src='/assets/logo.svg' width={100} height={100} alt="Demo"/>
+                    <span>User Name</span>
+                    <span>Alskdj JJSjjs</span>
+                  </div>
+                </SwiperSlide>
+                  <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
+                  <div className="up text-white syne">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque dolor fuga eaque, cupiditate veritatis, facere, numquam officia rerum nisi eius asperiores! Mollitia quas suscipit id dolor non tempora iste.</div>
+                  <div className="down text-white flex flex-col items-center justify-center syne !mt-10">
+                   <Image src='/assets/logo.svg' width={100} height={100} alt="Demo"/>
+                    <span>User Name</span>
+                    <span>Alskdj JJSjjs</span>
+                  </div>
+                </SwiperSlide>
+                  <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
+                  <div className="up text-white syne">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque dolor fuga eaque, cupiditate veritatis, facere, numquam officia rerum nisi eius asperiores! Mollitia quas suscipit id dolor non tempora iste.</div>
+                  <div className="down text-white flex flex-col items-center justify-center syne !mt-10">
+                   <Image src='/assets/logo.svg' width={100} height={100} alt="Demo"/>
+                    <span>User Name</span>
+                    <span>Alskdj JJSjjs</span>
+                  </div>
+                </SwiperSlide>
+                  <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
+                  <div className="up text-white syne">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque dolor fuga eaque, cupiditate veritatis, facere, numquam officia rerum nisi eius asperiores! Mollitia quas suscipit id dolor non tempora iste.</div>
+                  <div className="down text-white flex flex-col items-center justify-center syne !mt-10">
+                   <Image src='/assets/logo.svg' width={100} height={100} alt="Demo"/>
+                    <span>User Name</span>
+                    <span>Alskdj JJSjjs</span>
+                  </div>
+                </SwiperSlide>
+                  <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
+                  <div className="up text-white syne">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque dolor fuga eaque, cupiditate veritatis, facere, numquam officia rerum nisi eius asperiores! Mollitia quas suscipit id dolor non tempora iste.</div>
+                  <div className="down text-white flex flex-col items-center justify-center syne !mt-10">
+                   <Image src='/assets/logo.svg' width={100} height={100} alt="Demo"/>
+                    <span>User Name</span>
+                    <span>Alskdj JJSjjs</span>
+                  </div>
+                </SwiperSlide>
+                  <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
+                  <div className="up text-white syne">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque dolor fuga eaque, cupiditate veritatis, facere, numquam officia rerum nisi eius asperiores! Mollitia quas suscipit id dolor non tempora iste.</div>
+                  <div className="down text-white flex flex-col items-center justify-center syne !mt-10">
+                   <Image src='/assets/logo.svg' width={100} height={100} alt="Demo"/>
+                    <span>User Name</span>
+                    <span>Alskdj JJSjjs</span>
+                  </div>
+                </SwiperSlide>
+                  <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
+                  <div className="up text-white syne">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque dolor fuga eaque, cupiditate veritatis, facere, numquam officia rerum nisi eius asperiores! Mollitia quas suscipit id dolor non tempora iste.</div>
+                  <div className="down text-white flex flex-col items-center justify-center syne !mt-10">
+                   <Image src='/assets/logo.svg' width={100} height={100} alt="Demo"/>
+                    <span>User Name</span>
+                    <span>Alskdj JJSjjs</span>
+                  </div>
+                </SwiperSlide>
+                  <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
+                  <div className="up text-white syne">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque dolor fuga eaque, cupiditate veritatis, facere, numquam officia rerum nisi eius asperiores! Mollitia quas suscipit id dolor non tempora iste.</div>
+                  <div className="down text-white flex flex-col items-center justify-center syne !mt-10">
+                   <Image src='/assets/logo.svg' width={100} height={100} alt="Demo"/>
+                    <span>User Name</span>
+                    <span>Alskdj JJSjjs</span>
+                  </div>
+                </SwiperSlide>
+              </Swiper>
             </div>
           </section>
           <TextSlider />
