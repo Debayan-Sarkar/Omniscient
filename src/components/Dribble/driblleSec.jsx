@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 import React, { useEffect } from 'react'
+import Button from '../Button/btn';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 ScrollTrigger.clearScrollMemory();
@@ -123,7 +124,7 @@ function Dribble() {
 
 
   return (
-    <section className="main !pr-24 !pl-24 !pb-48 max-md:!h-[120vh] max-md:!pb-0 max-md:!mt-0 !mt-100 flex-col !w-[100vw] h-[150vh] relative flex justify-center items-center text-white">
+    <section className="main !pr-24 !pl-24 !pb-48 max-md:!h-[100vh] max-md:!pb-0 max-md:!mt-0 !mt-100 flex-col !w-[100vw] h-[150vh] relative flex justify-center items-center text-white">
       <div className="mainCont absolute flex items-center max-md:!top-[55%] top-[40%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex-col">
         <div className="logo">
           <Image src={'/assets/behance.png'} className="dribbleImg " width={100} height={100} alt="Dribble" />
@@ -140,13 +141,7 @@ function Dribble() {
           </div>
         </div>
         <div className="btn">
-          <button className="snakeBorder syne heroBtn !p-4 max-md:w-30 max-md:!text-[14px] w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Explore Work
-          </button>
+            <Button innerTxt={'Explore Work'}/>
         </div>
       </div>
       {generaTeRows()}

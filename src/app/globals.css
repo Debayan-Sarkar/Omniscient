@@ -9,6 +9,20 @@
   font-style: normal;
 }
 
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+p,
+img,
+video {
+  will-change: transform !important;
+}
+
 .syne {
   font-family: 'Syne', sans-serif !important;
   font-style: normal;

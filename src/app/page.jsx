@@ -18,6 +18,9 @@ import { useGSAP } from "@gsap/react";
 import TextSlider from "@/components/TextSlide/Slider";
 import Socials from "@/components/SocialSec/Socials";
 import Image from "next/image";
+import Button from "@/components/Button/btn";
+import AutoSlider from "@/components/Slider/Slider";
+import { MdArrowRight } from "react-icons/md";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
 
@@ -42,7 +45,7 @@ export default function Home() {
         smooth: 2.2,
         normalizeScroll: true,
         effects: true,
-        smoothTouch: isIOS ? 2 : 2,
+        smoothTouch: isIOS ? 2 : 3,
       });
       setTimeout(() => {
         ScrollTrigger.refresh(false);
@@ -61,34 +64,32 @@ export default function Home() {
     const lines = document.querySelectorAll('.Weare span');
     const xOffsets = [500, -200];
     lines.forEach((line, index) => {
-      gsap.set(line, { display: 'block', position: 'relative', textAlign: 'start' });
+      gsap.set(line, {
+        display: 'block',
+        position: 'relative',
+        textAlign: 'start',
+      });
+
+      const offset = xOffsets[index % xOffsets.length] || 0;
+
       gsap.fromTo(
         line,
-        {
-          x: xOffsets[index % xOffsets.length] || 0,
-          scrollTrigger: {
-            trigger: line,
-            start: isIOS ? "-110% center" : "-100% 75%",
-            end: "95% center",
-            scrub: 3,
-            markers: true,
-            invalidateOnRefresh: true
-          }
-        },
+        { x: offset, backgroundPositionX: "100%" },
         {
           x: 0,
           backgroundPositionX: "0%",
           scrollTrigger: {
             trigger: line,
-            start: isIOS ? "-110% center" : "-100% 75%",
-            end: "95% center",
+            start: () => isIOS ? "top center" : "-100% center",
+            end: () => "10% center",
             scrub: 3,
-            markers: false,
+            markers: true, // Set to true for debugging
             invalidateOnRefresh: true
           }
         }
       );
     });
+
     const alines = document.querySelectorAll('.texths h3 span');
     alines.forEach((line, index) => {
       gsap.set(line, { display: 'block', position: 'relative', textAlign: 'start' });
@@ -214,15 +215,7 @@ export default function Home() {
               </div>
               <p className="syne text-[13px] !mt-2 text-gray-200 w-[315px] max-md:!w-full FloatUp">At Omniscent.Ltd, with innovation—harnessing the latest technology to transform your brand into a dominant force in the digital world. From standout portfolios to seamless marketings, we craft solutions that leave a lasting impact</p>
             </div>
-            <div className="ml-auto w-full flex flex-col gap-2.5 !mt-2">
-              <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                About Us
-              </button>
-            </div>
+            {/* <Button innerTxt={'About Us'}/> */}
           </section>
           <section className="!pr-24 !pl-24  max-md:!pr-1.5 max-md:!pl-1.5 !pb-48 !mt-50">
             <div className="achvedCont grid grid-cols-2 max-md:grid-cols-1 !gap-6">
@@ -301,63 +294,63 @@ export default function Home() {
                 <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
                   <div className="up text-white syne">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque dolor fuga eaque, cupiditate veritatis, facere, numquam officia rerum nisi eius asperiores! Mollitia quas suscipit id dolor non tempora iste.</div>
                   <div className="down text-white flex flex-col items-center justify-center syne !mt-10">
-                   <Image src='/assets/logo.svg' width={100} height={100} alt="Demo"/>
+                    <Image src='/assets/logo.svg' width={100} height={100} alt="Demo" />
                     <span>User Name</span>
                     <span>Alskdj JJSjjs</span>
                   </div>
                 </SwiperSlide>
-                  <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
+                <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
                   <div className="up text-white syne">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque dolor fuga eaque, cupiditate veritatis, facere, numquam officia rerum nisi eius asperiores! Mollitia quas suscipit id dolor non tempora iste.</div>
                   <div className="down text-white flex flex-col items-center justify-center syne !mt-10">
-                   <Image src='/assets/logo.svg' width={100} height={100} alt="Demo"/>
+                    <Image src='/assets/logo.svg' width={100} height={100} alt="Demo" />
                     <span>User Name</span>
                     <span>Alskdj JJSjjs</span>
                   </div>
                 </SwiperSlide>
-                  <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
+                <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
                   <div className="up text-white syne">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque dolor fuga eaque, cupiditate veritatis, facere, numquam officia rerum nisi eius asperiores! Mollitia quas suscipit id dolor non tempora iste.</div>
                   <div className="down text-white flex flex-col items-center justify-center syne !mt-10">
-                   <Image src='/assets/logo.svg' width={100} height={100} alt="Demo"/>
+                    <Image src='/assets/logo.svg' width={100} height={100} alt="Demo" />
                     <span>User Name</span>
                     <span>Alskdj JJSjjs</span>
                   </div>
                 </SwiperSlide>
-                  <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
+                <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
                   <div className="up text-white syne">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque dolor fuga eaque, cupiditate veritatis, facere, numquam officia rerum nisi eius asperiores! Mollitia quas suscipit id dolor non tempora iste.</div>
                   <div className="down text-white flex flex-col items-center justify-center syne !mt-10">
-                   <Image src='/assets/logo.svg' width={100} height={100} alt="Demo"/>
+                    <Image src='/assets/logo.svg' width={100} height={100} alt="Demo" />
                     <span>User Name</span>
                     <span>Alskdj JJSjjs</span>
                   </div>
                 </SwiperSlide>
-                  <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
+                <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
                   <div className="up text-white syne">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque dolor fuga eaque, cupiditate veritatis, facere, numquam officia rerum nisi eius asperiores! Mollitia quas suscipit id dolor non tempora iste.</div>
                   <div className="down text-white flex flex-col items-center justify-center syne !mt-10">
-                   <Image src='/assets/logo.svg' width={100} height={100} alt="Demo"/>
+                    <Image src='/assets/logo.svg' width={100} height={100} alt="Demo" />
                     <span>User Name</span>
                     <span>Alskdj JJSjjs</span>
                   </div>
                 </SwiperSlide>
-                  <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
+                <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
                   <div className="up text-white syne">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque dolor fuga eaque, cupiditate veritatis, facere, numquam officia rerum nisi eius asperiores! Mollitia quas suscipit id dolor non tempora iste.</div>
                   <div className="down text-white flex flex-col items-center justify-center syne !mt-10">
-                   <Image src='/assets/logo.svg' width={100} height={100} alt="Demo"/>
+                    <Image src='/assets/logo.svg' width={100} height={100} alt="Demo" />
                     <span>User Name</span>
                     <span>Alskdj JJSjjs</span>
                   </div>
                 </SwiperSlide>
-                  <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
+                <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
                   <div className="up text-white syne">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque dolor fuga eaque, cupiditate veritatis, facere, numquam officia rerum nisi eius asperiores! Mollitia quas suscipit id dolor non tempora iste.</div>
                   <div className="down text-white flex flex-col items-center justify-center syne !mt-10">
-                   <Image src='/assets/logo.svg' width={100} height={100} alt="Demo"/>
+                    <Image src='/assets/logo.svg' width={100} height={100} alt="Demo" />
                     <span>User Name</span>
                     <span>Alskdj JJSjjs</span>
                   </div>
                 </SwiperSlide>
-                  <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
+                <SwiperSlide className="!w-[80%] flex flex-wrap border-2 !p-5 border-white rounded-2xl">
                   <div className="up text-white syne">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque dolor fuga eaque, cupiditate veritatis, facere, numquam officia rerum nisi eius asperiores! Mollitia quas suscipit id dolor non tempora iste.</div>
                   <div className="down text-white flex flex-col items-center justify-center syne !mt-10">
-                   <Image src='/assets/logo.svg' width={100} height={100} alt="Demo"/>
+                    <Image src='/assets/logo.svg' width={100} height={100} alt="Demo" />
                     <span>User Name</span>
                     <span>Alskdj JJSjjs</span>
                   </div>
@@ -366,12 +359,31 @@ export default function Home() {
             </div>
           </section>
           <TextSlider />
-          <Dribble />
-          <section className="!pr-24 !pl-24 max-md:!pl-0 max-md:!pr-0 flex items-center justify-center min-h-screen ">
-            <Socials />
+          <section className="!pr-24 !pl-24 max-md:!pl-2 max-md:!pr-2 !mt-40">
+            {/* <AutoSlider items={["Client A", "Client B", "Client C", "Client D", "Client E"]} speed={10} />
+            <AutoSlider
+              items={["Google", "Facebook", "Netflix", "Amazon", "Apple", "Apple"]}
+              rtl={true} // or false
+              speed={10} // increase for slower scroll, lower for faster
+            /> */}
+
+            <section className="spacer h-[800px]"></section>
+
+            <section className="marquee relative overflow-hidden bg-[#0f0f0f] text-white !p-[30px_0px] uppercase text-4xl">
+              <div className="marquee_inner flex w-fit flex-auto row">
+                <div className="marquee_part syne flex items-center flex-shrink-0 p-[0px_4px]">
+                  Modern Creative Studio
+                  <div className="arrow w-[60px] h-[80px] m-[0_1rem] rotate-90 transition-all duration-1000  ease-[cubic-bezier(0.25,0.1,0.25,1)]">
+                    <MdArrowRight size={20} />
+                  </div>
+                </div>
+              </div>
+            </section>
           </section>
-          <section className="!pr-24 !pl-24">
-            recent work
+
+          <Dribble />
+          <section className="!pr-24 !pl-24 max-md:!pl-2 max-md:!pr-2 flex items-center justify-center min-h-screen ">
+            <Socials />
           </section>
         </main>
       </div>

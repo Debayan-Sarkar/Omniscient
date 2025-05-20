@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 import { useGSAP } from '@gsap/react';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
+import Button from '../Button/btn';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP, ScrollSmoother);
 ScrollTrigger.clearScrollMemory();
@@ -149,29 +150,17 @@ function Work({ TriggRef }) {
                             <span className="block syne text-3xl max-md:text-[21px]">Our work isn’t just seen it’s</span>
                             <span className="block syne text-3xl"> Remembered and Admired. </span>
                         </div>
-                        <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            Explore Work
-                        </button>
+                        <Button innerTxt={'Explore Work'} className={'!m-0'} />
                     </div>
                 </div>
 
 
             </div>
             <div className="workSec flex justify-between items-center max-md:!mt-[-5rem] !mt-[10rem] gap-2.5 max-md:flex-col-reverse">
-                <div className="info max-md:w-full w-[40%] max-md:!p-2.5 max-md:flex max-md:items-start max-md:flex-col max-md:gap-[5px]">
-                    <h1 className="text-7xl max-md:text-[33px]">ovrmelt</h1>
-                    <h4 className="syne text-xl">Social Media Revamp</h4>
-                    <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        Explore Work
-                    </button>
+                <div className="info  max-md:w-full w-[40%] max-md:!p-2.5 max-md:flex max-md:items-start max-md:flex-col max-md:gap-[5px]">
+                    <h1 className="text-7xl max-md:text-[33px] !m-[0_2rem]">ovrmelt</h1>
+                    <h4 className="syne text-xl !m-[0_2rem]">Social Media Revamp</h4>
+                    <Button innerTxt={'Explore Work'} />
                 </div>
                 <div className="img w-[60%] max-md:w-full">
                     <Image src={'/assets/ovrmelt.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
@@ -185,26 +174,14 @@ function Work({ TriggRef }) {
                     <h1 className="text-7xl max-md:text-[33px]">kothari construction
                         company</h1>
                     <h4 className="syne text-xl">Lead Generation Success</h4>
-                    <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        Explore Work
-                    </button>
+                    <Button innerTxt={'Explore Work'} />
                 </div>
             </div>
             <div className="workSec flex justify-between items-center max-md:!mt-[25px] !mt-28 gap-2.5 max-md:flex-col-reverse">
                 <div className="info max-md:w-full w-[40%] max-md:!p-2.5 max-md:flex max-md:items-start max-md:flex-col max-md:gap-[5px]">
-                    <h1 className="text-7xl max-md:text-[33px]">vastram</h1>
-                    <h4 className="syne text-xl">Complete Branding Overhaul</h4>
-                    <button className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        Explore Work
-                    </button>
+                    <h1 className="text-7xl max-md:text-[33px] !m-[0_2rem]">vastram</h1>
+                    <h4 className="syne text-xl !m-[0_2rem]">Complete Branding Overhaul</h4>
+                    <Button innerTxt={'Explore Work'} />
                 </div>
                 <div className="img w-[60%] max-md:w-full">
                     <Image src={'/assets/vastram.jpeg'} className="w-full rounded-2xl" width={100} height={100} alt="Work Images" />
@@ -217,13 +194,7 @@ function Work({ TriggRef }) {
                 <div className="info max-md:w-full w-[40%] text-end max-md:!p-2.5 max-md:flex max-md:items-end max-md:flex-col max-md:gap-[5px]">
                     <h1 className="text-7xl max-md:text-[33px]">isha jewellers</h1>
                     <h4 className="syne text-xl">Crafted a Premium Brand</h4>
-                    <button ref={TriggRef} className="snakeBorder syne heroBtn !p-4 w-43 rounded-full transition-all duration-300 ease-linear cursor-pointer">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        Explore Work
-                    </button>
+                    <Button innerTxt={'Explore Work'} />
                 </div>
             </div>
         </section>
