@@ -80,7 +80,7 @@ export default function Home() {
           backgroundPositionX: "0%",
           scrollTrigger: {
             trigger: ".weARETrigg",
-            start: () => isIOS ? "-2000% center" : "-1050% 75%",
+            start: () => isIOS ? "-500% center" : "-1050% 75%",
             end: () => "90% center",
             scrub: 1,
             markers: true, // Set to true for debugging
