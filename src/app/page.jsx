@@ -21,6 +21,7 @@ import Image from "next/image";
 import Button from "@/components/Button/btn";
 import AutoSlider from "@/components/Slider/Slider";
 import { MdArrowRight } from "react-icons/md";
+import { SplitText } from "gsap/SplitText";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
 
@@ -42,10 +43,10 @@ export default function Home() {
       let smoother = ScrollSmoother.create({
         wrapper: wrapper.current,
         content: contnt.current,
-        smooth: 2.2,
+        smooth: 1,
         normalizeScroll: true,
         effects: true,
-        smoothTouch: isIOS ? 2 : 3,
+        smoothTouch: 1,
       });
       setTimeout(() => {
         ScrollTrigger.refresh(false);
@@ -60,10 +61,13 @@ export default function Home() {
 
   useGSAP(() => {
     window.scrollTo(0, 0);
-    const split = new SplitType(".Weare h3");
-    const lines = document.querySelectorAll('.Weare span');
+    const split = new SplitText(".Weare h3", {
+      type: "lines",
+      tag: "span"
+    }).lines;
+    // const lines = document.querySelectorAll('.Weare span');
     const xOffsets = [500, -200];
-    lines.forEach((line, index) => {
+    split.forEach((line, index) => {
       gsap.set(line, {
         display: 'block',
         position: 'relative',
@@ -74,14 +78,15 @@ export default function Home() {
 
       gsap.fromTo(
         line,
-        { x: offset, backgroundPositionX: "100%" },
         {
-          x: 0,
+          x: random(-300, 300, 40),
+        },
+        {
           backgroundPositionX: "0%",
           scrollTrigger: {
             trigger: line,
-            start: () => isIOS ? "top center" : "-100% center",
-            end: () => "10% center",
+            start: () => "-100% 75%",
+            end: () => "95% center",
             scrub: 3,
             markers: true, // Set to true for debugging
             invalidateOnRefresh: true
@@ -199,7 +204,7 @@ export default function Home() {
 
           <Work TriggRef={TriggerRef} />
           <section className="!pr-24 !pl-24 max-md:!pr-1.5 max-md:!pl-1.5 text-white !mt-90 max-md:!mt-18 weARETrigg">
-            <div className="flex flex-col ">
+            <div className="flex flex-col !mt-[2rem]">
               <div className="top Weare">
                 <h3>
                   <span className="fill-text text-[218px] max-md:!text-[51px] max-md:!h-10 max-md:!leading-[50px] leading-50 block">who</span>
@@ -366,8 +371,6 @@ export default function Home() {
               rtl={true} // or false
               speed={10} // increase for slower scroll, lower for faster
             /> */}
-
-            <section className="spacer h-[800px]"></section>
 
             <section className="marquee relative overflow-hidden bg-[#0f0f0f] text-white !p-[30px_0px] uppercase text-4xl">
               <div className="marquee_inner flex w-fit flex-auto row">

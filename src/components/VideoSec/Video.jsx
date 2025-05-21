@@ -17,7 +17,7 @@ const Video = () => {
 
         if (!video || !wrapper) return;
 
-        let breakPoint = 769;
+        let breakPoint = 768;
         let mm = gsap.matchMedia();
         setTimeout(() => {
             ScrollTrigger.refresh(false);

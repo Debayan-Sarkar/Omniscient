@@ -178,7 +178,7 @@ const MouseEffect = () => {
   return (
     <div
       id="cursor-dot"
-      className="max-md:!hidden block fixed top-0 left-0 w-6 h-6 blur-[10px] bg-white rounded-full mix-blend-difference pointer-events-none z-[5000000000000000]"
+      className="md:!hidden block fixed top-0 left-0 w-6 h-6 blur-[10px] bg-white rounded-full mix-blend-difference pointer-events-none z-[5000000000000000]"
     ></div>
   );
 };

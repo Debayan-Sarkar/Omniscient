@@ -18,7 +18,7 @@ function Dribble() {
     const leftRotateValues = [-45, -20, -35];
     const rightRotateValues = [45, 20, 35];
     const yValues = [150, -200, -400];
-    let breakPoint = 769;
+    let breakPoint = 768;
     let mm = gsap.matchMedia();
     mm.add({
       isDesktop: `(min-width: ${breakPoint}px)`, // <- when ANY of these are true, the function below gets invoked
@@ -104,15 +104,15 @@ function Dribble() {
     const rows = [];
     for (let i = 1; i <= 3; i++) {
       rows.push(
-        <div className="row relative !mt-4 max-md:!mb-3 !mb-4 w-[100vw] !ml-0 !mr-0 max-md:!gap-1 !gap-8 flex justify-center pointer-events-none" key={i}>
-          <div className="card-left w-[38%] max-md:w-[50%] relative rounded-md overflow-hidden will-change-transform">
+        <div className="row relative !mt-4 md:!mb-3 !mb-4 w-[100vw] !ml-0 !mr-0 md:!gap-1 !gap-8 flex justify-center pointer-events-none" key={i}>
+          <div className="card-left w-[38%] md:w-[50%] relative rounded-md overflow-hidden will-change-transform">
             <div className="img ">
-              <Image src={`/assets/dribble${2 * i - 1}.jpeg`} className="!w-full !h-full rounded-4xl max-md:rounded-xl" width={100} height={100} alt="Work Images" />
+              <Image src={`/assets/dribble${2 * i - 1}.jpeg`} className="!w-full !h-full rounded-4xl md:rounded-xl" width={100} height={100} alt="Work Images" />
             </div>
           </div>
-          <div className="card-right w-[38%]  max-md:w-[50%] relative rounded-md overflow-hidden will-change-transform">
+          <div className="card-right w-[38%]  md:w-[50%] relative rounded-md overflow-hidden will-change-transform">
             <div className="img ">
-              <Image src={`/assets/dribble${2 * i}.jpeg`} className="!w-full !h-full rounded-4xl max-md:rounded-xl" width={100} height={100} alt="Work Images" />
+              <Image src={`/assets/dribble${2 * i}.jpeg`} className="!w-full !h-full rounded-4xl md:rounded-xl" width={100} height={100} alt="Work Images" />
             </div>
           </div>
         </div>
@@ -124,20 +124,20 @@ function Dribble() {
 
 
   return (
-    <section className="main !pr-24 !pl-24 !pb-48 max-md:!h-[100vh] max-md:!pb-0 max-md:!mt-0 !mt-100 flex-col !w-[100vw] h-[150vh] relative flex justify-center items-center text-white">
-      <div className="mainCont absolute flex items-center max-md:!top-[55%] top-[40%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex-col">
+    <section className="main !pr-24 !pl-24 !pb-48 md:!h-[100vh] md:!pb-0 md:!mt-0 !mt-100 flex-col !w-[100vw] h-[150vh] relative flex justify-center items-center text-white">
+      <div className="mainCont absolute flex items-center md:!top-[55%] top-[40%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex-col">
         <div className="logo">
           <Image src={'/assets/behance.png'} className="dribbleImg " width={100} height={100} alt="Dribble" />
         </div>
         <div className="copy syne !mt-8 !mb-8 !ml-0 !mr-0 flex flex-col items-center justify-center">
           <div className="line">
-            <p className='max-md:!text-[20px]'>See what design</p>
+            <p className='md:!text-[20px]'>See what design</p>
           </div>
           <div className="line">
-            <p className='max-md:!text-[20px]'>mastery looks</p>
+            <p className='md:!text-[20px]'>mastery looks</p>
           </div>
           <div className="line">
-            <p className='max-md:!text-[20px]'>like.</p>
+            <p className='md:!text-[20px]'>like.</p>
           </div>
         </div>
         <div className="btn">
