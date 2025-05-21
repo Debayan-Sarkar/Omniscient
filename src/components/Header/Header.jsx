@@ -31,10 +31,10 @@ const Header = () => {
   return (
     <>
       <header className='flex w-full relative z-50'>
-        <nav className="w-full !pt-10 !pl-20 !pr-20 md:!pt-4 md:!pl-[5px] md:!pr-[5px] ">
+        <nav className="w-full !pt-10 !pl-20 !pr-20 max-md:!pt-4 max-md:!pl-[5px] max-md:!pr-[5px] ">
           <ul className='flex items-center justify-between'>
-            <li><Link href={'#'}><Image src={'/assets/logo1.svg'} width={200} height={200} alt='Logo' className='md:!pl-[12px] md:!max-w-max md:!w-[126px] max-sm:!w-[120px]' /></Link></li>
-            <div className='flex md:!ml-[22px] items-center'>
+            <li><Link href={'#'}><Image src={'/assets/logo1.svg'} width={200} height={200} alt='Logo' className='max-md:!pl-[12px] max-md:!max-w-max max-md:!w-[126px] max-sm:!w-[120px]' /></Link></li>
+            <div className='flex max-md:!ml-[22px] items-center'>
               <label className='flex items-center justofy-center w-full h-[40px] cursor-pointer rounded-4xl'>
                 <input
                   type="checkbox"
@@ -50,17 +50,17 @@ const Header = () => {
             </div>
 
             <div className='flex gap-2.5'>
-              <li className='flex items-center justify-between md:!hidden gap-1.5 text-gray-200 font-semibold max-sm:text-[12px] cursor-pointer hoverable' onClick={() => preloaderRef.current?.startAnimation()}> <Link href={'#'}><MdMenu className='text-3xl text-white' /></Link>menu</li>
-              <StyledWrapper className='!select-none hidden md:!block'>
-                <button className="btn md:!w-[110px] notHover">
-                  <span className="icon  md:!justify-end">
+              <li className='flex items-center justify-between max-md:!hidden gap-1.5 text-gray-200 font-semibold max-sm:text-[12px] cursor-pointer hoverable' onClick={() => preloaderRef.current?.startAnimation()}> <Link href={'#'}><MdMenu className='text-3xl text-white' /></Link>menu</li>
+              <StyledWrapper className='!select-none hidden max-md:!block'>
+                <button className="btn max-md:!w-[110px] notHover">
+                  <span className="icon  max-md:!justify-end">
                     <svg className='notHover' viewBox="0 0 175 80" width={40} height={40}>
                       <rect width={80} height={15} fill="#f0f0f0" rx={10} />
                       <rect y={30} width={80} height={15} fill="#f0f0f0" rx={10} />
                       <rect y={60} width={80} height={15} fill="#f0f0f0" rx={10} />
                     </svg>
                   </span>
-                  <span className="text md:text-[16px]">MENU</span>
+                  <span className="text max-md:text-[16px]">MENU</span>
                 </button>
               </StyledWrapper>
             </div>

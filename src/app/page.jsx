@@ -21,7 +21,6 @@ import Image from "next/image";
 import Button from "@/components/Button/btn";
 import AutoSlider from "@/components/Slider/Slider";
 import { MdArrowRight } from "react-icons/md";
-import { SplitText } from "gsap/SplitText";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
 
@@ -61,13 +60,10 @@ export default function Home() {
 
   useGSAP(() => {
     window.scrollTo(0, 0);
-    const split = new SplitText(".Weare h3", {
-      type: "lines",
-      tag: "span"
-    }).lines;
-    // const lines = document.querySelectorAll('.Weare span');
+    const split = new SplitType(".Weare h3");
+    const lines = document.querySelectorAll('.Weare span');
     const xOffsets = [500, -200];
-    split.forEach((line, index) => {
+    lines.forEach((line, index) => {
       gsap.set(line, {
         display: 'block',
         position: 'relative',
@@ -78,22 +74,23 @@ export default function Home() {
 
       gsap.fromTo(
         line,
+        { x: offset, backgroundPositionX: "100%" },
         {
-          x: random(-300, 300, 40),
-        },
-        {
+          x: 0,
           backgroundPositionX: "0%",
           scrollTrigger: {
-            trigger: line,
-            start: () => "-100% 75%",
-            end: () => "95% center",
-            scrub: 3,
+            trigger: ".weARETrigg",
+            start: () => isIOS ? "-2000% center" : "-1050% 75%",
+            end: () => "90% center",
+            scrub: 1,
             markers: true, // Set to true for debugging
             invalidateOnRefresh: true
           }
         }
       );
+  
     });
+
 
     const alines = document.querySelectorAll('.texths h3 span');
     alines.forEach((line, index) => {
@@ -106,7 +103,7 @@ export default function Home() {
           trigger: line,
           start: isIOS ? "-120% center" : "-100% 75%",
           end: "95% center",
-          scrub: 3,
+          scrub: 1,
           invalidateOnRefresh: true,
           markers: false
         }
@@ -138,7 +135,7 @@ export default function Home() {
           trigger: ".weARETrigg",
           start: "top center",
           end: "20% center",
-          scrub: 3,
+          scrub: 1,
           markers: false,
           invalidateOnRefresh: true
         }
@@ -151,7 +148,7 @@ export default function Home() {
         trigger: el,
         start: 'top 80%',
         once: false,
-        scrub: 3,
+        scrub: 1,
         onEnter: () => {
           gsap.fromTo(el,
             { innerText: 0 },
@@ -180,7 +177,7 @@ export default function Home() {
           start: 'top 80%',
           end: 'top 50%',
           toggleActions: 'play none none reverse',
-          scrub: 3,
+          scrub: 1,
           markers: false, // turn on for debugging if needed
         },
       });
@@ -203,7 +200,7 @@ export default function Home() {
           <Hero />
 
           <Work TriggRef={TriggerRef} />
-          <section className="!pr-24 !pl-24 max-md:!pr-1.5 max-md:!pl-1.5 text-white !mt-90 max-md:!mt-18 weARETrigg">
+          <section className="!pr-24 !pl-24 max-md:!pr-1.5 max-md:!pl-1.5 text-white !mt-90 max-md:!mt-[50%] weARETrigg">
             <div className="flex flex-col !mt-[2rem]">
               <div className="top Weare">
                 <h3>
