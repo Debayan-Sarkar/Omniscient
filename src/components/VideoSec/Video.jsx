@@ -5,7 +5,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MdArrowCircleDown } from 'react-icons/md';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 
-gsap.registerPlugin(ScrollTrigger, useGSAP, ScrollSmoother);
 
 const Video = () => {
     const videoRef = useRef(null);

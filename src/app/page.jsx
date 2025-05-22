@@ -21,8 +21,11 @@ import Image from "next/image";
 import Button from "@/components/Button/btn";
 import AutoSlider from "@/components/Slider/Slider";
 import { MdArrowRight } from "react-icons/md";
+import AboutComp from "@/components/AboutCom/AboutComp";
+import { SplitText } from "gsap/SplitText";
+import Acheved from "@/components/Acheved/Acheved";
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP, SplitText);
 
 
 export default function Home() {
@@ -60,36 +63,7 @@ export default function Home() {
 
   useGSAP(() => {
     window.scrollTo(0, 0);
-    const split = new SplitType(".Weare h3");
-    const lines = document.querySelectorAll('.Weare span');
-    const xOffsets = [500, -200];
-    lines.forEach((line, index) => {
-      gsap.set(line, {
-        display: 'block',
-        position: 'relative',
-        textAlign: 'start',
-      });
 
-      const offset = xOffsets[index % xOffsets.length] || 0;
-
-      gsap.fromTo(
-        line,
-        { x: offset, backgroundPositionX: "100%" },
-        {
-          x: 0,
-          backgroundPositionX: "0%",
-          scrollTrigger: {
-            trigger: ".weARETrigg",
-            start: () => isIOS ? "-500% center" : "-500% center",
-            end: () => "90% center",
-            scrub: 1,
-            markers: true, // Set to true for debugging
-            invalidateOnRefresh: true
-          }
-        }
-      );
-  
-    });
 
 
     const alines = document.querySelectorAll('.texths h3 span');
@@ -165,23 +139,7 @@ export default function Home() {
         }
       });
     });
-    gsap.utils.toArray('.acheved').forEach((el, index) => {
-      gsap.from(el, {
-        x: index % 2 === 0 ? '-100%' : '100%',
-        rotate: index % 2 === 0 ? -45 : 45,
-        opacity: 0,
-        duration: 1,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 80%',
-          end: 'top 50%',
-          toggleActions: 'play none none reverse',
-          scrub: 1,
-          markers: false, // turn on for debugging if needed
-        },
-      });
-    });
+
 
     ScrollTrigger.refresh();
 
@@ -198,76 +156,10 @@ export default function Home() {
         <Header />
         <main ref={contnt} className="!will-change-transform">
           <Hero />
-
           <Work TriggRef={TriggerRef} />
-          <section className="!pr-24 !pl-24 max-md:!pr-1.5 max-md:!pl-1.5 text-white !mt-90 max-md:!mt-[50%] weARETrigg">
-            <div className="flex flex-col !mt-[2rem]">
-              <div className="top Weare">
-                <h3>
-                  <span className="fill-text text-[218px] max-md:!text-[51px] max-md:!h-10 max-md:!leading-[50px] leading-50 block">who</span>
-                  <span className="fill-text text-[218px] max-md:!text-[51px] max-md:!h-10 max-md:!leading-[50px] leading-50 block">we are</span>
-                </h3>
-              </div>
-              <div className="bottom !mt-[10px] w-[560px] max-md:!w-full FloatUp">
-                <span className="block syne text-3xl max-md:text-[18px]">Omniscient Ltd is a premier</span>
-                <span className="block syne text-3xl max-md:text-[18px]"> marketing agency dedicated to transforming your business</span>
-                <span className="block syne text-3xl max-md:text-[18px]">into a lasting brand legacy</span>
-                <span className="block syne text-3xl max-md:text-[18px]">through strategic marketing</span>
-                <span className="block syne text-3xl max-md:text-[18px]">and Creative Excellence.</span>
-              </div>
-              <p className="syne text-[13px] !mt-2 text-gray-200 w-[315px] max-md:!w-full FloatUp">At Omniscent.Ltd, with innovation—harnessing the latest technology to transform your brand into a dominant force in the digital world. From standout portfolios to seamless marketings, we craft solutions that leave a lasting impact</p>
-            </div>
-            {/* <Button innerTxt={'About Us'}/> */}
-          </section>
-          <section className="!pr-24 !pl-24  max-md:!pr-1.5 max-md:!pl-1.5 !pb-48 !mt-50">
-            <div className="achvedCont grid grid-cols-2 max-md:grid-cols-1 !gap-6">
-              <div className="acheved max-md:!pl-[31px] max-md:!pr-[31px] max-md:!pt-[6px] max-md:!pb-[6px] bg-[#1f202266] rounded-2xl z-0 !p-14 max-md:bg-amber-700  hover:bg-amber-700 text-white transition-all duration-300 ease-linear cursor-pointer">
-                <div className="acchheWrap">
-                  <div className="nums !mb-16 text-8xl max-md:text-[70px] max-sm:text-[50px]">
-                    <span className="count" data-target="1000">0</span><sup>+</sup>
-                  </div>
-                  <div className="flex items-center justify-end text-5xl max-md:text-[35px] max-sm:text-[30px]">
-                    successful <br />
-                    campaigns
-                  </div>
-                </div>
-              </div>
-              <div className="acheved max-md:!pl-[31px] max-md:!pr-[31px] max-md:!pt-[6px] max-md:!pb-[6px] bg-[#1f202266] rounded-2xl z-0 !p-14 max-md:!mt-0 max-md:!mb-0 !mt-40 !-mb-40 max-md:bg-green-500  hover:bg-green-500 text-white transition-all duration-300 ease-linear cursor-pointer">
-                <div className="acchheWrap">
-                  <div className="nums !mb-16 text-8xl max-md:text-[70px] max-sm:text-[50px]">
-                    <span className="count" data-target="100">0</span><sup>+</sup>
-                  </div>
-                  <div className="flex items-center justify-end text-5xl max-md:text-[35px] max-sm:text-[30px]">
-                    satisfied<br />
-                    clients
-                  </div>
-                </div>
-              </div>
-              <div className="acheved max-md:!pl-[31px] max-md:!pr-[31px] max-md:!pt-[6px] max-md:!pb-[6px] bg-[#1f202266] rounded-2xl z-0 !p-14 max-md:bg-yellow-200 max-md:text-black hover:bg-yellow-200 text-white hover:text-black transition-all duration-300 ease-linear cursor-pointer">
-                <div className="acchheWrap">
-                  <div className="nums !mb-16 text-8xl max-md:text-[70px] max-sm:text-[50px]">
-                    <span className="count" data-target="20">0</span><sup>+</sup>
-                  </div>
-                  <div className="flex items-center justify-end text-5xl max-md:text-[35px] max-sm:text-[30px]">
-                    creative<br />
-                    designs
-                  </div>
-                </div>
-              </div>
-              <div className="acheved max-md:!pl-[31px] max-md:!pr-[31px] max-md:!pt-[6px] max-md:!pb-[6px] bg-[#1f202266] rounded-2xl z-0 !p-14 !mt-40 !-mb-40 max-md:!mt-0 max-md:!mb-0 max-md:bg-yellow-500 max-md:text-black  hover:bg-yellow-500 hover:text-black text-white transition-all duration-300 ease-linear cursor-pointer">
-                <div className="acchheWrap">
-                  <div className="nums !mb-16 text-8xl max-md:text-[70px] max-sm:text-[50px]">
-                    <span className="count" data-target="10">0</span><sup>+</sup>
-                  </div>
-                  <div className="flex items-center justify-end text-5xl max-md:text-[35px] max-sm:text-[30px]">
-                    creative<br />
-                    designs
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <section className="!pr-24 !pl-24 max-md:!pr-1.5 max-md:!pl-1.5">
+          <AboutComp />
+          <Acheved />
+          <section className="!pr-24 !pl-24 max-md:!pr-[2rem] max-md:!pl-[2rem]">
             <div className="testimonialCont">
               <div className="texths flex justify-between items-end text-white max-md:items-start flex-col">
                 <h3>
@@ -361,7 +253,7 @@ export default function Home() {
             </div>
           </section>
           <TextSlider />
-          <section className="!pr-24 !pl-24 max-md:!pl-2 max-md:!pr-2 !mt-40">
+          <section className="!pr-24 !pl-24 max-md:!pr-[2rem] max-md:!pl-[2rem] !mt-40">
             {/* <AutoSlider items={["Client A", "Client B", "Client C", "Client D", "Client E"]} speed={10} />
             <AutoSlider
               items={["Google", "Facebook", "Netflix", "Amazon", "Apple", "Apple"]}
@@ -382,7 +274,7 @@ export default function Home() {
           </section>
 
           <Dribble />
-          <section className="!pr-24 !pl-24 max-md:!pl-2 max-md:!pr-2 flex items-center justify-center min-h-screen ">
+          <section className="!pr-24 !pl-24 max-md:!pr-[2rem] max-md:!pl-[2rem] flex items-center justify-center min-h-screen ">
             <Socials />
           </section>
         </main>

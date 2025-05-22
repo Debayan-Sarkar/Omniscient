@@ -6,7 +6,6 @@ import Image from 'next/image';
 import React, { useEffect } from 'react'
 import Button from '../Button/btn';
 
-gsap.registerPlugin(ScrollTrigger, useGSAP);
 ScrollTrigger.clearScrollMemory();
 
 function Dribble() {

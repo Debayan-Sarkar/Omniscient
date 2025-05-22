@@ -8,7 +8,6 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import Button from '../Button/btn';
 import { SplitText } from 'gsap/SplitText';
 
-gsap.registerPlugin(ScrollTrigger, useGSAP, ScrollSmoother, SplitText);
 ScrollTrigger.clearScrollMemory();
 function Work({ TriggRef }) {
     const TriggerRef = useRef();
@@ -133,12 +132,12 @@ function Work({ TriggRef }) {
     });
 
     return (
-        <section className="!mt-[30rem] max-md:!mt-[0.5rem] !pr-24 !pl-24 max-md:!pl-[5px] max-md:!pr-[5px] text-white triggerRec">
+        <section className="!mt-[30rem] max-md:!mt-[0.5rem] !pr-24 !pl-24 max-md:!pr-[2rem] max-md:!pl-[2rem] text-white triggerRec">
             <div className="flex flex-col scrfff">
                 <div className="RecWork !mt-[25rem] flex max-md:flex-col ">
                     <h3>
                         <span className="fill-text block text-[218px] max-md:!text-[51px] max-md:!h-10 max-md:!leading-[50px] !leading-48 !h-40">recent</span>
-                        <span className="fill-text block text-[218px] max-md:!text-[51px] !leading-48 max-md:!leading-[50px] !ml-1.5">work</span>
+                        <span className="fill-text block text-[218px] max-md:!text-[51px] !leading-48 max-md:!leading-[50px]">work</span>
                     </h3>
                     <div className="bottomW flex FloatUp flex-col justify-between items-start w-1/4 h-72 max-md:flex-row max-md:w-full">
                         <div className="">
