@@ -97,10 +97,7 @@ export default function Home() {
     });
     const floatUps = gsap.utils.toArray(".FloatUp");
     floatUps.forEach((floats) => {
-      gsap.fromTo(floats,
-        {
-          y: () => window.innerHeight * 0.5
-        }, {
+      gsap.to(floats, {
         y: 10,
         duration: 10,
         ease: "slow(0.5,0.7,true)",
