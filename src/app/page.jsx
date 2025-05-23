@@ -39,7 +39,9 @@ export default function Home() {
 
   useGSAP(() => {
     const handleResize = () => ScrollTrigger.refresh(false);
+    ScrollTrigger.clearScrollMemory();
     window.addEventListener('resize', handleResize);
+    ScrollTrigger.addEventListener("refreshInit", () => window.scrollTo(0, 0));
     const ctx = gsap.context(() => {
       ScrollTrigger.clearScrollMemory();
       let smoother = ScrollSmoother.create({
@@ -63,9 +65,6 @@ export default function Home() {
 
   useGSAP(() => {
     window.scrollTo(0, 0);
-
-
-
     const alines = document.querySelectorAll('.texths h3 span');
     alines.forEach((line, index) => {
       gsap.set(line, { display: 'block', position: 'relative', textAlign: 'start' });
@@ -115,6 +114,7 @@ export default function Home() {
         }
       });
     });
+
     gsap.utils.toArray('.count').forEach((el) => {
       const target = +el.dataset.target;
 
@@ -252,26 +252,32 @@ export default function Home() {
               </Swiper>
             </div>
           </section>
+              <AutoSlider
+            items={[
+              { txt: "Modern Creative Studio" },
+              { txt: "Modern Creative Studio" },
+              { txt: "Modern Creative Studio" },
+              { txt: "Modern Creative Studio" },
+              { txt: "Modern Creative Studio" }
+            ]}
+            rtl={true}
+            mt={40}
+          />
+          <AutoSlider
+            items={[
+              { txt: "Modern Creative Studio" },
+              { txt: "Modern Creative Studio" },
+              { txt: "Modern Creative Studio" },
+              { txt: "Modern Creative Studio" },
+              { txt: "Modern Creative Studio" }
+            ]}
+            mt={5}
+          />
           <TextSlider />
-          <section className="!pr-24 !pl-24 max-md:!pr-[2rem] max-md:!pl-[2rem] !mt-40">
-            {/* <AutoSlider items={["Client A", "Client B", "Client C", "Client D", "Client E"]} speed={10} />
-            <AutoSlider
-              items={["Google", "Facebook", "Netflix", "Amazon", "Apple", "Apple"]}
-              rtl={true} // or false
-              speed={10} // increase for slower scroll, lower for faster
-            /> */}
+          {/* <AutoSlider items={["Client A", "Client B", "Client C", "Client D", "Client E"]} speed={10} />*/}
+      
 
-            <section className="marquee relative overflow-hidden bg-[#0f0f0f] text-white !p-[30px_0px] uppercase text-4xl">
-              <div className="marquee_inner flex w-fit flex-auto row">
-                <div className="marquee_part syne flex items-center flex-shrink-0 p-[0px_4px]">
-                  Modern Creative Studio
-                  <div className="arrow w-[60px] h-[80px] m-[0_1rem] rotate-90 transition-all duration-1000  ease-[cubic-bezier(0.25,0.1,0.25,1)]">
-                    <MdArrowRight size={20} />
-                  </div>
-                </div>
-              </div>
-            </section>
-          </section>
+
 
           <Dribble />
           <section className="!pr-24 !pl-24 max-md:!pr-[2rem] max-md:!pl-[2rem] flex items-center justify-center min-h-screen ">

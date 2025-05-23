@@ -30,7 +30,7 @@ function Dribble() {
         end: () => isMobile ? "25% center" : "50% center",
         invalidateOnRefresh: true,
         scrub: true,
-        markers: false,
+        markers: true,
         toggleActions: "play reverse play reverse",
       };
       gsap.utils.toArray(".row").forEach((r, i) => {
@@ -46,8 +46,10 @@ function Dribble() {
             invalidateOnRefresh: true,
             end: "150% bottom",
             scrub: true,
+            markers: true,
             onUpdate: (self) => {
               const progress = self.progress;
+              console.log(progress);
 
               cardLeft.style.transform = `
               translateX(${leftXValues[i] * progress}px) 
@@ -123,7 +125,7 @@ function Dribble() {
 
 
   return (
-    <section className="main !pr-24 !pl-24 !pb-48 max-md:!h-[100vh] max-md:!pb-0 max-md:!mt-0 !mt-100 flex-col !w-[100vw] h-[150vh] relative flex justify-center items-center text-white">
+    <section className="main !pr-24 !pl-24 !pb-48 max-md:!h-[100vh] max-md:!pb-0 max-md:!mt-20 !mt-100 flex-col !w-[100vw] h-[150vh] relative flex justify-center items-center text-white">
       <div className="mainCont absolute flex items-center max-md:!top-[55%] top-[40%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex-col">
         <div className="logo">
           <Image src={'/assets/behance.png'} className="dribbleImg " width={100} height={100} alt="Dribble" />
@@ -140,7 +142,7 @@ function Dribble() {
           </div>
         </div>
         <div className="btn">
-            <Button innerTxt={'Explore Work'}/>
+          <Button innerTxt={'Explore Work'} />
         </div>
       </div>
       {generaTeRows()}

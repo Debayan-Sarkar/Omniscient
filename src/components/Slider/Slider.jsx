@@ -1,51 +1,67 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
+import { BsDashLg } from "react-icons/bs";
+import { useGSAP } from '@gsap/react';
 
-const AutoSlider = ({ items = [], rtl = false, speed = 100 }) => {
-  const wrapperRef = useRef(null);
-  const contentRef = useRef(null);
-  const tweenRef = useRef(null);
+const AutoSlider = ({ items, rtl = false, mt = 40 }) => {
+  const marqueeRef = useRef(null);
 
-  useEffect(() => {
-    const wrapper = wrapperRef.current;
-    const content = contentRef.current;
+  useGSAP(() => {
+    const marquee = marqueeRef.current;
+    if (!marquee) return;
 
-    if (!wrapper || !content) return;
+    const marquee_parts = marquee.querySelectorAll(".marquee_part");
+    const marquee_inner = marquee.querySelector(".marquee_inner");
 
-    const distance = content.offsetWidth / 2; // since items are duplicated twice
+    let currentScroll = 0;
+    let scrollingDown = true;
 
-    // Reset any previous animations
-    gsap.set(content, { x: 0 });
-
-    tweenRef.current = gsap.to(content, {
-      x: rtl ? `+=${distance}` : `-=${distance}`,
-      duration: speed,
-      ease: 'none',
+    const tween = gsap.to(marquee_parts, {
+      xPercent: rtl ? -100 : 100,
+      duration: 5,
       repeat: -1,
-      modifiers: {
-        x: gsap.utils.unitize(x => parseFloat(x) % distance),
-      },
-    });
+      ease: "linear"
+    }).totalProgress(0.5);
 
-    return () => tweenRef.current?.kill();
-  }, [items, rtl, speed]);
+    gsap.set(marquee_inner, { xPercent: -50 });
 
-  // Render the items duplicated at least twice for a clean loop
-  const repeatedItems = [...items, ...items, ...items];
+    const onScroll = () => {
+      const newScroll = window.pageYOffset;
+      scrollingDown = newScroll > currentScroll;
+      gsap.to(tween, {
+        timeScale: scrollingDown ? 1 : -1,
+        overwrite: true
+      });
+      currentScroll = newScroll;
+    };
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      tween.kill();
+    };
+  }, [rtl]);
 
   return (
-    <div ref={wrapperRef} className="overflow-hidden w-full relative">
-      <div
-        ref={contentRef}
-        className="flex gap-8 whitespace-nowrap will-change-transform"
-      >
-        {repeatedItems.map((item, i) => (
-          <div className="flex items-center" key={i}>
-            <div className="text-5xl font-bold text-white">{item}</div>
+    <section
+      ref={marqueeRef}
+      className={`relative overflow-hidden text-white marquee !pr-24 !pl-24 max-md:!pr-[0rem] max-md:!pl-[0rem]  uppercase !mt-${mt === 40 ? "40" : mt} text-6xl`}
+    >
+      <div className="marquee_inner flex w-fit flex-auto row">
+        {items.map((item, index) => (
+          <div
+            key={index}
+            className="marquee_part syne flex items-center flex-shrink-0 "
+          >
+            {item.txt}
+            <div className="arrow w-[60px] h-[80px] !m-[0_2rem] !mr-[3rem] transition-all duration-1000 ease-[cubic-bezier(0.075,0.82,0.165,1)]">
+              <BsDashLg size={80} />
+            </div>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

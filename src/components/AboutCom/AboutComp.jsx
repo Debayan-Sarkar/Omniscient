@@ -18,7 +18,7 @@ function AboutComp() {
                     backgroundPositionX: "0%",
                     scrollTrigger: {
                         trigger: line,
-                        start: () => isIOS ? "-1000% center" : "-1250% 75%",
+                        start: () => isIOS ? "-1000% center" : "-1000% center",
                         end: () => "95% center",
                         scrub: 1,
                         markers: true,
