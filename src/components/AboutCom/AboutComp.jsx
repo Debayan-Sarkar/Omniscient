@@ -21,7 +21,7 @@ function AboutComp() {
                         start: () => isIOS ? "-1000% center" : "-1000% center",
                         end: () => "95% center",
                         scrub: 1,
-                        markers: true,
+                       markers: false,
                         invalidateOnRefresh: true,
                     },
                 }

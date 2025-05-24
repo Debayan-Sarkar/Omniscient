@@ -13,11 +13,11 @@ function Acheved() {
                 ease: 'power2.out',
                 scrollTrigger: {
                     trigger: el,
-                    start: 'top 80%',
+                    start: '-20% 80%',
                     end: 'top 50%',
                     toggleActions: 'play none none reverse',
                     scrub: 1,
-                    markers: false, // turn on for debugging if needed
+                    markers: true, // turn on for debugging if needed
                 },
             });
         });

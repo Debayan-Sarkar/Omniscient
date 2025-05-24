@@ -141,7 +141,13 @@ export default function Home() {
     ScrollTrigger.refresh();
 
     return () => {
-      ScrollTrigger.killAll(false);
+      try {
+        ScrollTrigger.killAll(false);
+      } catch (error) {
+        console.log(error);
+
+      }
+
     };
 
   }, []);
@@ -249,7 +255,11 @@ export default function Home() {
               </Swiper>
             </div>
           </section>
-              <AutoSlider
+
+          <TextSlider />
+          {/* <AutoSlider items={["Client A", "Client B", "Client C", "Client D", "Client E"]} speed={10} />*/}
+
+          <AutoSlider
             items={[
               { txt: "Modern Creative Studio" },
               { txt: "Modern Creative Studio" },
@@ -270,16 +280,14 @@ export default function Home() {
             ]}
             mt={5}
           />
-          <TextSlider />
-          {/* <AutoSlider items={["Client A", "Client B", "Client C", "Client D", "Client E"]} speed={10} />*/}
-      
 
-
-
-          <Dribble />
+          <section className="min-h-screen">
+            <Dribble />
+          </section>
           <section className="!pr-24 !pl-24 max-md:!pr-[2rem] max-md:!pl-[2rem] flex items-center justify-center min-h-screen ">
             <Socials />
           </section>
+
         </main>
       </div>
       <FluidDispatcher />

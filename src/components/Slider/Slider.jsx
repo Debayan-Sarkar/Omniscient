@@ -46,7 +46,7 @@ const AutoSlider = ({ items, rtl = false, mt = 40 }) => {
   return (
     <section
       ref={marqueeRef}
-      className={`relative overflow-hidden text-white marquee !pr-24 !pl-24 max-md:!pr-[0rem] max-md:!pl-[0rem]  uppercase !mt-${mt === 40 ? "40" : mt} text-6xl`}
+      className={`relative overflow-hidden text-white marquee !h-fit !pr-24 !pl-24 max-md:!pr-[0rem] max-md:!pl-[0rem]  uppercase !mt-${mt === 40 ? "40" : mt} text-6xl`}
     >
       <div className="marquee_inner flex w-fit flex-auto row">
         {items.map((item, index) => (

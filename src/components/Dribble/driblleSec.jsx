@@ -3,79 +3,94 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Button from '../Button/btn';
 
 ScrollTrigger.clearScrollMemory();
 
 function Dribble() {
-
+  const btnCont = useRef(null);
 
   useGSAP(() => {
-    const leftXValues = [-600, -400, -300];
-    const rightXValues = [600, 400, 300];
-    const leftRotateValues = [-45, -20, -35];
-    const rightRotateValues = [45, 20, 35];
-    const yValues = [150, -200, -400];
-    let breakPoint = 769;
-    let mm = gsap.matchMedia();
+    const breakPoint = 769;
+
+    const mm = gsap.matchMedia();
+
     mm.add({
-      isDesktop: `(min-width: ${breakPoint}px)`, // <- when ANY of these are true, the function below gets invoked
+      isDesktop: `(min-width: ${breakPoint}px)`,
       isMobile: `(max-width: ${breakPoint - 1}px)`
     }, (context) => {
-      let { isDesktop, isMobile } = context.conditions;
-      const Settings = {
-        trigger: ".main",
-        start: "top center",
-        end: () => isMobile ? "25% center" : "50% center",
-        invalidateOnRefresh: true,
-        scrub: true,
-        markers: true,
-        toggleActions: "play reverse play reverse",
-      };
-      gsap.utils.toArray(".row").forEach((r, i) => {
+      const { isDesktop, isMobile } = context.conditions;
+
+      // Dynamically set values or use fallback defaults
+      const leftXValues = [-600, -400, -300];
+      const rightXValues = [600, 400, 300];
+      const leftRotateValues = [-45, -20, -35];
+      const rightRotateValues = [45, 20, 35];
+      const yValues = [150, -200, -400];
+
+      const rows = gsap.utils.toArray(".main .row");
+
+      rows.forEach((r, i) => {
         const cardLeft = r.querySelector(".card-left");
         const cardRight = r.querySelector(".card-right");
-
         if (!cardLeft || !cardRight) return;
+
+        const xLeft = leftXValues[i] ?? -300;
+        const xRight = rightXValues[i] ?? 300;
+        const y = yValues[i] ?? 150;
+        console.log("y", i);
+
+        const rotLeft = leftRotateValues[i] ?? -30;
+        const rotRight = rightRotateValues[i] ?? 30;
 
         gsap.to(cardLeft, {
           scrollTrigger: {
             trigger: ".main",
             start: "top center",
-            invalidateOnRefresh: true,
             end: "150% bottom",
             scrub: true,
-            markers: true,
+            markers: false,
+            invalidateOnRefresh: true,
             onUpdate: (self) => {
               const progress = self.progress;
-              console.log(progress);
 
               cardLeft.style.transform = `
-              translateX(${leftXValues[i] * progress}px) 
-              translateY(${yValues[i] * progress}px) 
-              rotate(${leftRotateValues[i] * progress}deg)
+              translateX(${xLeft * progress}px) 
+              translateY(${y * progress}px) 
+              rotate(${rotLeft * progress}deg)
             `.trim();
 
               cardRight.style.transform = `
-              translateX(${rightXValues[i] * progress}px) 
-              translateY(${yValues[i] * progress}px) 
-              rotate(${rightRotateValues[i] * progress}deg)
+              translateX(${xRight * progress}px) 
+              translateY(${y * progress}px) 
+              rotate(${rotRight * progress}deg)
             `.trim();
             }
           }
         });
       });
 
+      // Additional scroll-triggered animations
+      const Settings = {
+        trigger: ".main",
+        start: "top center",
+        end: isMobile ? "25% center" : "50% center",
+        invalidateOnRefresh: true,
+        scrub: true,
+        markers: true,
+        toggleActions: "play reverse play reverse"
+      };
+
       gsap.fromTo(".logo", {
         scale: 0,
-        visibility: false,
+        visibility: "hidden"
       }, {
         scale: isMobile ? 2 : 3,
         duration: 0.5,
         ease: "power1.out",
-        visibility: true,
-        scrollTrigger: Settings,
+        visibility: "visible",
+        scrollTrigger: Settings
       });
 
       gsap.to(".line p", {
@@ -83,24 +98,38 @@ function Dribble() {
         stagger: 0.5,
         duration: 0.5,
         ease: "power1.out",
-        scrollTrigger: Settings,
+        scrollTrigger: Settings
       });
 
-      gsap.to(".btn button", {
+      gsap.fromTo(btnCont.current,
+        {
+          scale: 0,
+          opacity: 0,
+          visibility: "hidden"
+        }, {
+        scale:  1,
+        visibility: "visible",
         y: 0,
         opacity: 1,
         delay: 0.25,
         duration: 0.5,
         ease: "power1.out",
-        scrollTrigger: Settings,
+        scrollTrigger: Settings
       });
 
       ScrollTrigger.refresh();
+
+      return () => {
+        // ✅ Clean up everything created within matchMedia
+        context.revert(); // revert media match context
+      };
     });
+
     return () => {
-      ScrollTrigger.killAll(false);
+      ScrollTrigger.killAll(); // extra fallback
     };
   }, []);
+
   const generaTeRows = () => {
     const rows = [];
     for (let i = 1; i <= 3; i++) {
@@ -141,11 +170,47 @@ function Dribble() {
             <p className='max-md:!text-[20px]'>like.</p>
           </div>
         </div>
-        <div className="btn">
+        <div className="btn" ref={btnCont}>
           <Button innerTxt={'Explore Work'} />
         </div>
       </div>
       {generaTeRows()}
+      {/* <div className="row relative !mt-4 max-md:!mb-3 !mb-4 w-[100vw] !ml-0 !mr-0 max-md:!gap-1 !gap-8 flex justify-center pointer-events-none" >
+        <div className="card-left w-[38%] max-md:w-[50%] relative rounded-md overflow-hidden will-change-transform">
+          <div className="img ">
+            <Image src={`/assets/dribble1.jpeg`} className="!w-full !h-full rounded-4xl max-md:rounded-xl" width={100} height={100} alt="Work Images" />
+          </div>
+        </div>
+        <div className="card-right w-[38%]  max-md:w-[50%] relative rounded-md overflow-hidden will-change-transform">
+          <div className="img ">
+            <Image src={`/assets/dribble2.jpeg`} className="!w-full !h-full rounded-4xl max-md:rounded-xl" width={100} height={100} alt="Work Images" />
+          </div>
+        </div>
+      </div>
+      <div className="row relative !mt-4 max-md:!mb-3 !mb-4 w-[100vw] !ml-0 !mr-0 max-md:!gap-1 !gap-8 flex justify-center pointer-events-none" >
+        <div className="card-left w-[38%] max-md:w-[50%] relative rounded-md overflow-hidden will-change-transform">
+          <div className="img ">
+            <Image src={`/assets/dribble3.jpeg`} className="!w-full !h-full rounded-4xl max-md:rounded-xl" width={100} height={100} alt="Work Images" />
+          </div>
+        </div>
+        <div className="card-right w-[38%]  max-md:w-[50%] relative rounded-md overflow-hidden will-change-transform">
+          <div className="img ">
+            <Image src={`/assets/dribble4.jpeg`} className="!w-full !h-full rounded-4xl max-md:rounded-xl" width={100} height={100} alt="Work Images" />
+          </div>
+        </div>
+      </div>
+      <div className="row relative !mt-4 max-md:!mb-3 !mb-4 w-[100vw] !ml-0 !mr-0 max-md:!gap-1 !gap-8 flex justify-center pointer-events-none" >
+        <div className="card-left w-[38%] max-md:w-[50%] relative rounded-md overflow-hidden will-change-transform">
+          <div className="img ">
+            <Image src={`/assets/dribble5.jpeg`} className="!w-full !h-full rounded-4xl max-md:rounded-xl" width={100} height={100} alt="Work Images" />
+          </div>
+        </div>
+        <div className="card-right w-[38%]  max-md:w-[50%] relative rounded-md overflow-hidden will-change-transform">
+          <div className="img ">
+            <Image src={`/assets/dribble6.jpeg`} className="!w-full !h-full rounded-4xl max-md:rounded-xl" width={100} height={100} alt="Work Images" />
+          </div>
+        </div>
+      </div> */}
     </section>
   )
 }
